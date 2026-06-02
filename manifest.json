@@ -1,0 +1,13 @@
+{
+  "name": "Lingua",
+  "short_name": "Lingua",
+  "description": "Brazilian Portuguese + Spanish learning",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FAF8F2",
+  "theme_color": "#1d4e89",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons": []
+}
