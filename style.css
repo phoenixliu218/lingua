@@ -308,3 +308,202 @@ a { color: inherit; text-decoration: none; }
   color: var(--fg-muted);
   line-height: 1.5;
 }
+
+/* Vocab tab */
+.vocab-list { padding: 1rem 1rem 2rem; }
+.vocab-section { margin-bottom: 1.5rem; }
+.vocab-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+.vocab-table {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.vocab-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 0.8fr;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  align-items: start;
+}
+.vocab-row:last-child { border-bottom: none; }
+.vocab-pt { font-weight: 600; color: var(--fg); }
+.vocab-es { color: var(--accent); }
+.vocab-en { color: var(--fg-muted); font-size: 0.85rem; }
+.vocab-note {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  padding-top: 0.3rem;
+  font-style: italic;
+}
+
+/* Grammar tab */
+.grammar-list { padding: 1rem 1rem 2rem; }
+.grammar-section {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+.grammar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+  line-height: 1.4;
+}
+.compact-table {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+}
+.compact-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr 1.1fr 1.1fr;
+  gap: 0.4rem;
+  padding: 0.55rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.compact-row:last-child { border-bottom: none; }
+.compact-header {
+  background: var(--bg);
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+.grammar-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+code {
+  background: rgba(29, 78, 137, 0.08);
+  color: var(--accent);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", Monaco, monospace;
+}
+.callout {
+  background: rgba(29, 78, 137, 0.05);
+  border-left: 3px solid var(--accent);
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.5;
+}
+
+/* Culture tab */
+.culture-list { padding: 1rem 1rem 2rem; }
+.culture-section {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+.culture-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  line-height: 1.4;
+}
+.culture-points {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.culture-points li {
+  padding: 0.25rem 0 0.25rem 1.1rem;
+  position: relative;
+}
+.culture-points li::before {
+  content: '·';
+  position: absolute;
+  left: 0.4rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+.culture-points strong { color: var(--fg); }
+
+/* Practice tab */
+.practice-list { padding: 1rem 1rem 2rem; }
+.practice-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.9rem;
+}
+.practice-num {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+.practice-question {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  color: var(--fg);
+}
+.practice-toggle {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+}
+.practice-toggle:active { background: rgba(29, 78, 137, 0.05); }
+.practice-answer {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+}
+.practice-answer.hidden { display: none; }
+.practice-ans-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.practice-ans-line .lang-label {
+  width: 1.4rem;
+  flex-shrink: 0;
+  padding-top: 0.2rem;
+}
+.practice-ans-line.lang-pt .practice-ans-text { font-weight: 600; color: var(--fg); }
+.practice-ans-line.lang-es .practice-ans-text { color: var(--accent); }
+.practice-ans-line.lang-en .practice-ans-text { color: var(--fg-muted); font-size: 0.85rem; }
+.practice-note {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  font-style: italic;
+  padding: 0.45rem 0.6rem;
+  background: rgba(196, 66, 26, 0.05);
+  border-radius: 6px;
+  line-height: 1.5;
+}

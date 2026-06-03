@@ -42,9 +42,9 @@
 - 🇧🇷 Vendors often offer a free taste (`experimentar`) — say yes!
 
 **5. 🧍 Phoenix**
-- **pt**: Pode ser, obrigada! ... Hmm, tá doce. Quanto custa o quilo?
-- **es**: Está bien, gracias. ... Mmm, está dulce. ¿Cuánto cuesta el kilo?
-- **en**: Sure, thanks! ... Mmm, it's sweet. How much per kilo?
+- **pt**: Pode ser, obrigada! Nossa, tá doce. Quanto custa o quilo?
+- **es**: Está bien, gracias. Ay, está dulce. ¿Cuánto cuesta el kilo?
+- **en**: Sure, thanks! Wow, it's sweet. How much per kilo?
 
 **6. 👨 Feirante**
 - **pt**: Doze reais o quilo. Mas se levar dois, faço por vinte.
