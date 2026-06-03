@@ -55,56 +55,56 @@ const FEIRA_DIALOG = [
 
 const FEIRA_VOCAB = {
   '🔤 Verbs': [
-    { pt: 'querer', es: 'querer', en: 'to want', note: 'irregular; eu quero, você quer' },
-    { pt: 'gostaria', es: 'querría / me gustaría', en: 'I would like', note: 'conditional of gostar — polite alt to quero' },
-    { pt: 'poder', es: 'poder', en: 'can / be able', note: 'eu posso, você pode' },
-    { pt: 'custar', es: 'costar', en: 'to cost', note: 'only 3rd person in this context' },
-    { pt: 'pesar', es: 'pesar', en: 'to weigh', note: 'regular' },
-    { pt: 'levar', es: 'llevar', en: 'to take / carry off', note: 'regular' },
-    { pt: 'aceitar', es: 'aceptar', en: 'to accept', note: 'regular' },
-    { pt: 'pagar', es: 'pagar', en: 'to pay', note: 'regular' },
-    { pt: 'trocar', es: 'cambiar', en: 'to change / exchange', note: '⚠️ different words pt/es' },
-    { pt: 'experimentar', es: 'probar', en: 'to try / taste', note: '⚠️ different verb root' },
+    { id: 'v01', pt: 'querer', es: 'querer', en: 'to want', note: 'irregular; eu quero, você quer', example: { pt: 'Eu quero dois quilos de manga.', es: 'Quiero dos kilos de mango.', en: 'I want two kilos of mango.' } },
+    { id: 'v02', pt: 'gostaria', es: 'querría / me gustaría', en: 'I would like', note: 'conditional of gostar — polite alt to quero', example: { pt: 'Eu gostaria de pagar.', es: 'Querría pagar.', en: 'I would like to pay.' } },
+    { id: 'v03', pt: 'poder', es: 'poder', en: 'can / be able', note: 'eu posso, você pode', example: { pt: 'Pode pesar, por favor?', es: '¿Puede pesar, por favor?', en: 'Can you weigh, please?' } },
+    { id: 'v04', pt: 'custar', es: 'costar', en: 'to cost', note: 'only 3rd person in this context', example: { pt: 'Quanto custa o quilo?', es: '¿Cuánto cuesta el kilo?', en: 'How much per kilo?' } },
+    { id: 'v05', pt: 'pesar', es: 'pesar', en: 'to weigh', note: 'regular', example: { pt: 'Pode pesar dois quilos?', es: '¿Puede pesar dos kilos?', en: 'Can you weigh two kilos?' } },
+    { id: 'v06', pt: 'levar', es: 'llevar', en: 'to take / carry off', note: 'regular', example: { pt: 'Vou levar dois.', es: 'Voy a llevar dos.', en: "I'll take two." } },
+    { id: 'v07', pt: 'aceitar', es: 'aceptar', en: 'to accept', note: 'regular', example: { pt: 'Aceita cartão?', es: '¿Acepta tarjeta?', en: 'Do you take card?' } },
+    { id: 'v08', pt: 'pagar', es: 'pagar', en: 'to pay', note: 'regular', example: { pt: 'Posso pagar com cartão?', es: '¿Puedo pagar con tarjeta?', en: 'Can I pay by card?' } },
+    { id: 'v09', pt: 'trocar', es: 'cambiar', en: 'to change / exchange', note: '⚠️ different words pt/es', example: { pt: 'Pode trocar nota de cem?', es: '¿Puede cambiar billete de cien?', en: 'Can you change a 100 bill?' } },
+    { id: 'v10', pt: 'experimentar', es: 'probar', en: 'to try / taste', note: '⚠️ different verb root', example: { pt: 'Posso experimentar?', es: '¿Puedo probar?', en: 'Can I taste?' } },
   ],
   '❓ Question words': [
-    { pt: 'Quanto / Quanta', es: 'Cuánto / Cuánta', en: 'how much', note: 'agrees in gender with noun' },
-    { pt: 'Quantos / Quantas', es: 'Cuántos / Cuántas', en: 'how many', note: 'plural + gender' },
-    { pt: 'O que', es: 'Qué', en: 'what', note: 'o que = informal "what"' },
-    { pt: 'Onde', es: 'Dónde', en: 'where', note: null },
-    { pt: 'Qual', es: 'Cuál', en: 'which', note: null },
+    { id: 'q01', pt: 'Quanto / Quanta', es: 'Cuánto / Cuánta', en: 'how much', note: 'agrees in gender with noun', example: { pt: 'Quanto custa?', es: '¿Cuánto cuesta?', en: 'How much does it cost?' } },
+    { id: 'q02', pt: 'Quantos / Quantas', es: 'Cuántos / Cuántas', en: 'how many', note: 'plural + gender', example: { pt: 'Quantos quilos?', es: '¿Cuántos kilos?', en: 'How many kilos?' } },
+    { id: 'q03', pt: 'O que', es: 'Qué', en: 'what', note: 'o que = informal "what"', example: { pt: 'O que você tem?', es: '¿Qué tienes?', en: 'What do you have?' } },
+    { id: 'q04', pt: 'Onde', es: 'Dónde', en: 'where', note: null, example: { pt: 'Onde fica o tomate?', es: '¿Dónde está el tomate?', en: 'Where is the tomato?' } },
+    { id: 'q05', pt: 'Qual', es: 'Cuál', en: 'which', note: null, example: { pt: 'Qual é mais doce?', es: '¿Cuál es más dulce?', en: 'Which is sweeter?' } },
   ],
   '🙏 "Thanks" (feminine forms)': [
-    { pt: 'Obrigada', es: 'Gracias', en: 'thanks', note: 'standard' },
-    { pt: 'Brigada', es: '—', en: 'thx', note: 'colloquial shortening' },
-    { pt: 'Muito obrigada', es: 'Muchas gracias', en: 'thanks a lot', note: 'emphatic' },
-    { pt: 'Obrigadinha', es: '—', en: 'thanks (cutesy)', note: 'sweet / playful' },
-    { pt: 'Valeu!', es: '—', en: 'thanks! / cheers!', note: 'super common BR, casual' },
-    { pt: 'Te agradeço', es: 'Te agradezco', en: 'I thank you', note: 'emphasizes the favor' },
-    { pt: 'De nada / Imagina', es: 'De nada / No hay de qué', en: "you're welcome", note: 'replies to thanks' },
+    { id: 't01', pt: 'Obrigada', es: 'Gracias', en: 'thanks', note: 'standard' },
+    { id: 't02', pt: 'Brigada', es: '—', en: 'thx', note: 'colloquial shortening' },
+    { id: 't03', pt: 'Muito obrigada', es: 'Muchas gracias', en: 'thanks a lot', note: 'emphatic' },
+    { id: 't04', pt: 'Obrigadinha', es: '—', en: 'thanks (cutesy)', note: 'sweet / playful' },
+    { id: 't05', pt: 'Valeu!', es: '—', en: 'thanks! / cheers!', note: 'super common BR, casual' },
+    { id: 't06', pt: 'Te agradeço', es: 'Te agradezco', en: 'I thank you', note: 'emphasizes the favor' },
+    { id: 't07', pt: 'De nada / Imagina', es: 'De nada / No hay de qué', en: "you're welcome", note: 'replies to thanks' },
   ],
   '💬 Common phrases': [
-    { pt: 'Bom dia', es: 'Buenos días', en: 'good morning', note: 'until ~12pm' },
-    { pt: 'Boa tarde', es: 'Buenas tardes', en: 'good afternoon', note: '12pm–6pm' },
-    { pt: 'Por favor', es: 'Por favor', en: 'please', note: 'append freely' },
-    { pt: 'Com licença', es: 'Con permiso', en: 'excuse me', note: 'pass through / interrupt' },
-    { pt: 'Tudo bem?', es: '¿Todo bien?', en: 'all good?', note: 'greeting' },
-    { pt: 'Pode ser', es: 'Está bien', en: 'sure / okay', note: 'agreement' },
-    { pt: 'Tá bom', es: 'Está bien', en: 'okay', note: 'colloquial (= está bem)' },
-    { pt: 'Só dando uma olhada', es: 'Solo estoy mirando', en: 'just looking', note: 'when vendor asks' },
-    { pt: 'Não dá um desconto?', es: '¿No me hace un descuento?', en: 'discount?', note: 'haggling' },
-    { pt: 'Pode pesar?', es: '¿Puede pesar?', en: 'can you weigh?', note: 'request' },
-    { pt: 'Aceita cartão?', es: '¿Acepta tarjeta?', en: 'accept card?', note: 'payment check' },
-    { pt: 'Fechado!', es: '¡Cerrado!', en: 'deal!', note: 'sealing a haggle' },
+    { id: 'p01', pt: 'Bom dia', es: 'Buenos días', en: 'good morning', note: 'until ~12pm' },
+    { id: 'p02', pt: 'Boa tarde', es: 'Buenas tardes', en: 'good afternoon', note: '12pm–6pm' },
+    { id: 'p03', pt: 'Por favor', es: 'Por favor', en: 'please', note: 'append freely' },
+    { id: 'p04', pt: 'Com licença', es: 'Con permiso', en: 'excuse me', note: 'pass through / interrupt' },
+    { id: 'p05', pt: 'Tudo bem?', es: '¿Todo bien?', en: 'all good?', note: 'greeting' },
+    { id: 'p06', pt: 'Pode ser', es: 'Está bien', en: 'sure / okay', note: 'agreement' },
+    { id: 'p07', pt: 'Tá bom', es: 'Está bien', en: 'okay', note: 'colloquial (= está bem)' },
+    { id: 'p08', pt: 'Só dando uma olhada', es: 'Solo estoy mirando', en: 'just looking', note: 'when vendor asks' },
+    { id: 'p09', pt: 'Não dá um desconto?', es: '¿No me hace un descuento?', en: 'discount?', note: 'haggling' },
+    { id: 'p10', pt: 'Pode pesar?', es: '¿Puede pesar?', en: 'can you weigh?', note: 'request' },
+    { id: 'p11', pt: 'Aceita cartão?', es: '¿Acepta tarjeta?', en: 'accept card?', note: 'payment check' },
+    { id: 'p12', pt: 'Fechado!', es: '¡Cerrado!', en: 'deal!', note: 'sealing a haggle' },
   ],
   '🎨 Adjectives & adverbs': [
-    { pt: 'caro / cara', es: 'caro / cara', en: 'expensive', note: null },
-    { pt: 'barato / barata', es: 'barato / barata', en: 'cheap', note: null },
-    { pt: 'doce', es: 'dulce', en: 'sweet', note: null },
-    { pt: 'maduro / madura', es: 'maduro / madura', en: 'ripe', note: null },
-    { pt: 'fresco / fresca', es: 'fresco / fresca', en: 'fresh', note: null },
-    { pt: 'muito / muita', es: 'mucho / mucha', en: 'very, a lot', note: null },
-    { pt: 'pouco / pouca', es: 'poco / poca', en: 'little', note: null },
-    { pt: 'hoje', es: 'hoy', en: 'today', note: null },
+    { id: 'a01', pt: 'caro / cara', es: 'caro / cara', en: 'expensive', note: null, example: { pt: 'Tá caro.', es: 'Está caro.', en: "It's expensive." } },
+    { id: 'a02', pt: 'barato / barata', es: 'barato / barata', en: 'cheap', note: null, example: { pt: 'Tá barato.', es: 'Está barato.', en: "It's cheap." } },
+    { id: 'a03', pt: 'doce', es: 'dulce', en: 'sweet', note: null, example: { pt: 'Tá doce.', es: 'Está dulce.', en: "It's sweet." } },
+    { id: 'a04', pt: 'maduro / madura', es: 'maduro / madura', en: 'ripe', note: null, example: { pt: 'Tá maduro?', es: '¿Está maduro?', en: 'Is it ripe?' } },
+    { id: 'a05', pt: 'fresco / fresca', es: 'fresco / fresca', en: 'fresh', note: null, example: { pt: 'É fresco?', es: '¿Es fresco?', en: 'Is it fresh?' } },
+    { id: 'a06', pt: 'muito / muita', es: 'mucho / mucha', en: 'very, a lot', note: null, example: { pt: 'Muito obrigada.', es: 'Muchas gracias.', en: 'Thanks a lot.' } },
+    { id: 'a07', pt: 'pouco / pouca', es: 'poco / poca', en: 'little', note: null, example: { pt: 'Só um pouco.', es: 'Solo un poco.', en: 'Just a little.' } },
+    { id: 'a08', pt: 'hoje', es: 'hoy', en: 'today', note: null, example: { pt: 'É de hoje?', es: '¿Es de hoy?', en: 'Is it from today?' } },
   ],
 };
 
@@ -392,21 +392,54 @@ function renderCompactTable(table) {
   return tbl;
 }
 
+function renderVocabCard(item) {
+  const card = el('div', { class: 'vocab-card' });
+  for (const lang of ['pt', 'es', 'en']) {
+    const text = item[lang];
+    const row = el('div', { class: `lang-row lang-${lang}` });
+    row.appendChild(el('span', { class: 'lang-label' }, lang));
+    row.appendChild(el('span', { class: 'lang-text' }, text || '—'));
+    if (lang !== 'en' && text && text !== '—' && item.id) {
+      const src = `./audio/feira/vocab/${item.id}-${lang}.mp3`;
+      row.appendChild(el('button', {
+        class: 'play-btn play-btn-sm',
+        onClick: () => playAudio(src),
+      }, '▶'));
+    }
+    card.appendChild(row);
+  }
+  if (item.note) {
+    card.appendChild(el('div', { class: 'vocab-note-inline' }, item.note));
+  }
+  if (item.example) {
+    const exBlock = el('div', { class: 'vocab-example' });
+    exBlock.appendChild(el('div', { class: 'example-label' }, 'Example'));
+    for (const lang of ['pt', 'es', 'en']) {
+      const text = item.example[lang];
+      if (!text) continue;
+      const row = el('div', { class: `lang-row lang-${lang}` });
+      row.appendChild(el('span', { class: 'lang-label' }, lang));
+      row.appendChild(el('span', { class: 'lang-text' }, text));
+      if (lang !== 'en' && item.id) {
+        const src = `./audio/feira/vocab/${item.id}-ex-${lang}.mp3`;
+        row.appendChild(el('button', {
+          class: 'play-btn play-btn-sm',
+          onClick: () => playAudio(src),
+        }, '▶'));
+      }
+      exBlock.appendChild(row);
+    }
+    card.appendChild(exBlock);
+  }
+  return card;
+}
+
 function renderLessonVocab(vocab) {
   const container = el('div', { class: 'tab-content vocab-list' });
   for (const [sectionTitle, items] of Object.entries(vocab)) {
     const section = el('div', { class: 'vocab-section' });
     section.appendChild(el('h3', { class: 'vocab-section-title' }, sectionTitle));
-    const tbl = el('div', { class: 'vocab-table' });
-    for (const item of items) {
-      const row = el('div', { class: 'vocab-row' });
-      row.appendChild(el('div', { class: 'vocab-pt' }, item.pt));
-      row.appendChild(el('div', { class: 'vocab-es' }, item.es || '—'));
-      row.appendChild(el('div', { class: 'vocab-en' }, item.en));
-      if (item.note) row.appendChild(el('div', { class: 'vocab-note' }, item.note));
-      tbl.appendChild(row);
-    }
-    section.appendChild(tbl);
+    for (const item of items) section.appendChild(renderVocabCard(item));
     container.appendChild(section);
   }
   return container;

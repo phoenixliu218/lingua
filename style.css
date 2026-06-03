@@ -318,31 +318,45 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 0.5rem;
   color: var(--accent);
 }
-.vocab-table {
+.vocab-card {
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: 10px;
-  overflow: hidden;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.6rem;
 }
-.vocab-row {
-  display: grid;
-  grid-template-columns: 1.1fr 1.1fr 0.8fr;
-  gap: 0.5rem;
-  padding: 0.7rem 0.85rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.9rem;
-  align-items: start;
-}
-.vocab-row:last-child { border-bottom: none; }
-.vocab-pt { font-weight: 600; color: var(--fg); }
-.vocab-es { color: var(--accent); }
-.vocab-en { color: var(--fg-muted); font-size: 0.85rem; }
-.vocab-note {
-  grid-column: 1 / -1;
-  font-size: 0.75rem;
+.vocab-card .lang-row { padding: 0.25rem 0; }
+.vocab-card .lang-pt .lang-text { font-size: 1rem; font-weight: 600; color: var(--fg); }
+.vocab-card .lang-es .lang-text { font-size: 0.95rem; color: var(--accent); }
+.vocab-card .lang-en .lang-text { font-size: 0.85rem; color: var(--fg-muted); }
+.vocab-note-inline {
+  font-size: 0.78rem;
   color: var(--fg-muted);
-  padding-top: 0.3rem;
   font-style: italic;
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  line-height: 1.5;
+}
+.vocab-example {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--border);
+}
+.vocab-example .lang-pt .lang-text { font-size: 0.95rem; font-weight: 500; }
+.vocab-example .lang-es .lang-text { font-size: 0.9rem; color: var(--accent); }
+.vocab-example .lang-en .lang-text { font-size: 0.82rem; color: var(--fg-muted); }
+.example-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+.play-btn-sm {
+  width: 1.6rem;
+  height: 1.6rem;
+  font-size: 0.6rem;
 }
 
 /* Grammar tab */
