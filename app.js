@@ -663,11 +663,13 @@ function renderLesson(lessonId) {
 
 function renderPictureWords() {
   const list = el('div', { class: 'section-list' });
+  const counts = { fruits: FRUITS.length };
   for (const c of PIC_CATEGORIES) {
+    const count = counts[c.id];
     list.appendChild(sectionCard({
       icon: c.icon,
       title: c.name,
-      desc: 'Coming soon',
+      desc: count ? `${count} items` : 'Coming soon',
       route: `#/picture-words/${c.id}`,
     }));
   }
