@@ -69,28 +69,27 @@
 **10. 👨 Feirante** (weighing)
 - **pt**: Dois quilos e cem. Coloca tudo junto?
 - **es**: Dos kilos cien. ¿Pongo todo junto?
-- **en**: Two kilos one hundred. All together?
+- **en**: Two kilos one hundred. All in one bag?
 
 **11. 🧍 Phoenix**
-- **pt**: Pode ser. Aceita Pix?
-- **es**: Sí. ¿Acepta Pix?
-- **en**: Sure. Do you take Pix?
+- **pt**: Pode ser. Aceita cartão?
+- **es**: Sí. ¿Acepta tarjeta?
+- **en**: Sure. Do you take card?
 
 **12. 👨 Feirante**
-- **pt**: Aceito Pix, cartão, dinheiro. Como preferir.
-- **es**: Acepto Pix, tarjeta, efectivo. Como prefiera.
-- **en**: I take Pix, card, cash. However you prefer.
+- **pt**: Aceito cartão e dinheiro. Débito ou crédito?
+- **es**: Acepto tarjeta y efectivo. ¿Débito o crédito?
+- **en**: I take card and cash. Debit or credit?
 
 **13. 🧍 Phoenix**
-- **pt**: Pix então. Qual a chave?
-- **es**: Pix entonces. ¿Cuál es la llave?
-- **en**: Pix then. What's the key?
-- 🇧🇷 Pix `chave` = identifier (CPF, phone, email, or QR code) to send payment to
+- **pt**: Crédito.
+- **es**: Crédito.
+- **en**: Credit.
 
-**14. 👨 Feirante**
-- **pt**: O QR code tá aqui ó. (showing phone)
-- **es**: El código QR está aquí. (mostrando el teléfono)
-- **en**: The QR code's here.
+**14. 👨 Feirante** (passing card machine / maquininha)
+- **pt**: Insere aqui.
+- **es**: Inserte aquí.
+- **en**: Insert here.
 
 **15. 🧍 Phoenix** (after paying)
 - **pt**: Pronto, transferido. Brigada, viu! Tenha um bom dia.
@@ -230,13 +229,15 @@
 
 ## 🇧🇷 Culture — 巴西 feira specific
 
-### 1. Pix — 付款革命
+### 1. Cartão / dinheiro 為主（外國人沒 Pix）
 
-- 巴西央行 2020 年 11 月推出 Pix（即時轉帳系統）
-- 手機掃 QR 或輸入 chave 立刻到帳，**免手續費**
-- 連最小的 feira 攤販、街頭烤雞攤都接 Pix
-- Pix `chave` 可以是 CPF、手機號、email、隨機字串，或現場掃 QR
-- 順序：問 `Aceita Pix?` 幾乎都 yes
+- 巴西本地人多用 **Pix**（央行 2020 年推出的即時轉帳），但 ⚠️ **Pix 需要巴西 CPF 才能設定**
+- 外國人通常用：
+  - **cartão de crédito / débito**（信用卡 / 簽帳金融卡）— Visa / Master 通用
+  - **dinheiro**（現金，real）
+- 攤販基本都有刷卡機（**maquininha**），但小攤可能不收卡 → **先問** `Aceita cartão?`
+- 刷卡時對方會問 **débito ou crédito?**（直接扣款 vs 信用，crédito 可分期）
+- 找零（**troco**）攤主通常很方便給
 
 ### 2. 殺價 etiquette
 
@@ -303,7 +304,7 @@
 
 ---
 
-### Q3. 攤主只收現金沒 Pix，你只帶卡。怎麼說？
+### Q3. 攤主只收現金（沒刷卡機），你只帶卡。怎麼說？
 
 <details>
 <summary>Answer</summary>
