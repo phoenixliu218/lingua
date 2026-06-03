@@ -228,3 +228,83 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: calc(env(safe-area-inset-bottom) + 2rem);
 }
 .global-footer a { color: var(--accent); }
+
+/* Dialog cards (Lesson detail → Dialog tab) */
+.dialog-list { padding: 1rem 1rem 2rem; }
+.dialog-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.85rem;
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--border);
+}
+.dialog-card[data-speaker="phoenix"] { border-left-color: var(--accent); }
+.dialog-card[data-speaker="feirante"] { border-left-color: var(--accent-warm); }
+.speaker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
+.speaker-icon { font-size: 1.1rem; }
+.speaker-name { font-weight: 600; color: var(--fg); }
+.line-num { margin-left: auto; font-variant-numeric: tabular-nums; }
+.lang-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+}
+.lang-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--fg-muted);
+  width: 1.4rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 0.3rem;
+  letter-spacing: 0.04em;
+}
+.lang-text { flex: 1; line-height: 1.45; }
+.lang-pt .lang-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--fg);
+}
+.lang-es .lang-text {
+  font-size: 0.98rem;
+  color: var(--accent);
+}
+.lang-en .lang-text {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+.play-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 0 0 2px;
+  margin-top: 1px;
+}
+.play-btn:active { transform: scale(0.95); }
+.dialog-note {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
