@@ -7,7 +7,7 @@ if ('serviceWorker' in navigator) {
 const SECTIONS = [
   { icon: '📚', title: 'Lessons', desc: '11 themed scenarios · Feira opening soon', route: '#/lessons' },
   { icon: '🖼️', title: 'Picture Words', desc: 'Visual vocabulary by category', route: '#/picture-words' },
-  { icon: '📊', title: 'Numbers', desc: '1 to 1000, dates, prices', route: '#/numbers' },
+  { icon: '📚', title: 'Foundations', desc: 'Numbers, days, months', route: '#/foundations' },
   { icon: '📕', title: 'Vocabulary', desc: 'Your saved words & phrases', route: '#/vocabulary' },
 ];
 
@@ -29,6 +29,7 @@ const TABS = [
 const PIC_CATEGORIES = [
   { id: 'fruits', icon: '🍎', name: 'Fruits' },
   { id: 'vegetables', icon: '🥬', name: 'Vegetables' },
+  { id: 'zodiac', icon: '✨', name: 'Zodiac' },
   { id: 'meats', icon: '🥩', name: 'Meats' },
   { id: 'seafood', icon: '🐟', name: 'Seafood' },
   { id: 'market', icon: '🛒', name: 'Market objects' },
@@ -268,6 +269,70 @@ const FRUITS = [
   { id: 'pinha', pt: 'fruta-do-conde / pinha', es: 'chirimoya', en: 'sugar apple', note: '⚠️ ES "chirimoya" is technically Annona cherimola (cherimoya), a close relative — widely understood across LatAm even though species differs' },
   { id: 'jambo', pt: 'jambo', es: 'pomarrosa', en: 'wax apple', note: 'pt also "jambo-rosa"; en: also "rose apple"' },
   { id: 'cranberry', pt: 'cranberry', es: 'arándano rojo', en: 'cranberry', note: '⚠️ pt borrows English; es literally "red blueberry"' },
+];
+
+const VEGETABLES = [
+  { id: 'tomate', pt: 'tomate', es: 'tomate', en: 'tomato', note: '✅ identical' },
+  { id: 'cebola', pt: 'cebola', es: 'cebolla', en: 'onion', note: 'similar' },
+  { id: 'alho', pt: 'alho', es: 'ajo', en: 'garlic', note: '⚠️ completely different' },
+  { id: 'batata', pt: 'batata', es: 'papa', en: 'potato', note: '⚠️ ES: papa (LatAm), patata (Spain)' },
+  { id: 'cenoura', pt: 'cenoura', es: 'zanahoria', en: 'carrot', note: '⚠️ different' },
+  { id: 'pimentao', pt: 'pimentão', es: 'pimiento', en: 'bell pepper', note: 'similar; ⚠️ ≠ pimenta/pimienta (spice)' },
+  { id: 'alface', pt: 'alface', es: 'lechuga', en: 'lettuce', note: '⚠️ different' },
+  { id: 'repolho', pt: 'repolho', es: 'repollo', en: 'cabbage', note: 'similar' },
+  { id: 'pepino', pt: 'pepino', es: 'pepino', en: 'cucumber', note: '✅ identical' },
+  { id: 'milho', pt: 'milho', es: 'maíz', en: 'corn', note: '⚠️ different' },
+  { id: 'cogumelo', pt: 'cogumelo', es: 'champiñón', en: 'mushroom', note: '⚠️ different (champiñón ← French)' },
+  { id: 'couveflor', pt: 'couve-flor', es: 'coliflor', en: 'cauliflower', note: 'similar; literally "flower kale" in pt' },
+  { id: 'berinjela', pt: 'berinjela', es: 'berenjena', en: 'eggplant', note: 'similar' },
+  { id: 'mandioca', pt: 'mandioca', es: 'yuca', en: 'cassava', note: '⚠️ different; also aipim in BR' },
+  { id: 'quiabo', pt: 'quiabo', es: 'okra', en: 'okra', note: '⚠️ es borrows English' },
+  { id: 'batatadoce', pt: 'batata-doce', es: 'camote', en: 'sweet potato', note: '⚠️ camote in Mex/Peru/Chile/CO; batata dulce in ARG/UY' },
+  { id: 'abobora', pt: 'abóbora', es: 'calabaza', en: 'pumpkin / squash', note: 'similar; zapallo in some LatAm' },
+  { id: 'abobrinha', pt: 'abobrinha', es: 'calabacín', en: 'zucchini', note: 'similar; varies regionally (zapallito, calabacita)' },
+  { id: 'espinafre', pt: 'espinafre', es: 'espinaca', en: 'spinach', note: '✅ very close' },
+  { id: 'gengibre', pt: 'gengibre', es: 'jengibre', en: 'ginger', note: '✅ almost identical' },
+  { id: 'pimenta', pt: 'pimenta', es: 'pimienta', en: 'pepper (spice)', note: '✅ very close; ⚠️ ≠ pimentão/pimiento (bell pepper)' },
+];
+
+const ZODIAC = [
+  { id: 'z01', symbol: '♈', dates: 'Mar 21 – Apr 19', pt: 'Áries', es: 'Aries', en: 'Aries' },
+  { id: 'z02', symbol: '♉', dates: 'Apr 20 – May 20', pt: 'Touro', es: 'Tauro', en: 'Taurus' },
+  { id: 'z03', symbol: '♊', dates: 'May 21 – Jun 20', pt: 'Gêmeos', es: 'Géminis', en: 'Gemini' },
+  { id: 'z04', symbol: '♋', dates: 'Jun 21 – Jul 22', pt: 'Câncer', es: 'Cáncer', en: 'Cancer' },
+  { id: 'z05', symbol: '♌', dates: 'Jul 23 – Aug 22', pt: 'Leão', es: 'Leo', en: 'Leo' },
+  { id: 'z06', symbol: '♍', dates: 'Aug 23 – Sep 22', pt: 'Virgem', es: 'Virgo', en: 'Virgo' },
+  { id: 'z07', symbol: '♎', dates: 'Sep 23 – Oct 22', pt: 'Libra', es: 'Libra', en: 'Libra' },
+  { id: 'z08', symbol: '♏', dates: 'Oct 23 – Nov 21', pt: 'Escorpião', es: 'Escorpio', en: 'Scorpio' },
+  { id: 'z09', symbol: '♐', dates: 'Nov 22 – Dec 21', pt: 'Sagitário', es: 'Sagitario', en: 'Sagittarius' },
+  { id: 'z10', symbol: '♑', dates: 'Dec 22 – Jan 19', pt: 'Capricórnio', es: 'Capricornio', en: 'Capricorn' },
+  { id: 'z11', symbol: '♒', dates: 'Jan 20 – Feb 18', pt: 'Aquário', es: 'Acuario', en: 'Aquarius' },
+  { id: 'z12', symbol: '♓', dates: 'Feb 19 – Mar 20', pt: 'Peixes', es: 'Piscis', en: 'Pisces' },
+];
+
+const DAYS_DATA = [
+  { id: 'd01', display: 'Mon', pt: 'segunda-feira', es: 'lunes', en: 'Monday', note: 'pt = "2nd day of week"; days 2-6 follow same pattern' },
+  { id: 'd02', display: 'Tue', pt: 'terça-feira', es: 'martes', en: 'Tuesday', note: 'pt = "3rd day"' },
+  { id: 'd03', display: 'Wed', pt: 'quarta-feira', es: 'miércoles', en: 'Wednesday', note: null },
+  { id: 'd04', display: 'Thu', pt: 'quinta-feira', es: 'jueves', en: 'Thursday', note: null },
+  { id: 'd05', display: 'Fri', pt: 'sexta-feira', es: 'viernes', en: 'Friday', note: null },
+  { id: 'd06', display: 'Sat', pt: 'sábado', es: 'sábado', en: 'Saturday', note: '✅ identical' },
+  { id: 'd07', display: 'Sun', pt: 'domingo', es: 'domingo', en: 'Sunday', note: '✅ identical' },
+];
+
+const MONTHS_DATA = [
+  { id: 'm01', display: 'Jan', pt: 'janeiro', es: 'enero', en: 'January', note: null },
+  { id: 'm02', display: 'Feb', pt: 'fevereiro', es: 'febrero', en: 'February', note: 'similar' },
+  { id: 'm03', display: 'Mar', pt: 'março', es: 'marzo', en: 'March', note: 'similar' },
+  { id: 'm04', display: 'Apr', pt: 'abril', es: 'abril', en: 'April', note: '✅ identical' },
+  { id: 'm05', display: 'May', pt: 'maio', es: 'mayo', en: 'May', note: 'similar' },
+  { id: 'm06', display: 'Jun', pt: 'junho', es: 'junio', en: 'June', note: 'similar' },
+  { id: 'm07', display: 'Jul', pt: 'julho', es: 'julio', en: 'July', note: 'similar' },
+  { id: 'm08', display: 'Aug', pt: 'agosto', es: 'agosto', en: 'August', note: '✅ identical' },
+  { id: 'm09', display: 'Sep', pt: 'setembro', es: 'septiembre', en: 'September', note: 'similar' },
+  { id: 'm10', display: 'Oct', pt: 'outubro', es: 'octubre', en: 'October', note: 'similar' },
+  { id: 'm11', display: 'Nov', pt: 'novembro', es: 'noviembre', en: 'November', note: 'similar' },
+  { id: 'm12', display: 'Dec', pt: 'dezembro', es: 'diciembre', en: 'December', note: 'similar' },
 ];
 
 const NUMBERS_DATA = {
@@ -663,7 +728,7 @@ function renderLesson(lessonId) {
 
 function renderPictureWords() {
   const list = el('div', { class: 'section-list' });
-  const counts = { fruits: FRUITS.length };
+  const counts = { fruits: FRUITS.length, vegetables: VEGETABLES.length, zodiac: ZODIAC.length };
   for (const c of PIC_CATEGORIES) {
     const count = counts[c.id];
     list.appendChild(sectionCard({
@@ -676,15 +741,40 @@ function renderPictureWords() {
   return [topbar({ title: 'Picture Words', back: true }), list, footer()];
 }
 
-function renderFruitsGrid() {
+function showImageItemModal(item, dir) {
+  const overlay = el('div', {
+    class: 'modal-overlay',
+    onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
+  });
+  const modal = el('div', { class: 'modal-content' });
+  modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
+  modal.appendChild(el('img', { src: `./images/${dir}/${item.id}.jpg`, alt: item.en, class: 'modal-img' }));
+  const langBlock = el('div', { class: 'modal-lang-block' });
+  for (const lang of ['pt', 'es', 'en']) {
+    const row = el('div', { class: `lang-row lang-${lang}` });
+    row.appendChild(el('span', { class: 'lang-label' }, lang));
+    row.appendChild(el('span', { class: 'lang-text' }, item[lang]));
+    if (lang !== 'en') {
+      const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+    }
+    langBlock.appendChild(row);
+  }
+  modal.appendChild(langBlock);
+  if (item.note) modal.appendChild(el('div', { class: 'modal-note' }, item.note));
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
+
+function renderImageItemGrid(items, dir) {
   const container = el('div', { class: 'fruits-grid-container' });
   const grid = el('div', { class: 'fruits-grid' });
-  for (const fruit of FRUITS) {
-    const card = el('div', { class: 'fruit-card', onClick: () => showFruitDetail(fruit) });
-    card.appendChild(el('img', { src: `./images/fruits/${fruit.id}.jpg`, alt: fruit.en, loading: 'lazy' }));
+  for (const item of items) {
+    const card = el('div', { class: 'fruit-card', onClick: () => showImageItemModal(item, dir) });
+    card.appendChild(el('img', { src: `./images/${dir}/${item.id}.jpg`, alt: item.en, loading: 'lazy' }));
     const name = el('div', { class: 'fruit-name' }, [
-      el('div', { class: 'fruit-pt' }, fruit.pt),
-      el('div', { class: 'fruit-es' }, fruit.es),
+      el('div', { class: 'fruit-pt' }, item.pt),
+      el('div', { class: 'fruit-es' }, item.es),
     ]);
     card.appendChild(name);
     grid.appendChild(card);
@@ -693,29 +783,44 @@ function renderFruitsGrid() {
   return container;
 }
 
-function showFruitDetail(fruit) {
+function renderFruitsGrid() { return renderImageItemGrid(FRUITS, 'fruits'); }
+function renderVegetablesGrid() { return renderImageItemGrid(VEGETABLES, 'vegetables'); }
+
+function renderZodiacGrid() {
+  const container = el('div', { class: 'fruits-grid-container' });
+  const grid = el('div', { class: 'zodiac-grid' });
+  for (const z of ZODIAC) {
+    const card = el('div', { class: 'zodiac-card', onClick: () => showZodiacModal(z) });
+    card.appendChild(el('div', { class: 'zodiac-symbol' }, z.symbol));
+    card.appendChild(el('div', { class: 'zodiac-dates' }, z.dates));
+    card.appendChild(el('div', { class: 'zodiac-name' }, z.pt));
+    grid.appendChild(card);
+  }
+  container.appendChild(grid);
+  return container;
+}
+
+function showZodiacModal(z) {
   const overlay = el('div', {
     class: 'modal-overlay',
     onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
   });
-  const modal = el('div', { class: 'modal-content' });
+  const modal = el('div', { class: 'modal-content zodiac-modal' });
   modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
-  modal.appendChild(el('img', { src: `./images/fruits/${fruit.id}.jpg`, alt: fruit.en, class: 'modal-img' }));
+  modal.appendChild(el('div', { class: 'modal-zodiac-symbol' }, z.symbol));
+  modal.appendChild(el('div', { class: 'modal-zodiac-dates' }, z.dates));
   const langBlock = el('div', { class: 'modal-lang-block' });
   for (const lang of ['pt', 'es', 'en']) {
     const row = el('div', { class: `lang-row lang-${lang}` });
     row.appendChild(el('span', { class: 'lang-label' }, lang));
-    row.appendChild(el('span', { class: 'lang-text' }, fruit[lang]));
+    row.appendChild(el('span', { class: 'lang-text' }, z[lang]));
     if (lang !== 'en') {
-      const src = `./audio/fruits/${fruit.id}-${lang}.mp3`;
+      const src = `./audio/zodiac/${z.id}-${lang}.mp3`;
       row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
     }
     langBlock.appendChild(row);
   }
   modal.appendChild(langBlock);
-  if (fruit.note) {
-    modal.appendChild(el('div', { class: 'modal-note' }, fruit.note));
-  }
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
@@ -735,22 +840,29 @@ function renderPictureCategory(catId) {
     ];
   }
   let content;
-  if (catId === 'fruits') {
-    content = renderFruitsGrid();
-  } else {
+  if (catId === 'fruits') content = renderFruitsGrid();
+  else if (catId === 'vegetables') content = renderVegetablesGrid();
+  else if (catId === 'zodiac') content = renderZodiacGrid();
+  else {
     content = el('div', { class: 'tab-content' }, [
       el('div', { class: 'placeholder' }, [
         el('strong', {}, `${cat.name} grid`),
-        el('p', {}, 'Photos sourced via Pexels API + Wikipedia. Coming soon.'),
+        el('p', {}, 'Coming soon.'),
       ]),
     ]);
   }
   return [topbar({ title: `${cat.icon} ${cat.name}`, back: true }), content, footer()];
 }
 
-function renderNumbers() {
+function renderFoundations() {
   const container = el('div', { class: 'tab-content numbers-list' });
-  for (const [sectionTitle, items] of Object.entries(NUMBERS_DATA)) {
+  const audioDir = { n: 'numbers', o: 'numbers', d: 'days', m: 'months' };
+  const allSections = [
+    ...Object.entries(NUMBERS_DATA),
+    ['Days of week', DAYS_DATA],
+    ['Months', MONTHS_DATA],
+  ];
+  for (const [sectionTitle, items] of allSections) {
     const section = el('div', { class: 'numbers-section' });
     section.appendChild(el('h3', { class: 'numbers-section-title' }, sectionTitle));
     for (const item of items) {
@@ -762,7 +874,8 @@ function renderNumbers() {
         row.appendChild(el('span', { class: 'lang-label' }, lang));
         row.appendChild(el('span', { class: 'lang-text' }, item[lang]));
         if (lang !== 'en') {
-          const src = `./audio/numbers/${item.id}-${lang}.mp3`;
+          const dir = audioDir[item.id[0]] || 'numbers';
+          const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
           row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
         }
         langs.appendChild(row);
@@ -773,7 +886,7 @@ function renderNumbers() {
     }
     container.appendChild(section);
   }
-  return [topbar({ title: '📊 Numbers', back: true }), container, footer()];
+  return [topbar({ title: '📚 Foundations', back: true }), container, footer()];
 }
 
 function renderVocabulary() {
@@ -800,7 +913,7 @@ function route() {
   else if (pathOnly.startsWith('/lessons/')) views = renderLesson(pathOnly.slice('/lessons/'.length));
   else if (pathOnly === '/picture-words') views = renderPictureWords();
   else if (pathOnly.startsWith('/picture-words/')) views = renderPictureCategory(pathOnly.slice('/picture-words/'.length));
-  else if (pathOnly === '/numbers') views = renderNumbers();
+  else if (pathOnly === '/foundations' || pathOnly === '/numbers') views = renderFoundations();
   else if (pathOnly === '/vocabulary') views = renderVocabulary();
   else views = renderHome();
   for (const v of [].concat(views)) if (v) app.appendChild(v);
