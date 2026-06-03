@@ -261,6 +261,13 @@ const FRUITS = [
   { id: 'maracuja', pt: 'maracujá', es: 'maracuyá', en: 'passion fruit', note: '✅ almost identical (Tupi origin)' },
   { id: 'mamao', pt: 'mamão', es: 'papaya', en: 'papaya', note: '⚠️ pt mamão = es papaya' },
   { id: 'goiaba', pt: 'goiaba', es: 'guayaba', en: 'guava', note: '✅ similar (Tupi origin)' },
+  { id: 'melancia', pt: 'melancia', es: 'sandía', en: 'watermelon', note: '⚠️ completely different words pt/es' },
+  { id: 'mirtilo', pt: 'mirtilo', es: 'arándano', en: 'blueberry', note: '⚠️ completely different' },
+  { id: 'pitaya', pt: 'pitaya', es: 'pitahaya', en: 'dragon fruit', note: '✅ closely related; pt: pitaya, es: pitahaya (Mex) or pitaya (CO)' },
+  { id: 'roma', pt: 'romã', es: 'granada', en: 'pomegranate', note: '⚠️ completely different pt/es' },
+  { id: 'pinha', pt: 'fruta-do-conde / pinha', es: 'chirimoya', en: 'sugar apple', note: '⚠️ ES "chirimoya" is technically Annona cherimola (cherimoya), a close relative — widely understood across LatAm even though species differs' },
+  { id: 'jambo', pt: 'jambo', es: 'pomarrosa', en: 'wax apple', note: 'pt also "jambo-rosa"; en: also "rose apple"' },
+  { id: 'cranberry', pt: 'cranberry', es: 'arándano rojo', en: 'cranberry', note: '⚠️ pt borrows English; es literally "red blueberry"' },
 ];
 
 const NUMBERS_DATA = {
