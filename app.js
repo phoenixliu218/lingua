@@ -507,12 +507,43 @@ function renderVocabCard(item) {
 
 function renderLessonVocab(vocab) {
   const container = el('div', { class: 'tab-content vocab-list' });
-  for (const [sectionTitle, items] of Object.entries(vocab)) {
-    const section = el('div', { class: 'vocab-section' });
+  const sectionEntries = Object.entries(vocab);
+
+  const nav = el('nav', { class: 'vocab-nav' });
+  sectionEntries.forEach(([title], idx) => {
+    nav.appendChild(el('button', {
+      class: 'vocab-nav-chip',
+      'data-idx': String(idx),
+      onClick: () => {
+        const target = container.querySelector(`.vocab-section[data-idx="${idx}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
+    }, title));
+  });
+  container.appendChild(nav);
+
+  sectionEntries.forEach(([sectionTitle, items], idx) => {
+    const section = el('div', { class: 'vocab-section', 'data-idx': String(idx) });
     section.appendChild(el('h3', { class: 'vocab-section-title' }, sectionTitle));
     for (const item of items) section.appendChild(renderVocabCard(item));
     container.appendChild(section);
-  }
+  });
+
+  requestAnimationFrame(() => {
+    const sections = container.querySelectorAll('.vocab-section');
+    const chips = container.querySelectorAll('.vocab-nav-chip');
+    if (!sections.length || !chips.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          const idx = e.target.dataset.idx;
+          chips.forEach(c => c.classList.toggle('active', c.dataset.idx === idx));
+        }
+      }
+    }, { rootMargin: '-30% 0px -55% 0px' });
+    sections.forEach(s => obs.observe(s));
+  });
+
   return container;
 }
 
