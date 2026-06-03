@@ -674,7 +674,7 @@ function renderFruitsGrid() {
     card.appendChild(el('img', { src: `./images/fruits/${fruit.id}.jpg`, alt: fruit.en, loading: 'lazy' }));
     const name = el('div', { class: 'fruit-name' }, [
       el('div', { class: 'fruit-pt' }, fruit.pt),
-      el('div', { class: 'fruit-en' }, fruit.en),
+      el('div', { class: 'fruit-es' }, fruit.es),
     ]);
     card.appendChild(name);
     grid.appendChild(card);
