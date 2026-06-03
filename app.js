@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
 }
 
 const SECTIONS = [
-  { icon: '📚', title: 'Lessons', desc: '11 themed scenarios · Feira opening soon', route: '#/lessons' },
+  { icon: '🧑‍🏫', title: 'Lessons', desc: '11 themed scenarios · Feira opening soon', route: '#/lessons' },
   { icon: '🖼️', title: 'Picture Words', desc: 'Visual vocabulary by category', route: '#/picture-words' },
   { icon: '📚', title: 'Foundations', desc: 'Numbers, days, months', route: '#/foundations' },
   { icon: '📕', title: 'Vocabulary', desc: 'Your saved words & phrases', route: '#/vocabulary' },
@@ -296,6 +296,9 @@ const VEGETABLES = [
 ];
 
 const ZODIAC = [
+  { id: 'z10', symbol: '♑', dates: 'Dec 22 – Jan 19', pt: 'Capricórnio', es: 'Capricornio', en: 'Capricorn' },
+  { id: 'z11', symbol: '♒', dates: 'Jan 20 – Feb 18', pt: 'Aquário', es: 'Acuario', en: 'Aquarius' },
+  { id: 'z12', symbol: '♓', dates: 'Feb 19 – Mar 20', pt: 'Peixes', es: 'Piscis', en: 'Pisces' },
   { id: 'z01', symbol: '♈', dates: 'Mar 21 – Apr 19', pt: 'Áries', es: 'Aries', en: 'Aries' },
   { id: 'z02', symbol: '♉', dates: 'Apr 20 – May 20', pt: 'Touro', es: 'Tauro', en: 'Taurus' },
   { id: 'z03', symbol: '♊', dates: 'May 21 – Jun 20', pt: 'Gêmeos', es: 'Géminis', en: 'Gemini' },
@@ -305,9 +308,6 @@ const ZODIAC = [
   { id: 'z07', symbol: '♎', dates: 'Sep 23 – Oct 22', pt: 'Libra', es: 'Libra', en: 'Libra' },
   { id: 'z08', symbol: '♏', dates: 'Oct 23 – Nov 21', pt: 'Escorpião', es: 'Escorpio', en: 'Scorpio' },
   { id: 'z09', symbol: '♐', dates: 'Nov 22 – Dec 21', pt: 'Sagitário', es: 'Sagitario', en: 'Sagittarius' },
-  { id: 'z10', symbol: '♑', dates: 'Dec 22 – Jan 19', pt: 'Capricórnio', es: 'Capricornio', en: 'Capricorn' },
-  { id: 'z11', symbol: '♒', dates: 'Jan 20 – Feb 18', pt: 'Aquário', es: 'Acuario', en: 'Aquarius' },
-  { id: 'z12', symbol: '♓', dates: 'Feb 19 – Mar 20', pt: 'Peixes', es: 'Piscis', en: 'Pisces' },
 ];
 
 const DAYS_DATA = [
@@ -862,8 +862,23 @@ function renderFoundations() {
     ['Days of week', DAYS_DATA],
     ['Months', MONTHS_DATA],
   ];
-  for (const [sectionTitle, items] of allSections) {
-    const section = el('div', { class: 'numbers-section' });
+
+  // Quick-jump chip nav (sticky)
+  const nav = el('nav', { class: 'vocab-nav' });
+  allSections.forEach(([title], idx) => {
+    nav.appendChild(el('button', {
+      class: 'vocab-nav-chip',
+      'data-idx': String(idx),
+      onClick: () => {
+        const target = container.querySelector(`.numbers-section[data-idx="${idx}"]`);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
+    }, title));
+  });
+  container.appendChild(nav);
+
+  allSections.forEach(([sectionTitle, items], idx) => {
+    const section = el('div', { class: 'numbers-section', 'data-idx': String(idx) });
     section.appendChild(el('h3', { class: 'numbers-section-title' }, sectionTitle));
     for (const item of items) {
       const card = el('div', { class: 'number-card' });
@@ -885,7 +900,23 @@ function renderFoundations() {
       section.appendChild(card);
     }
     container.appendChild(section);
-  }
+  });
+
+  requestAnimationFrame(() => {
+    const sections = container.querySelectorAll('.numbers-section');
+    const chips = container.querySelectorAll('.vocab-nav-chip');
+    if (!sections.length || !chips.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          const idx = e.target.dataset.idx;
+          chips.forEach(c => c.classList.toggle('active', c.dataset.idx === idx));
+        }
+      }
+    }, { rootMargin: '-30% 0px -55% 0px' });
+    sections.forEach(s => obs.observe(s));
+  });
+
   return [topbar({ title: '📚 Foundations', back: true }), container, footer()];
 }
 
