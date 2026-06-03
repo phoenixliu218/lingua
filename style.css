@@ -359,6 +359,136 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.6rem;
 }
 
+/* Fruits grid */
+.fruits-grid-container { padding: 1rem; }
+.fruits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.fruit-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s ease;
+}
+.fruit-card:active { transform: scale(0.98); }
+.fruit-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: var(--bg);
+}
+.fruit-name { padding: 0.55rem 0.7rem 0.7rem; }
+.fruit-pt { font-weight: 600; font-size: 0.95rem; color: var(--fg); }
+.fruit-en { font-size: 0.78rem; color: var(--fg-muted); margin-top: 0.1rem; }
+
+/* Modal overlay (fruit detail) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+.modal-content {
+  background: var(--bg-elev);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 24rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.95rem;
+  z-index: 10;
+}
+.modal-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  display: block;
+}
+.modal-lang-block { padding: 1rem 1.25rem 0; }
+.modal-content .lang-row { padding: 0.4rem 0; }
+.modal-content .lang-pt .lang-text { font-size: 1.3rem; font-weight: 600; color: var(--fg); }
+.modal-content .lang-es .lang-text { font-size: 1.1rem; color: var(--accent); }
+.modal-content .lang-en .lang-text { font-size: 0.9rem; color: var(--fg-muted); }
+.modal-note {
+  margin: 0.75rem 1.25rem 0;
+  padding: 0.6rem 0.8rem;
+  background: rgba(196, 66, 26, 0.06);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+/* Numbers */
+.numbers-list { padding: 1rem 1rem 2rem; }
+.numbers-section { margin-bottom: 1.5rem; }
+.numbers-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+.number-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.6rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+.number-display {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5rem;
+  text-align: center;
+  line-height: 1.2;
+}
+.number-langs { display: flex; flex-direction: column; gap: 0.05rem; }
+.number-card .lang-row { padding: 0.15rem 0; }
+.number-card .lang-pt .lang-text { font-weight: 600; font-size: 0.95rem; }
+.number-card .lang-es .lang-text { color: var(--accent); font-size: 0.92rem; }
+.number-card .lang-en .lang-text { font-size: 0.82rem; color: var(--fg-muted); }
+.number-note {
+  grid-column: 2;
+  font-size: 0.76rem;
+  color: var(--fg-muted);
+  font-style: italic;
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
 /* Grammar tab */
 .grammar-list { padding: 1rem 1rem 2rem; }
 .grammar-section {

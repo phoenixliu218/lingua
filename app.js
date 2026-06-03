@@ -249,6 +249,77 @@ const FEIRA_PRACTICE = [
   },
 ];
 
+const FRUITS = [
+  { id: 'abacaxi', pt: 'abacaxi', es: 'piña', en: 'pineapple', note: '⚠️ completely different words pt/es' },
+  { id: 'manga', pt: 'manga', es: 'mango', en: 'mango', note: '⚠️ pt feminine (a manga), es masculine (el mango)' },
+  { id: 'banana', pt: 'banana', es: 'plátano', en: 'banana', note: '⚠️ Mexico/Peru/Colombia: plátano; Argentina/Chile/Uruguay: banana' },
+  { id: 'maca', pt: 'maçã', es: 'manzana', en: 'apple', note: 'different roots, but both Romance origin' },
+  { id: 'laranja', pt: 'laranja', es: 'naranja', en: 'orange', note: '✅ similar (same Arabic origin)' },
+  { id: 'morango', pt: 'morango', es: 'fresa', en: 'strawberry', note: '⚠️ completely different' },
+  { id: 'uva', pt: 'uva', es: 'uva', en: 'grape', note: '✅ identical' },
+  { id: 'maracuja', pt: 'maracujá', es: 'maracuyá', en: 'passion fruit', note: '✅ almost identical (Tupi origin)' },
+  { id: 'mamao', pt: 'mamão', es: 'papaya', en: 'papaya', note: '⚠️ pt mamão = es papaya' },
+  { id: 'goiaba', pt: 'goiaba', es: 'guayaba', en: 'guava', note: '✅ similar (Tupi origin)' },
+];
+
+const NUMBERS_DATA = {
+  '1–20 (basic)': [
+    { id: 'n01', display: '1', pt: 'um / uma', es: 'uno / una', en: 'one', note: '⚠️ both languages have gender forms' },
+    { id: 'n02', display: '2', pt: 'dois / duas', es: 'dos', en: 'two', note: '⚠️ pt has gender, es does not' },
+    { id: 'n03', display: '3', pt: 'três', es: 'tres', en: 'three', note: null },
+    { id: 'n04', display: '4', pt: 'quatro', es: 'cuatro', en: 'four', note: null },
+    { id: 'n05', display: '5', pt: 'cinco', es: 'cinco', en: 'five', note: '✅ identical' },
+    { id: 'n06', display: '6', pt: 'seis', es: 'seis', en: 'six', note: '✅ identical' },
+    { id: 'n07', display: '7', pt: 'sete', es: 'siete', en: 'seven', note: null },
+    { id: 'n08', display: '8', pt: 'oito', es: 'ocho', en: 'eight', note: null },
+    { id: 'n09', display: '9', pt: 'nove', es: 'nueve', en: 'nine', note: null },
+    { id: 'n10', display: '10', pt: 'dez', es: 'diez', en: 'ten', note: null },
+    { id: 'n11', display: '11', pt: 'onze', es: 'once', en: 'eleven', note: null },
+    { id: 'n12', display: '12', pt: 'doze', es: 'doce', en: 'twelve', note: null },
+    { id: 'n13', display: '13', pt: 'treze', es: 'trece', en: 'thirteen', note: null },
+    { id: 'n14', display: '14', pt: 'quatorze / catorze', es: 'catorce', en: 'fourteen', note: null },
+    { id: 'n15', display: '15', pt: 'quinze', es: 'quince', en: 'fifteen', note: null },
+    { id: 'n16', display: '16', pt: 'dezesseis', es: 'dieciséis', en: 'sixteen', note: 'pt dez+e+seis; es contracts diez y seis' },
+    { id: 'n17', display: '17', pt: 'dezessete', es: 'diecisiete', en: 'seventeen', note: null },
+    { id: 'n18', display: '18', pt: 'dezoito', es: 'dieciocho', en: 'eighteen', note: null },
+    { id: 'n19', display: '19', pt: 'dezenove', es: 'diecinueve', en: 'nineteen', note: null },
+    { id: 'n20', display: '20', pt: 'vinte', es: 'veinte', en: 'twenty', note: null },
+  ],
+  '30–90 (tens)': [
+    { id: 'n30', display: '30', pt: 'trinta', es: 'treinta', en: 'thirty', note: null },
+    { id: 'n40', display: '40', pt: 'quarenta', es: 'cuarenta', en: 'forty', note: null },
+    { id: 'n50', display: '50', pt: 'cinquenta', es: 'cincuenta', en: 'fifty', note: null },
+    { id: 'n60', display: '60', pt: 'sessenta', es: 'sesenta', en: 'sixty', note: null },
+    { id: 'n70', display: '70', pt: 'setenta', es: 'setenta', en: 'seventy', note: '✅ identical' },
+    { id: 'n80', display: '80', pt: 'oitenta', es: 'ochenta', en: 'eighty', note: null },
+    { id: 'n90', display: '90', pt: 'noventa', es: 'noventa', en: 'ninety', note: '✅ identical' },
+  ],
+  '100–1000': [
+    { id: 'n100', display: '100', pt: 'cem', es: 'cien', en: 'one hundred', note: 'pt cem standalone, cento in compounds' },
+    { id: 'n200', display: '200', pt: 'duzentos / duzentas', es: 'doscientos / doscientas', en: 'two hundred', note: 'both agree in gender' },
+    { id: 'n300', display: '300', pt: 'trezentos', es: 'trescientos', en: 'three hundred', note: null },
+    { id: 'n400', display: '400', pt: 'quatrocentos', es: 'cuatrocientos', en: 'four hundred', note: null },
+    { id: 'n500', display: '500', pt: 'quinhentos', es: 'quinientos', en: 'five hundred', note: '⚠️ both irregular' },
+    { id: 'n600', display: '600', pt: 'seiscentos', es: 'seiscientos', en: 'six hundred', note: null },
+    { id: 'n700', display: '700', pt: 'setecentos', es: 'setecientos', en: 'seven hundred', note: null },
+    { id: 'n800', display: '800', pt: 'oitocentos', es: 'ochocientos', en: 'eight hundred', note: null },
+    { id: 'n900', display: '900', pt: 'novecentos', es: 'novecientos', en: 'nine hundred', note: null },
+    { id: 'n1000', display: '1000', pt: 'mil', es: 'mil', en: 'one thousand', note: '✅ identical' },
+  ],
+  'Ordinals (1st–10th)': [
+    { id: 'o01', display: '1º', pt: 'primeiro / primeira', es: 'primero / primera', en: 'first', note: null },
+    { id: 'o02', display: '2º', pt: 'segundo / segunda', es: 'segundo / segunda', en: 'second', note: '✅ identical' },
+    { id: 'o03', display: '3º', pt: 'terceiro / terceira', es: 'tercero / tercera', en: 'third', note: null },
+    { id: 'o04', display: '4º', pt: 'quarto / quarta', es: 'cuarto / cuarta', en: 'fourth', note: null },
+    { id: 'o05', display: '5º', pt: 'quinto / quinta', es: 'quinto / quinta', en: 'fifth', note: '✅ identical' },
+    { id: 'o06', display: '6º', pt: 'sexto / sexta', es: 'sexto / sexta', en: 'sixth', note: '✅ identical' },
+    { id: 'o07', display: '7º', pt: 'sétimo / sétima', es: 'séptimo / séptima', en: 'seventh', note: null },
+    { id: 'o08', display: '8º', pt: 'oitavo / oitava', es: 'octavo / octava', en: 'eighth', note: null },
+    { id: 'o09', display: '9º', pt: 'nono / nona', es: 'noveno / novena', en: 'ninth', note: null },
+    { id: 'o10', display: '10º', pt: 'décimo / décima', es: 'décimo / décima', en: 'tenth', note: '✅ identical' },
+  ],
+};
+
 const app = document.getElementById('app');
 
 function el(tag, props = {}, children = []) {
@@ -564,6 +635,55 @@ function renderPictureWords() {
   return [topbar({ title: 'Picture Words', back: true }), list, footer()];
 }
 
+function renderFruitsGrid() {
+  const container = el('div', { class: 'fruits-grid-container' });
+  const grid = el('div', { class: 'fruits-grid' });
+  for (const fruit of FRUITS) {
+    const card = el('div', { class: 'fruit-card', onClick: () => showFruitDetail(fruit) });
+    card.appendChild(el('img', { src: `./images/fruits/${fruit.id}.jpg`, alt: fruit.en, loading: 'lazy' }));
+    const name = el('div', { class: 'fruit-name' }, [
+      el('div', { class: 'fruit-pt' }, fruit.pt),
+      el('div', { class: 'fruit-en' }, fruit.en),
+    ]);
+    card.appendChild(name);
+    grid.appendChild(card);
+  }
+  container.appendChild(grid);
+  return container;
+}
+
+function showFruitDetail(fruit) {
+  const overlay = el('div', {
+    class: 'modal-overlay',
+    onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
+  });
+  const modal = el('div', { class: 'modal-content' });
+  modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
+  modal.appendChild(el('img', { src: `./images/fruits/${fruit.id}.jpg`, alt: fruit.en, class: 'modal-img' }));
+  const langBlock = el('div', { class: 'modal-lang-block' });
+  for (const lang of ['pt', 'es', 'en']) {
+    const row = el('div', { class: `lang-row lang-${lang}` });
+    row.appendChild(el('span', { class: 'lang-label' }, lang));
+    row.appendChild(el('span', { class: 'lang-text' }, fruit[lang]));
+    if (lang !== 'en') {
+      const src = `./audio/fruits/${fruit.id}-${lang}.mp3`;
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+    }
+    langBlock.appendChild(row);
+  }
+  modal.appendChild(langBlock);
+  if (fruit.note) {
+    modal.appendChild(el('div', { class: 'modal-note' }, fruit.note));
+  }
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
+
+function closeModal() {
+  const overlay = document.querySelector('.modal-overlay');
+  if (overlay) overlay.remove();
+}
+
 function renderPictureCategory(catId) {
   const cat = PIC_CATEGORIES.find(c => c.id === catId);
   if (!cat) {
@@ -573,29 +693,46 @@ function renderPictureCategory(catId) {
       footer(),
     ];
   }
-  return [
-    topbar({ title: `${cat.icon} ${cat.name}`, back: true }),
-    el('div', { class: 'tab-content' }, [
+  let content;
+  if (catId === 'fruits') {
+    content = renderFruitsGrid();
+  } else {
+    content = el('div', { class: 'tab-content' }, [
       el('div', { class: 'placeholder' }, [
         el('strong', {}, `${cat.name} grid`),
-        el('p', {}, 'Photos sourced via Pexels API + Wikipedia.'),
+        el('p', {}, 'Photos sourced via Pexels API + Wikipedia. Coming soon.'),
       ]),
-    ]),
-    footer(),
-  ];
+    ]);
+  }
+  return [topbar({ title: `${cat.icon} ${cat.name}`, back: true }), content, footer()];
 }
 
 function renderNumbers() {
-  return [
-    topbar({ title: 'Numbers', back: true }),
-    el('div', { class: 'tab-content' }, [
-      el('div', { class: 'placeholder' }, [
-        el('strong', {}, 'Numbers module'),
-        el('p', {}, '1–1000, ordinals, dates, prices, phone digits.'),
-      ]),
-    ]),
-    footer(),
-  ];
+  const container = el('div', { class: 'tab-content numbers-list' });
+  for (const [sectionTitle, items] of Object.entries(NUMBERS_DATA)) {
+    const section = el('div', { class: 'numbers-section' });
+    section.appendChild(el('h3', { class: 'numbers-section-title' }, sectionTitle));
+    for (const item of items) {
+      const card = el('div', { class: 'number-card' });
+      card.appendChild(el('div', { class: 'number-display' }, item.display));
+      const langs = el('div', { class: 'number-langs' });
+      for (const lang of ['pt', 'es', 'en']) {
+        const row = el('div', { class: `lang-row lang-${lang}` });
+        row.appendChild(el('span', { class: 'lang-label' }, lang));
+        row.appendChild(el('span', { class: 'lang-text' }, item[lang]));
+        if (lang !== 'en') {
+          const src = `./audio/numbers/${item.id}-${lang}.mp3`;
+          row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+        }
+        langs.appendChild(row);
+      }
+      card.appendChild(langs);
+      if (item.note) card.appendChild(el('div', { class: 'number-note' }, item.note));
+      section.appendChild(card);
+    }
+    container.appendChild(section);
+  }
+  return [topbar({ title: '📊 Numbers', back: true }), container, footer()];
 }
 
 function renderVocabulary() {
