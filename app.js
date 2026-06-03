@@ -54,8 +54,19 @@ function el(tag, props = {}, children = []) {
 
 function topbar({ title, back = false, lang = true }) {
   const wrap = el('div', { class: 'topbar' });
-  if (back) wrap.appendChild(el('button', { class: 'back', onClick: () => history.back() }, '←'));
-  else wrap.appendChild(el('span', { class: 'spacer' }));
+  if (back) {
+    wrap.appendChild(el('button', {
+      class: 'back',
+      onClick: () => {
+        const path = (location.hash.slice(1) || '/').split('?')[0];
+        const segs = path.split('/').filter(Boolean);
+        segs.pop();
+        location.hash = '#/' + segs.join('/');
+      },
+    }, '←'));
+  } else {
+    wrap.appendChild(el('span', { class: 'spacer' }));
+  }
   wrap.appendChild(el('span', { class: 'title' }, title));
   if (lang) wrap.appendChild(el('button', { class: 'lang-toggle' }, 'PT ▼'));
   else wrap.appendChild(el('span', { class: 'spacer' }));
@@ -124,7 +135,10 @@ function renderLesson(lessonId) {
   for (const t of TABS) {
     tabsRow.appendChild(el('button', {
       class: 'tab-btn' + (t.id === activeTab ? ' active' : ''),
-      onClick: () => { location.hash = `#/lessons/${lessonId}?tab=${t.id}`; },
+      onClick: () => {
+        history.replaceState(null, '', `#/lessons/${lessonId}?tab=${t.id}`);
+        route();
+      },
     }, `${t.icon} ${t.label}`));
   }
   const tabContent = el('div', { class: 'tab-content' }, [

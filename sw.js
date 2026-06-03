@@ -1,4 +1,4 @@
-const CACHE = 'lingua-v2';
+const CACHE = 'lingua-v3';
 const CORE = [
   './',
   './index.html',
@@ -25,13 +25,14 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
     caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(resp => {
-        if (!resp || !resp.ok) return resp;
-        const clone = resp.clone();
-        caches.open(CACHE).then(c => c.put(e.request, clone));
+      const fresh = fetch(e.request).then(resp => {
+        if (resp && resp.ok) {
+          const clone = resp.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+        }
         return resp;
-      }).catch(() => caches.match('./index.html'));
+      }).catch(() => cached || caches.match('./index.html'));
+      return cached || fresh;
     })
   );
 });
