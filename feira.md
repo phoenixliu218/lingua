@@ -156,7 +156,7 @@
 | **Só dando uma olhada** | Solo estoy mirando | just looking | when vendor asks |
 | **Não dá um desconto?** | ¿No me hace un descuento? | discount? | haggling |
 | **Pode pesar?** | ¿Puede pesar? | can you weigh? | request |
-| **Aceita Pix?** | ¿Acepta Pix? | accept Pix? | payment check |
+| **Aceita cartão?** | ¿Acepta tarjeta? | accept card? | payment check |
 | **Fechado!** | ¡Cerrado! | deal! | sealing a haggle |
 
 ### 🎨 Adjectives & adverbs
@@ -344,7 +344,7 @@
 
 1. **`viu` 結尾語**：聖保羅地區常用，其他城市/區域可能少用或被視為地域口音
 2. **塑膠袋政策**：各州、各城市規定不一致，這只是 broad strokes
-3. **Pix 接受率**：「幾乎都 yes」基於 2024 巴西央行資料，2026 應該更普及但你實地驗證
+3. **小攤刷卡機（maquininha）普及率**：大攤基本都有，小攤可能只收現金 → 先問 `Aceita cartão?` 再決定
 4. **`manga rosa` / `palmer`**：常見巴西芒果品種，但 espada、tommy、haden 也常見
 5. **殺價分寸 10-20%**：地區差異大，里約 vs 聖保羅 vs 東北部都不同；你跟當地朋友 calibrate
 6. **`fazer por X` 殺價句**：「faço por vinte」(我給你 20 算)，巴西 vendor 慣用語，應正確但你聽 native 怎麼說再 confirm
