@@ -308,32 +308,32 @@ const VEGETABLES = [
 ];
 
 const MEATS = [
-  { id: 'carne', pt: 'carne', es: 'carne (de res)', en: 'beef', note: 'pt "carne" defaults to beef; es needs "de res"' },
-  { id: 'porco', pt: 'carne de porco', es: 'carne de cerdo', en: 'pork', note: 'similar structure' },
-  { id: 'frango', pt: 'frango', es: 'pollo', en: 'chicken', note: '⚠️ completely different' },
-  { id: 'cordeiro', pt: 'cordeiro', es: 'cordero', en: 'lamb', note: '✅ similar' },
-  { id: 'linguica', pt: 'linguiça', es: 'salchicha', en: 'sausage', note: '⚠️ different; "chorizo" in es for cured/spiced variety' },
-  { id: 'bacon', pt: 'bacon', es: 'panceta', en: 'bacon', note: '⚠️ pt borrows English; "tocino" also used in es' },
-  { id: 'presunto', pt: 'presunto', es: 'jamón', en: 'ham', note: '⚠️ completely different' },
-  { id: 'moida', pt: 'carne moída', es: 'carne molida', en: 'ground meat', note: '✅ similar' },
-  { id: 'bife', pt: 'bife', es: 'bistec', en: 'steak', note: '⚠️ different; "filete" also used in es' },
-  { id: 'peito', pt: 'peito de frango', es: 'pechuga', en: 'chicken breast', note: '⚠️ different roots' },
-  { id: 'coxa', pt: 'coxa', es: 'muslo', en: 'thigh', note: '⚠️ different' },
-  { id: 'asa', pt: 'asa', es: 'ala', en: 'wing', note: '⚠️ different roots but related' },
-  { id: 'pato', pt: 'pato', es: 'pato', en: 'duck', note: '✅ identical' },
+  { id: 'carne', emoji: '🥩', pt: 'carne', es: 'carne (de res)', en: 'beef', note: 'pt "carne" defaults to beef; es needs "de res"' },
+  { id: 'porco', emoji: '🐖', pt: 'carne de porco', es: 'carne de cerdo', en: 'pork', note: 'similar structure' },
+  { id: 'frango', emoji: '🐔', pt: 'frango', es: 'pollo', en: 'chicken', note: '⚠️ completely different' },
+  { id: 'cordeiro', emoji: '🐑', pt: 'cordeiro', es: 'cordero', en: 'lamb', note: '✅ similar' },
+  { id: 'linguica', emoji: '🌭', pt: 'linguiça', es: 'salchicha', en: 'sausage', note: '⚠️ different; "chorizo" in es for cured/spiced variety' },
+  { id: 'bacon', emoji: '🥓', pt: 'bacon', es: 'panceta', en: 'bacon', note: '⚠️ pt borrows English; "tocino" also used in es' },
+  { id: 'presunto', emoji: '🍖', pt: 'presunto', es: 'jamón', en: 'ham', note: '⚠️ completely different' },
+  { id: 'moida', emoji: '🍔', pt: 'carne moída', es: 'carne molida', en: 'ground meat', note: '✅ similar' },
+  { id: 'bife', emoji: '🥩', pt: 'bife', es: 'bistec', en: 'steak', note: '⚠️ different; "filete" also used in es' },
+  { id: 'peito', emoji: '🍗', pt: 'peito de frango', es: 'pechuga', en: 'chicken breast', note: '⚠️ different roots' },
+  { id: 'coxa', emoji: '🍗', pt: 'coxa', es: 'muslo', en: 'thigh', note: '⚠️ different' },
+  { id: 'asa', emoji: '🍗', pt: 'asa', es: 'ala', en: 'wing', note: '⚠️ different roots but related' },
+  { id: 'pato', emoji: '🦆', pt: 'pato', es: 'pato', en: 'duck', note: '✅ identical' },
 ];
 
 const SEAFOOD = [
-  { id: 'peixe', pt: 'peixe', es: 'pescado', en: 'fish (food)', note: '⚠️ "pez" in es = live fish; "pescado" = cooked/served' },
-  { id: 'camarao', pt: 'camarão', es: 'camarón', en: 'shrimp', note: '✅ very close; "gamba" in Spain' },
-  { id: 'caranguejo', pt: 'caranguejo', es: 'cangrejo', en: 'crab', note: '✅ similar' },
-  { id: 'polvo', pt: 'polvo', es: 'pulpo', en: 'octopus', note: '✅ similar' },
-  { id: 'salmao', pt: 'salmão', es: 'salmón', en: 'salmon', note: '✅ similar' },
-  { id: 'atum', pt: 'atum', es: 'atún', en: 'tuna', note: '✅ similar' },
-  { id: 'mexilhao', pt: 'mexilhão', es: 'mejillón', en: 'mussel', note: '✅ similar' },
-  { id: 'ostra', pt: 'ostra', es: 'ostra', en: 'oyster', note: '✅ identical' },
-  { id: 'lagosta', pt: 'lagosta', es: 'langosta', en: 'lobster', note: '✅ similar' },
-  { id: 'ovas', pt: 'ovas', es: 'hueva', en: 'roe (fish eggs)', note: '✅ similar root' },
+  { id: 'peixe', emoji: '🐟', pt: 'peixe', es: 'pescado', en: 'fish (food)', note: '⚠️ "pez" in es = live fish; "pescado" = cooked/served' },
+  { id: 'camarao', emoji: '🦐', pt: 'camarão', es: 'camarón', en: 'shrimp', note: '✅ very close; "gamba" in Spain' },
+  { id: 'caranguejo', emoji: '🦀', pt: 'caranguejo', es: 'cangrejo', en: 'crab', note: '✅ similar' },
+  { id: 'polvo', emoji: '🐙', pt: 'polvo', es: 'pulpo', en: 'octopus', note: '✅ similar' },
+  { id: 'salmao', emoji: '🍣', pt: 'salmão', es: 'salmón', en: 'salmon', note: '✅ similar' },
+  { id: 'atum', emoji: '🐟', pt: 'atum', es: 'atún', en: 'tuna', note: '✅ similar' },
+  { id: 'mexilhao', emoji: '🐚', pt: 'mexilhão', es: 'mejillón', en: 'mussel', note: '✅ similar' },
+  { id: 'ostra', emoji: '🦪', pt: 'ostra', es: 'ostra', en: 'oyster', note: '✅ identical' },
+  { id: 'lagosta', emoji: '🦞', pt: 'lagosta', es: 'langosta', en: 'lobster', note: '✅ similar' },
+  { id: 'ovas', emoji: '🥚', pt: 'ovas', es: 'hueva', en: 'roe (fish eggs)', note: '✅ similar root' },
 ];
 
 const KITCHEN = [
@@ -348,9 +348,9 @@ const KITCHEN = [
   { id: 'faca', pt: 'faca', es: 'cuchillo', en: 'knife', note: '⚠️ completely different' },
   { id: 'garfo', pt: 'garfo', es: 'tenedor', en: 'fork', note: '⚠️ different' },
   { id: 'colher', pt: 'colher', es: 'cuchara', en: 'spoon', note: '✅ similar' },
+  { id: 'hashi', pt: 'hashi', es: 'palillos', en: 'chopsticks', note: 'pt also "pauzinhos"; es also "palillos chinos"' },
   { id: 'panoprato', pt: 'pano de prato', es: 'paño de cocina', en: 'dishcloth', note: '✅ similar; "trapo" also used in es' },
   { id: 'detergente', pt: 'detergente', es: 'detergente', en: 'dish soap', note: '✅ identical' },
-  { id: 'esponja', pt: 'esponja', es: 'esponja', en: 'sponge', note: '✅ identical' },
   { id: 'oleo', pt: 'óleo', es: 'aceite', en: 'oil', note: '⚠️ different' },
   { id: 'manteiga', pt: 'manteiga', es: 'mantequilla', en: 'butter', note: '✅ similar' },
   { id: 'acucar', pt: 'açúcar', es: 'azúcar', en: 'sugar', note: '✅ similar' },
@@ -939,47 +939,49 @@ function renderImageItemGrid(items, dir) {
 
 function renderFruitsGrid() { return renderImageItemGrid(FRUITS, 'fruits'); }
 function renderVegetablesGrid() { return renderImageItemGrid(VEGETABLES, 'vegetables'); }
-function renderMeatsGrid() { return renderImageItemGrid(MEATS, 'meats'); }
-function renderSeafoodGrid() { return renderImageItemGrid(SEAFOOD, 'seafood'); }
 function renderKitchenGrid() { return renderImageItemGrid(KITCHEN, 'kitchen'); }
 
-function renderFamilyGrid() {
+function renderEmojiItemGrid(items, dir) {
   const container = el('div', { class: 'fruits-grid-container' });
   const grid = el('div', { class: 'zodiac-grid' });
-  for (const f of FAMILY) {
-    const card = el('div', { class: 'zodiac-card', onClick: () => showFamilyModal(f) });
-    card.appendChild(el('div', { class: 'zodiac-symbol' }, f.emoji));
-    card.appendChild(el('div', { class: 'zodiac-name' }, f.pt));
+  for (const it of items) {
+    const card = el('div', { class: 'zodiac-card', onClick: () => showEmojiItemModal(it, dir) });
+    card.appendChild(el('div', { class: 'zodiac-symbol' }, it.emoji));
+    card.appendChild(el('div', { class: 'zodiac-name' }, it.pt));
     grid.appendChild(card);
   }
   container.appendChild(grid);
   return container;
 }
 
-function showFamilyModal(f) {
+function showEmojiItemModal(it, dir) {
   const overlay = el('div', {
     class: 'modal-overlay',
     onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
   });
   const modal = el('div', { class: 'modal-content zodiac-modal' });
   modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
-  modal.appendChild(el('div', { class: 'modal-zodiac-symbol' }, f.emoji));
+  modal.appendChild(el('div', { class: 'modal-zodiac-symbol' }, it.emoji));
   const langBlock = el('div', { class: 'modal-lang-block' });
   for (const lang of ['pt', 'es', 'en']) {
     const row = el('div', { class: `lang-row lang-${lang}` });
     row.appendChild(el('span', { class: 'lang-label' }, lang));
-    row.appendChild(el('span', { class: 'lang-text' }, f[lang]));
+    row.appendChild(el('span', { class: 'lang-text' }, it[lang]));
     if (lang !== 'en') {
-      const src = `./audio/family/${f.id}-${lang}.mp3`;
+      const src = `./audio/${dir}/${it.id}-${lang}.mp3`;
       row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
     }
     langBlock.appendChild(row);
   }
   modal.appendChild(langBlock);
-  if (f.note) modal.appendChild(el('div', { class: 'modal-note' }, f.note));
+  if (it.note) modal.appendChild(el('div', { class: 'modal-note' }, it.note));
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
 }
+
+function renderMeatsGrid() { return renderEmojiItemGrid(MEATS, 'meats'); }
+function renderSeafoodGrid() { return renderEmojiItemGrid(SEAFOOD, 'seafood'); }
+function renderFamilyGrid() { return renderEmojiItemGrid(FAMILY, 'family'); }
 
 function renderZodiacGrid() {
   const container = el('div', { class: 'fruits-grid-container' });
