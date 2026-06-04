@@ -5,14 +5,14 @@ if ('serviceWorker' in navigator) {
 }
 
 const SECTIONS = [
-  { icon: '🧑‍🏫', title: 'Lessons', desc: '11 themed scenarios · Feira opening soon', route: '#/lessons' },
+  { icon: '🧑‍🏫', title: 'Lessons', desc: 'Themed scenarios · 1 ready', route: '#/lessons' },
   { icon: '🖼️', title: 'Picture Words', desc: 'Visual vocabulary by category', route: '#/picture-words' },
   { icon: '📚', title: 'Foundations', desc: 'Numbers, days, months', route: '#/foundations' },
   { icon: '📕', title: 'Vocabulary', desc: 'Your saved words & phrases', route: '#/vocabulary' },
 ];
 
 const LESSONS = [
-  { id: 'feira', icon: '🛒', title: 'Feira', desc: 'Open-air market', status: 'Lesson 1 — Dialog ready' },
+  { id: 'feira', icon: '🛒', title: 'Feira', desc: 'Open-air market' },
   { id: 'cafe', icon: '☕', title: 'Café', desc: 'Coffee shop', status: 'Coming soon' },
   { id: 'uber', icon: '🚕', title: 'Uber / Taxi', desc: 'Getting around', status: 'Coming soon' },
   { id: 'host', icon: '🏠', title: 'Host', desc: 'Airbnb host chat', status: 'Coming soon' },
@@ -269,6 +269,8 @@ const FRUITS = [
   { id: 'pinha', pt: 'fruta-do-conde / pinha', es: 'chirimoya', en: 'sugar apple', note: '⚠️ ES "chirimoya" is technically Annona cherimola (cherimoya), a close relative — widely understood across LatAm even though species differs' },
   { id: 'jambo', pt: 'jambo', es: 'pomarrosa', en: 'wax apple', note: 'pt also "jambo-rosa"; en: also "rose apple"' },
   { id: 'cranberry', pt: 'cranberry', es: 'arándano rojo', en: 'cranberry', note: '⚠️ pt borrows English; es literally "red blueberry"' },
+  { id: 'caqui', pt: 'caqui', es: 'caqui', en: 'persimmon', note: '✅ identical pt/es' },
+  { id: 'abacate', pt: 'abacate', es: 'aguacate', en: 'avocado', note: 'similar; ⚠️ Chile/Peru/Argentina use "palta" instead of "aguacate"' },
 ];
 
 const VEGETABLES = [
@@ -498,7 +500,7 @@ function renderLessons() {
     list.appendChild(sectionCard({
       icon: l.icon,
       title: l.title,
-      desc: `${l.desc} · ${l.status}`,
+      desc: l.status ? `${l.desc} · ${l.status}` : l.desc,
       route: `#/lessons/${l.id}`,
     }));
   }
@@ -573,10 +575,9 @@ function renderCompactTable(table) {
 function renderVocabCard(item, lessonId, opts = {}) {
   const card = el('div', { class: 'vocab-card' });
 
-  // Star toggle in a dedicated top row (no overlap with play buttons)
+  // Star toggle (absolute top-right; first lang-row reserves space via CSS)
   if (item.id && lessonId) {
     const initSaved = isSavedVocab(lessonId, item.id);
-    const header = el('div', { class: 'vocab-card-header' });
     const starBtn = el('button', {
       class: 'vocab-star' + (initSaved ? ' active' : ''),
       'aria-label': initSaved ? 'Remove from vocabulary' : 'Save to vocabulary',
@@ -588,8 +589,7 @@ function renderVocabCard(item, lessonId, opts = {}) {
         if (opts.onUnsave && !nowSaved) opts.onUnsave(card);
       },
     }, initSaved ? '★' : '☆');
-    header.appendChild(starBtn);
-    card.appendChild(header);
+    card.appendChild(starBtn);
   }
 
   // Audio dir (default feira/vocab for lessonId=feira)
