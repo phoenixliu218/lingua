@@ -284,6 +284,7 @@ const VEGETABLES = [
   { id: 'milho', pt: 'milho', es: 'maíz', en: 'corn', note: '⚠️ different' },
   { id: 'cogumelo', pt: 'cogumelo', es: 'champiñón', en: 'mushroom', note: '⚠️ different (champiñón ← French)' },
   { id: 'couveflor', pt: 'couve-flor', es: 'coliflor', en: 'cauliflower', note: 'similar; literally "flower kale" in pt' },
+  { id: 'brocolis', pt: 'brócolis', es: 'brócoli', en: 'broccoli', note: '✅ similar; ⚠️ ≠ couve-flor (white cauliflower)' },
   { id: 'berinjela', pt: 'berinjela', es: 'berenjena', en: 'eggplant', note: 'similar' },
   { id: 'mandioca', pt: 'mandioca', es: 'yuca', en: 'cassava', note: '⚠️ different; also aipim in BR' },
   { id: 'quiabo', pt: 'quiabo', es: 'okra', en: 'okra', note: '⚠️ es borrows English' },

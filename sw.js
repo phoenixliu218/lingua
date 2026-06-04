@@ -1,4 +1,4 @@
-const CACHE = 'lingua-v16';
+const CACHE = 'lingua-v17';
 const CORE = [
   './',
   './index.html',
@@ -23,16 +23,35 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then(cached => {
-      const fresh = fetch(e.request).then(resp => {
+  const url = new URL(e.request.url);
+  const p = url.pathname;
+  const isAppCode = p.endsWith('.html') || p.endsWith('.js') || p.endsWith('.css')
+                    || p.endsWith('.json') || p.endsWith('/');
+
+  if (isAppCode) {
+    // Network-first for app code: latest on every reload
+    e.respondWith(
+      fetch(e.request).then(resp => {
         if (resp && resp.ok) {
           const clone = resp.clone();
           caches.open(CACHE).then(c => c.put(e.request, clone));
         }
         return resp;
-      }).catch(() => cached || caches.match('./index.html'));
-      return cached || fresh;
-    })
-  );
+      }).catch(() => caches.match(e.request).then(c => c || caches.match('./index.html')))
+    );
+  } else {
+    // Cache-first / stale-while-revalidate for static assets (img, mp3)
+    e.respondWith(
+      caches.match(e.request).then(cached => {
+        const fresh = fetch(e.request).then(resp => {
+          if (resp && resp.ok) {
+            const clone = resp.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+          }
+          return resp;
+        }).catch(() => cached);
+        return cached || fresh;
+      })
+    );
+  }
 });
