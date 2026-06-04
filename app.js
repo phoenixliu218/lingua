@@ -396,6 +396,39 @@ const NUMBERS_DATA = {
 
 const app = document.getElementById('app');
 
+// === Vocabulary storage ===
+const VOCAB_KEY = 'lingua-saved-vocab';
+function getSavedVocab() {
+  try { return JSON.parse(localStorage.getItem(VOCAB_KEY) || '[]'); }
+  catch { return []; }
+}
+function setSavedVocab(arr) { localStorage.setItem(VOCAB_KEY, JSON.stringify(arr)); }
+function toggleSavedVocab(lessonId, itemId) {
+  const key = `${lessonId}:${itemId}`;
+  const saved = getSavedVocab();
+  const idx = saved.indexOf(key);
+  if (idx >= 0) { saved.splice(idx, 1); setSavedVocab(saved); return false; }
+  saved.push(key); setSavedVocab(saved); return true;
+}
+function isSavedVocab(lessonId, itemId) {
+  return getSavedVocab().includes(`${lessonId}:${itemId}`);
+}
+const LESSON_VOCAB_DATA = { feira: FEIRA_VOCAB };
+function getAllSavedItems() {
+  const saved = getSavedVocab();
+  const out = [];
+  for (const key of saved) {
+    const [lessonId, vid] = key.split(':');
+    const vocab = LESSON_VOCAB_DATA[lessonId];
+    if (!vocab) continue;
+    for (const [section, list] of Object.entries(vocab)) {
+      const item = list.find(i => i.id === vid);
+      if (item) { out.push({ ...item, _lessonId: lessonId, _section: section }); break; }
+    }
+  }
+  return out;
+}
+
 function el(tag, props = {}, children = []) {
   const e = document.createElement(tag);
   for (const [k, v] of Object.entries(props)) {
@@ -537,15 +570,36 @@ function renderCompactTable(table) {
   return tbl;
 }
 
-function renderVocabCard(item) {
+function renderVocabCard(item, lessonId, opts = {}) {
   const card = el('div', { class: 'vocab-card' });
+
+  // Star toggle (top-right)
+  if (item.id && lessonId) {
+    const initSaved = isSavedVocab(lessonId, item.id);
+    const starBtn = el('button', {
+      class: 'vocab-star' + (initSaved ? ' active' : ''),
+      'aria-label': initSaved ? 'Remove from vocabulary' : 'Save to vocabulary',
+      onClick: (e) => {
+        e.stopPropagation();
+        const nowSaved = toggleSavedVocab(lessonId, item.id);
+        starBtn.textContent = nowSaved ? '★' : '☆';
+        starBtn.classList.toggle('active', nowSaved);
+        if (opts.onUnsave && !nowSaved) opts.onUnsave(card);
+      },
+    }, initSaved ? '★' : '☆');
+    card.appendChild(starBtn);
+  }
+
+  // Audio dir (default feira/vocab for lessonId=feira)
+  const audioBase = `./audio/${lessonId || 'feira'}/vocab`;
+
   for (const lang of ['pt', 'es', 'en']) {
     const text = item[lang];
     const row = el('div', { class: `lang-row lang-${lang}` });
     row.appendChild(el('span', { class: 'lang-label' }, lang));
     row.appendChild(el('span', { class: 'lang-text' }, text || '—'));
     if (lang !== 'en' && text && text !== '—' && item.id) {
-      const src = `./audio/feira/vocab/${item.id}-${lang}.mp3`;
+      const src = `${audioBase}/${item.id}-${lang}.mp3`;
       row.appendChild(el('button', {
         class: 'play-btn play-btn-sm',
         onClick: () => playAudio(src),
@@ -566,7 +620,7 @@ function renderVocabCard(item) {
       row.appendChild(el('span', { class: 'lang-label' }, lang));
       row.appendChild(el('span', { class: 'lang-text' }, text));
       if (lang !== 'en' && item.id) {
-        const src = `./audio/feira/vocab/${item.id}-ex-${lang}.mp3`;
+        const src = `${audioBase}/${item.id}-ex-${lang}.mp3`;
         row.appendChild(el('button', {
           class: 'play-btn play-btn-sm',
           onClick: () => playAudio(src),
@@ -575,6 +629,10 @@ function renderVocabCard(item) {
       exBlock.appendChild(row);
     }
     card.appendChild(exBlock);
+  }
+  if (opts.showFrom && item._lessonId) {
+    const lessonTitle = LESSONS.find(l => l.id === item._lessonId)?.title || item._lessonId;
+    card.appendChild(el('div', { class: 'vocab-from' }, `from: ${lessonTitle} · ${item._section}`));
   }
   return card;
 }
@@ -599,7 +657,7 @@ function renderLessonVocab(vocab) {
   sectionEntries.forEach(([sectionTitle, items], idx) => {
     const section = el('div', { class: 'vocab-section', 'data-idx': String(idx) });
     section.appendChild(el('h3', { class: 'vocab-section-title' }, sectionTitle));
-    for (const item of items) section.appendChild(renderVocabCard(item));
+    for (const item of items) section.appendChild(renderVocabCard(item, 'feira'));
     container.appendChild(section);
   });
 
@@ -922,17 +980,46 @@ function renderFoundations() {
 }
 
 function renderVocabulary() {
-  return [
-    topbar({ title: 'Vocabulary', back: true }),
-    el('div', { class: 'tab-content' }, [
-      el('div', { class: 'empty' }, [
-        el('div', { class: 'icon' }, '📕'),
-        el('strong', {}, 'Your saved items will appear here'),
-        el('p', { html: 'Tap ⭐ on a word or phrase inside a lesson to add it.' }),
+  const items = getAllSavedItems();
+
+  if (!items.length) {
+    return [
+      topbar({ title: 'Vocabulary', back: true }),
+      el('div', { class: 'tab-content' }, [
+        el('div', { class: 'empty' }, [
+          el('div', { class: 'icon' }, '📕'),
+          el('strong', {}, 'Your saved items will appear here'),
+          el('p', { html: 'Tap ☆ on a word or phrase inside a lesson to add it.' }),
+        ]),
       ]),
-    ]),
-    footer(),
-  ];
+      footer(),
+    ];
+  }
+
+  const container = el('div', { class: 'tab-content vocab-list' });
+  const header = el('div', { class: 'vocab-count' }, `${items.length} saved`);
+  container.appendChild(header);
+
+  for (const item of items) {
+    const card = renderVocabCard(item, item._lessonId, {
+      showFrom: true,
+      onUnsave: (cardEl) => {
+        cardEl.style.opacity = '0';
+        cardEl.style.transition = 'opacity 0.3s';
+        setTimeout(() => {
+          cardEl.remove();
+          if (!container.querySelector('.vocab-card')) {
+            route();
+          } else {
+            header.textContent = `${container.querySelectorAll('.vocab-card').length} saved`;
+          }
+        }, 280);
+      },
+    });
+    container.appendChild(card);
+  }
+
+  return [topbar({ title: 'Vocabulary', back: true }), container, footer()];
 }
 
 function route() {

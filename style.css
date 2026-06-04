@@ -362,6 +362,36 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   padding: 0.85rem 1rem;
   margin-bottom: 0.6rem;
+  position: relative;
+}
+.vocab-star {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--fg-muted);
+  padding: 0.2rem 0.4rem;
+  line-height: 1;
+  transition: transform 0.1s;
+}
+.vocab-star.active { color: #e8a700; }
+.vocab-star:active { transform: scale(0.85); }
+.vocab-from {
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  font-style: italic;
+}
+.vocab-count {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin-bottom: 0.85rem;
+  padding-left: 0.2rem;
 }
 .vocab-card .lang-row { padding: 0.25rem 0; }
 .vocab-card .lang-pt .lang-text { font-size: 1rem; font-weight: 600; color: var(--fg); }
