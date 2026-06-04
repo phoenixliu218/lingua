@@ -364,8 +364,8 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 0.6rem;
   position: relative;
 }
-.vocab-card .lang-row:first-child {
-  padding-right: 2.4rem;
+.vocab-card > .lang-row:first-of-type {
+  padding-right: 2.5rem;
 }
 .vocab-star {
   position: absolute;
