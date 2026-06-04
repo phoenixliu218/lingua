@@ -573,9 +573,10 @@ function renderCompactTable(table) {
 function renderVocabCard(item, lessonId, opts = {}) {
   const card = el('div', { class: 'vocab-card' });
 
-  // Star toggle (top-right)
+  // Star toggle in a dedicated top row (no overlap with play buttons)
   if (item.id && lessonId) {
     const initSaved = isSavedVocab(lessonId, item.id);
+    const header = el('div', { class: 'vocab-card-header' });
     const starBtn = el('button', {
       class: 'vocab-star' + (initSaved ? ' active' : ''),
       'aria-label': initSaved ? 'Remove from vocabulary' : 'Save to vocabulary',
@@ -587,7 +588,8 @@ function renderVocabCard(item, lessonId, opts = {}) {
         if (opts.onUnsave && !nowSaved) opts.onUnsave(card);
       },
     }, initSaved ? '★' : '☆');
-    card.appendChild(starBtn);
+    header.appendChild(starBtn);
+    card.appendChild(header);
   }
 
   // Audio dir (default feira/vocab for lessonId=feira)
