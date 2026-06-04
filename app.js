@@ -1,6 +1,13 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(e => console.error('SW', e));
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+      .then(reg => {
+        // Force update check when tab becomes visible again
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') reg.update();
+        });
+      })
+      .catch(e => console.error('SW', e));
   });
 }
 
