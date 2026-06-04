@@ -464,8 +464,9 @@ a { color: inherit; text-decoration: none; }
 }
 .modal-img {
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+  max-height: 60vh;
+  object-fit: contain;
+  background: #fff;
   border-radius: 16px 16px 0 0;
   display: block;
 }
