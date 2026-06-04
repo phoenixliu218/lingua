@@ -308,7 +308,7 @@ const VEGETABLES = [
 ];
 
 const MEATS = [
-  { id: 'carne', emoji: '🥩', pt: 'carne', es: 'carne (de res)', en: 'beef', note: 'pt "carne" defaults to beef; es needs "de res"' },
+  { id: 'carne', emoji: '🐂', pt: 'carne', es: 'carne (de res)', en: 'beef', note: 'pt "carne" defaults to beef; es needs "de res"' },
   { id: 'porco', emoji: '🐖', pt: 'carne de porco', es: 'carne de cerdo', en: 'pork', note: 'similar structure' },
   { id: 'frango', emoji: '🐔', pt: 'frango', es: 'pollo', en: 'chicken', note: '⚠️ completely different' },
   { id: 'cordeiro', emoji: '🐑', pt: 'cordeiro', es: 'cordero', en: 'lamb', note: '✅ similar' },
@@ -317,9 +317,9 @@ const MEATS = [
   { id: 'presunto', emoji: '🍖', pt: 'presunto', es: 'jamón', en: 'ham', note: '⚠️ completely different' },
   { id: 'moida', emoji: '🍔', pt: 'carne moída', es: 'carne molida', en: 'ground meat', note: '✅ similar' },
   { id: 'bife', emoji: '🥩', pt: 'bife', es: 'bistec', en: 'steak', note: '⚠️ different; "filete" also used in es' },
-  { id: 'peito', emoji: '🍗', pt: 'peito de frango', es: 'pechuga', en: 'chicken breast', note: '⚠️ different roots' },
-  { id: 'coxa', emoji: '🍗', pt: 'coxa', es: 'muslo', en: 'thigh', note: '⚠️ different' },
-  { id: 'asa', emoji: '🍗', pt: 'asa', es: 'ala', en: 'wing', note: '⚠️ different roots but related' },
+  { id: 'peito', emoji: '🐓👙', pt: 'peito de frango', es: 'pechuga', en: 'chicken breast', note: '⚠️ different roots' },
+  { id: 'coxa', emoji: '🐓🦵', pt: 'coxa', es: 'muslo', en: 'thigh', note: '⚠️ different' },
+  { id: 'asa', emoji: '🐓🪽', pt: 'asa', es: 'ala', en: 'wing', note: '⚠️ different roots but related' },
   { id: 'pato', emoji: '🦆', pt: 'pato', es: 'pato', en: 'duck', note: '✅ identical' },
 ];
 
@@ -328,6 +328,7 @@ const SEAFOOD = [
   { id: 'camarao', emoji: '🦐', pt: 'camarão', es: 'camarón', en: 'shrimp', note: '✅ very close; "gamba" in Spain' },
   { id: 'caranguejo', emoji: '🦀', pt: 'caranguejo', es: 'cangrejo', en: 'crab', note: '✅ similar' },
   { id: 'polvo', emoji: '🐙', pt: 'polvo', es: 'pulpo', en: 'octopus', note: '✅ similar' },
+  { id: 'lula', emoji: '🦑', pt: 'lula', es: 'calamar', en: 'squid', note: '⚠️ different' },
   { id: 'salmao', emoji: '🍣', pt: 'salmão', es: 'salmón', en: 'salmon', note: '✅ similar' },
   { id: 'atum', emoji: '🐟', pt: 'atum', es: 'atún', en: 'tuna', note: '✅ similar' },
   { id: 'mexilhao', emoji: '🐚', pt: 'mexilhão', es: 'mejillón', en: 'mussel', note: '✅ similar' },
