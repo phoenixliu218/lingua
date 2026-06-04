@@ -582,10 +582,11 @@ function renderCompactTable(table) {
 function renderVocabCard(item, lessonId, opts = {}) {
   const card = el('div', { class: 'vocab-card' });
 
-  // Star toggle (absolute top-right; first lang-row reserves space via CSS)
+  // Star button (inserted later in note row to align with that visual line)
+  let starBtn = null;
   if (item.id && lessonId) {
     const initSaved = isSavedVocab(lessonId, item.id);
-    const starBtn = el('button', {
+    starBtn = el('button', {
       class: 'vocab-star' + (initSaved ? ' active' : ''),
       'aria-label': initSaved ? 'Remove from vocabulary' : 'Save to vocabulary',
       onClick: (e) => {
@@ -596,7 +597,6 @@ function renderVocabCard(item, lessonId, opts = {}) {
         if (opts.onUnsave && !nowSaved) opts.onUnsave(card);
       },
     }, initSaved ? '★' : '☆');
-    card.appendChild(starBtn);
   }
 
   // Audio dir (default feira/vocab for lessonId=feira)
@@ -616,8 +616,12 @@ function renderVocabCard(item, lessonId, opts = {}) {
     }
     card.appendChild(row);
   }
-  if (item.note) {
-    card.appendChild(el('div', { class: 'vocab-note-inline' }, item.note));
+  // Note row + star together (always rendered if star exists, so star has a row to live in)
+  if (item.note || starBtn) {
+    const noteRow = el('div', { class: 'vocab-note-row' });
+    noteRow.appendChild(el('div', { class: 'vocab-note-text' }, item.note || ''));
+    if (starBtn) noteRow.appendChild(starBtn);
+    card.appendChild(noteRow);
   }
   if (item.example) {
     const exBlock = el('div', { class: 'vocab-example' });
