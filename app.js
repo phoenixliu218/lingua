@@ -37,11 +37,12 @@ const TABS = [
 const PIC_CATEGORIES = [
   { id: 'fruits', icon: '🍎', name: 'Fruits' },
   { id: 'vegetables', icon: '🥬', name: 'Vegetables' },
-  { id: 'zodiac', icon: '✨', name: 'Zodiac' },
   { id: 'meats', icon: '🥩', name: 'Meats' },
   { id: 'seafood', icon: '🐟', name: 'Seafood' },
-  { id: 'market', icon: '🛒', name: 'Market objects' },
   { id: 'kitchen', icon: '🍴', name: 'Kitchen' },
+  { id: 'family', icon: '👨‍👩‍👧‍👦', name: 'Family' },
+  { id: 'zodiac', icon: '✨', name: 'Zodiac' },
+  { id: 'market', icon: '🛒', name: 'Market objects' },
 ];
 
 const FEIRA_DIALOG = [
@@ -304,6 +305,77 @@ const VEGETABLES = [
   { id: 'espinafre', pt: 'espinafre', es: 'espinaca', en: 'spinach', note: '✅ very close' },
   { id: 'gengibre', pt: 'gengibre', es: 'jengibre', en: 'ginger', note: '✅ almost identical' },
   { id: 'pimenta', pt: 'pimenta', es: 'pimienta', en: 'pepper (spice)', note: '✅ very close; ⚠️ ≠ pimentão/pimiento (bell pepper)' },
+];
+
+const MEATS = [
+  { id: 'carne', pt: 'carne', es: 'carne (de res)', en: 'beef', note: 'pt "carne" defaults to beef; es needs "de res"' },
+  { id: 'porco', pt: 'carne de porco', es: 'carne de cerdo', en: 'pork', note: 'similar structure' },
+  { id: 'frango', pt: 'frango', es: 'pollo', en: 'chicken', note: '⚠️ completely different' },
+  { id: 'cordeiro', pt: 'cordeiro', es: 'cordero', en: 'lamb', note: '✅ similar' },
+  { id: 'linguica', pt: 'linguiça', es: 'salchicha', en: 'sausage', note: '⚠️ different; "chorizo" in es for cured/spiced variety' },
+  { id: 'bacon', pt: 'bacon', es: 'panceta', en: 'bacon', note: '⚠️ pt borrows English; "tocino" also used in es' },
+  { id: 'presunto', pt: 'presunto', es: 'jamón', en: 'ham', note: '⚠️ completely different' },
+  { id: 'moida', pt: 'carne moída', es: 'carne molida', en: 'ground meat', note: '✅ similar' },
+  { id: 'bife', pt: 'bife', es: 'bistec', en: 'steak', note: '⚠️ different; "filete" also used in es' },
+  { id: 'peito', pt: 'peito de frango', es: 'pechuga', en: 'chicken breast', note: '⚠️ different roots' },
+  { id: 'coxa', pt: 'coxa', es: 'muslo', en: 'thigh', note: '⚠️ different' },
+  { id: 'asa', pt: 'asa', es: 'ala', en: 'wing', note: '⚠️ different roots but related' },
+  { id: 'pato', pt: 'pato', es: 'pato', en: 'duck', note: '✅ identical' },
+];
+
+const SEAFOOD = [
+  { id: 'peixe', pt: 'peixe', es: 'pescado', en: 'fish (food)', note: '⚠️ "pez" in es = live fish; "pescado" = cooked/served' },
+  { id: 'camarao', pt: 'camarão', es: 'camarón', en: 'shrimp', note: '✅ very close; "gamba" in Spain' },
+  { id: 'caranguejo', pt: 'caranguejo', es: 'cangrejo', en: 'crab', note: '✅ similar' },
+  { id: 'polvo', pt: 'polvo', es: 'pulpo', en: 'octopus', note: '✅ similar' },
+  { id: 'lula', pt: 'lula', es: 'calamar', en: 'squid', note: '⚠️ different' },
+  { id: 'salmao', pt: 'salmão', es: 'salmón', en: 'salmon', note: '✅ similar' },
+  { id: 'atum', pt: 'atum', es: 'atún', en: 'tuna', note: '✅ similar' },
+  { id: 'bacalhau', pt: 'bacalhau', es: 'bacalao', en: 'cod', note: '✅ similar' },
+  { id: 'mexilhao', pt: 'mexilhão', es: 'mejillón', en: 'mussel', note: '✅ similar' },
+  { id: 'ostra', pt: 'ostra', es: 'ostra', en: 'oyster', note: '✅ identical' },
+  { id: 'lagosta', pt: 'lagosta', es: 'langosta', en: 'lobster', note: '✅ similar' },
+  { id: 'ovas', pt: 'ovas', es: 'hueva', en: 'roe (fish eggs)', note: '✅ similar root' },
+];
+
+const KITCHEN = [
+  { id: 'geladeira', pt: 'geladeira', es: 'refrigerador', en: 'refrigerator', note: '⚠️ BR uses "geladeira"; "frigorífico" in PT; "nevera" in Spain/Caribbean' },
+  { id: 'forno', pt: 'forno', es: 'horno', en: 'oven', note: '✅ similar' },
+  { id: 'fogao', pt: 'fogão', es: 'estufa', en: 'stove', note: '⚠️ different; "cocina" in Spain' },
+  { id: 'microondas', pt: 'micro-ondas', es: 'microondas', en: 'microwave', note: '✅ identical' },
+  { id: 'prato', pt: 'prato', es: 'plato', en: 'plate', note: '✅ similar' },
+  { id: 'tigela', pt: 'tigela', es: 'tazón', en: 'bowl', note: '⚠️ different' },
+  { id: 'copo', pt: 'copo', es: 'vaso', en: 'glass / cup', note: '⚠️ different; "copa" in es = wine glass' },
+  { id: 'xicara', pt: 'xícara', es: 'taza', en: 'mug / coffee cup', note: '⚠️ different' },
+  { id: 'faca', pt: 'faca', es: 'cuchillo', en: 'knife', note: '⚠️ completely different' },
+  { id: 'garfo', pt: 'garfo', es: 'tenedor', en: 'fork', note: '⚠️ different' },
+  { id: 'colher', pt: 'colher', es: 'cuchara', en: 'spoon', note: '✅ similar' },
+  { id: 'panoprato', pt: 'pano de prato', es: 'paño de cocina', en: 'dishcloth', note: '✅ similar; "trapo" also used in es' },
+  { id: 'detergente', pt: 'detergente', es: 'detergente', en: 'dish soap', note: '✅ identical' },
+  { id: 'esponja', pt: 'esponja', es: 'esponja', en: 'sponge', note: '✅ identical' },
+  { id: 'oleo', pt: 'óleo', es: 'aceite', en: 'oil', note: '⚠️ different' },
+  { id: 'manteiga', pt: 'manteiga', es: 'mantequilla', en: 'butter', note: '✅ similar' },
+  { id: 'sal', pt: 'sal', es: 'sal', en: 'salt', note: '✅ identical' },
+  { id: 'acucar', pt: 'açúcar', es: 'azúcar', en: 'sugar', note: '✅ similar' },
+];
+
+const FAMILY = [
+  { id: 'mae', emoji: '👩', pt: 'mãe', es: 'madre', en: 'mother', note: '⚠️ completely different' },
+  { id: 'pai', emoji: '👨', pt: 'pai', es: 'padre', en: 'father', note: '⚠️ completely different' },
+  { id: 'irma', emoji: '👧', pt: 'irmã', es: 'hermana', en: 'sister', note: '⚠️ different roots' },
+  { id: 'irmao', emoji: '👦', pt: 'irmão', es: 'hermano', en: 'brother', note: '⚠️ different roots' },
+  { id: 'filha', emoji: '👶', pt: 'filha', es: 'hija', en: 'daughter', note: '⚠️ different' },
+  { id: 'filho', emoji: '🧒', pt: 'filho', es: 'hijo', en: 'son', note: '⚠️ different' },
+  { id: 'avof', emoji: '👵', pt: 'avó', es: 'abuela', en: 'grandmother', note: '⚠️ different; ⚠️ pt avó (open o, fem) vs avô (closed o, masc)' },
+  { id: 'avom', emoji: '👴', pt: 'avô', es: 'abuelo', en: 'grandfather', note: '⚠️ different' },
+  { id: 'tia', emoji: '👩‍🦰', pt: 'tia', es: 'tía', en: 'aunt', note: '✅ very close' },
+  { id: 'tio', emoji: '👨‍🦰', pt: 'tio', es: 'tío', en: 'uncle', note: '✅ very close' },
+  { id: 'prima', emoji: '💁‍♀️', pt: 'prima', es: 'prima', en: 'cousin (f)', note: '✅ identical' },
+  { id: 'primo', emoji: '💁‍♂️', pt: 'primo', es: 'primo', en: 'cousin (m)', note: '✅ identical' },
+  { id: 'esposa', emoji: '👰', pt: 'esposa', es: 'esposa', en: 'wife', note: '✅ identical' },
+  { id: 'marido', emoji: '🤵', pt: 'marido', es: 'esposo', en: 'husband', note: '⚠️ different' },
+  { id: 'namorada', emoji: '💑', pt: 'namorada', es: 'novia', en: 'girlfriend', note: '⚠️ different' },
+  { id: 'namorado', emoji: '💏', pt: 'namorado', es: 'novio', en: 'boyfriend', note: '⚠️ different' },
 ];
 
 const ZODIAC = [
@@ -801,7 +873,15 @@ function renderLesson(lessonId) {
 
 function renderPictureWords() {
   const list = el('div', { class: 'section-list' });
-  const counts = { fruits: FRUITS.length, vegetables: VEGETABLES.length, zodiac: ZODIAC.length };
+  const counts = {
+    fruits: FRUITS.length,
+    vegetables: VEGETABLES.length,
+    meats: MEATS.length,
+    seafood: SEAFOOD.length,
+    kitchen: KITCHEN.length,
+    family: FAMILY.length,
+    zodiac: ZODIAC.length,
+  };
   for (const c of PIC_CATEGORIES) {
     const count = counts[c.id];
     list.appendChild(sectionCard({
@@ -858,6 +938,47 @@ function renderImageItemGrid(items, dir) {
 
 function renderFruitsGrid() { return renderImageItemGrid(FRUITS, 'fruits'); }
 function renderVegetablesGrid() { return renderImageItemGrid(VEGETABLES, 'vegetables'); }
+function renderMeatsGrid() { return renderImageItemGrid(MEATS, 'meats'); }
+function renderSeafoodGrid() { return renderImageItemGrid(SEAFOOD, 'seafood'); }
+function renderKitchenGrid() { return renderImageItemGrid(KITCHEN, 'kitchen'); }
+
+function renderFamilyGrid() {
+  const container = el('div', { class: 'fruits-grid-container' });
+  const grid = el('div', { class: 'zodiac-grid' });
+  for (const f of FAMILY) {
+    const card = el('div', { class: 'zodiac-card', onClick: () => showFamilyModal(f) });
+    card.appendChild(el('div', { class: 'zodiac-symbol' }, f.emoji));
+    card.appendChild(el('div', { class: 'zodiac-name' }, f.pt));
+    grid.appendChild(card);
+  }
+  container.appendChild(grid);
+  return container;
+}
+
+function showFamilyModal(f) {
+  const overlay = el('div', {
+    class: 'modal-overlay',
+    onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
+  });
+  const modal = el('div', { class: 'modal-content zodiac-modal' });
+  modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
+  modal.appendChild(el('div', { class: 'modal-zodiac-symbol' }, f.emoji));
+  const langBlock = el('div', { class: 'modal-lang-block' });
+  for (const lang of ['pt', 'es', 'en']) {
+    const row = el('div', { class: `lang-row lang-${lang}` });
+    row.appendChild(el('span', { class: 'lang-label' }, lang));
+    row.appendChild(el('span', { class: 'lang-text' }, f[lang]));
+    if (lang !== 'en') {
+      const src = `./audio/family/${f.id}-${lang}.mp3`;
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+    }
+    langBlock.appendChild(row);
+  }
+  modal.appendChild(langBlock);
+  if (f.note) modal.appendChild(el('div', { class: 'modal-note' }, f.note));
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
 
 function renderZodiacGrid() {
   const container = el('div', { class: 'fruits-grid-container' });
@@ -915,6 +1036,10 @@ function renderPictureCategory(catId) {
   let content;
   if (catId === 'fruits') content = renderFruitsGrid();
   else if (catId === 'vegetables') content = renderVegetablesGrid();
+  else if (catId === 'meats') content = renderMeatsGrid();
+  else if (catId === 'seafood') content = renderSeafoodGrid();
+  else if (catId === 'kitchen') content = renderKitchenGrid();
+  else if (catId === 'family') content = renderFamilyGrid();
   else if (catId === 'zodiac') content = renderZodiacGrid();
   else {
     content = el('div', { class: 'tab-content' }, [
