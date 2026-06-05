@@ -285,6 +285,9 @@ const FRUITS = [
   { id: 'cranberry', pt: 'cranberry', es: 'arándano rojo', en: 'cranberry', note: '⚠️ pt borrows English; es literally "red blueberry"' },
   { id: 'caqui', pt: 'caqui', es: 'caqui', en: 'persimmon', note: '✅ identical pt/es' },
   { id: 'abacate', pt: 'abacate', es: 'aguacate', en: 'avocado', note: 'similar; ⚠️ Chile/Peru/Argentina use "palta" instead of "aguacate"' },
+  { id: 'pupunha', pt: 'pupunha', es: 'chontaduro', en: 'peach palm fruit', note: '⚠️ es: "chontaduro" (CO/EC), "pejibaye" (CR), "pupunha" kept in some places' },
+  { id: 'cupuacu', pt: 'cupuaçu', es: 'cupuasú', en: 'cupuaçu', note: '✅ Amazon fruit; name kept similar' },
+  { id: 'sapote', pt: 'sapoti', es: 'zapote', en: 'sapote', note: 'BR "sapoti" = sapodilla; many sapote varieties across LatAm' },
 ];
 
 const VEGETABLES = [
@@ -310,6 +313,10 @@ const VEGETABLES = [
   { id: 'espinafre', pt: 'espinafre', es: 'espinaca', en: 'spinach', note: '✅ very close' },
   { id: 'gengibre', pt: 'gengibre', es: 'jengibre', en: 'ginger', note: '✅ almost identical' },
   { id: 'pimenta', pt: 'pimenta', es: 'pimienta', en: 'pepper (spice)', note: '✅ very close; ⚠️ ≠ pimentão/pimiento (bell pepper)' },
+  { id: 'inhame', pt: 'inhame', es: 'taro / malanga', en: 'taro', note: '⚠️ BR "inhame" can also mean yam; ES varies by region' },
+  { id: 'vinagreira', pt: 'vinagreira', es: 'flor de Jamaica', en: 'roselle', note: '⚠️ pt also "rosela"; es "jamaica" is most common in LatAm' },
+  { id: 'cebolinha', pt: 'cebolinha', es: 'cebollín', en: 'green onion / scallion', note: '✅ similar (diminutive of cebola/cebolla)' },
+  { id: 'coentro', pt: 'coentro', es: 'cilantro', en: 'cilantro / coriander', note: '⚠️ different words' },
 ];
 
 const MEATS = [
