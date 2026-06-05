@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
 }
 
 const SECTIONS = [
-  { icon: '🧑‍🏫', title: 'Lessons', desc: 'Themed scenarios · 1 ready', route: '#/lessons' },
+  { icon: '🧑‍🏫', title: 'Lessons', desc: 'Themed scenarios · 3 ready', route: '#/lessons' },
   { icon: '🖼️', title: 'Picture Words', desc: 'Visual vocabulary by category', route: '#/picture-words' },
   { icon: '📚', title: 'Foundations', desc: 'Numbers, days, months', route: '#/foundations' },
   { icon: '📕', title: 'Vocabulary', desc: 'Your saved words & phrases', route: '#/vocabulary' },
