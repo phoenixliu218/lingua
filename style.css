@@ -615,7 +615,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--fg-muted);
   font-variant-numeric: tabular-nums;
 }
-.zodiac-name { font-weight: 600; font-size: 1rem; color: var(--fg); }
+.zodiac-name { color: var(--fg); padding: 0 0.3rem 0.2rem; text-align: center; }
+.zodiac-name .fruit-pt { font-weight: 600; font-size: 0.95rem; }
+.zodiac-name .fruit-es { font-size: 0.82rem; color: var(--accent); margin-top: 0.1rem; }
 
 /* Zodiac modal */
 .zodiac-modal { padding-top: 1.5rem; }

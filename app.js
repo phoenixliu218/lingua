@@ -1256,7 +1256,11 @@ function renderEmojiItemGrid(items, dir) {
   for (const it of items) {
     const card = el('div', { class: 'zodiac-card', onClick: () => showEmojiItemModal(it, dir) });
     card.appendChild(el('div', { class: 'zodiac-symbol' }, it.emoji));
-    card.appendChild(el('div', { class: 'zodiac-name' }, it.pt));
+    const name = el('div', { class: 'zodiac-name' }, [
+      el('div', { class: 'fruit-pt' }, it.pt),
+      el('div', { class: 'fruit-es' }, it.es),
+    ]);
+    card.appendChild(name);
     grid.appendChild(card);
   }
   container.appendChild(grid);
@@ -1299,7 +1303,11 @@ function renderZodiacGrid() {
     const card = el('div', { class: 'zodiac-card', onClick: () => showZodiacModal(z) });
     card.appendChild(el('div', { class: 'zodiac-symbol' }, z.symbol));
     card.appendChild(el('div', { class: 'zodiac-dates' }, z.dates));
-    card.appendChild(el('div', { class: 'zodiac-name' }, z.pt));
+    const name = el('div', { class: 'zodiac-name' }, [
+      el('div', { class: 'fruit-pt' }, z.pt),
+      el('div', { class: 'fruit-es' }, z.es),
+    ]);
+    card.appendChild(name);
     grid.appendChild(card);
   }
   container.appendChild(grid);
