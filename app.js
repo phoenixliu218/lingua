@@ -519,15 +519,15 @@ const INTRO_DIALOG = [
   { line: 7, speaker: 'maria', pt: 'Uau! Quanto tempo de avião pra chegar aqui?', es: '¡Guau! ¿Cuánto tarda el vuelo hasta aquí?', en: 'Wow! How long is the flight here?', note: null },
   { line: 8, speaker: 'phoenix', pt: 'Eu não voo. Quero dar a volta ao mundo sem pegar avião. Saí de Taiwan em maio do ano passado.', es: 'Yo no vuelo. Quiero dar la vuelta al mundo sin tomar avión. Salí de Taiwán en mayo del año pasado.', en: "I don't fly. I want to go around the world without taking planes. I left Taiwan in May last year.", note: null },
   { line: 9, speaker: 'maria', pt: 'Sério?! E como você veio?', es: '¿En serio? ¿Y cómo viniste?', en: 'Seriously?! How did you get here?', note: null },
-  { line: 10, speaker: 'phoenix', pt: 'Passei pela China, Coreia, Japão. Peguei um cruzeiro pros Estados Unidos. Depois México, cruzei a América Central por terra, e da Panamá peguei um barco pra Colômbia.', es: 'Pasé por China, Corea, Japón. Tomé un crucero a Estados Unidos. Luego México, crucé Centroamérica por tierra, y desde Panamá tomé un barco a Colombia.', en: 'Through China, Korea, Japan. Took a cruise to the USA. Then Mexico, crossed Central America by land, and from Panama took a boat to Colombia.', note: '🇧🇷 "pros" = pra os; many travel verbs in pretérito perfeito' },
+  { line: 10, speaker: 'phoenix', pt: 'Passei pela China, Coreia, Japão. Peguei um cruzeiro pros Estados Unidos. Depois México, cruzei a América Central por terra, e da Panamá peguei vários barcos pra Colômbia.', es: 'Pasé por China, Corea, Japón. Tomé un crucero a Estados Unidos. Luego México, crucé Centroamérica por tierra, y desde Panamá tomé varios barcos a Colombia.', en: 'Through China, Korea, Japan. Took a cruise to the USA. Then Mexico, crossed Central America by land, and from Panama took several boats to Colombia.', note: '🇧🇷 "pros" = pra os; "vários" = several' },
   { line: 11, speaker: 'maria', pt: 'Que jornada incrível!', es: '¡Qué viaje increíble!', en: 'What an incredible journey!', note: null },
-  { line: 12, speaker: 'phoenix', pt: 'De lá fui pra Equador, Peru, e do Peru peguei um barco pela Amazônia até Belém.', es: 'De ahí fui a Ecuador, Perú, y desde Perú tomé un barco por el Amazonas hasta Belém.', en: 'From there to Ecuador, Peru, and from Peru I took a boat through the Amazon to Belém.', note: null },
+  { line: 12, speaker: 'phoenix', pt: 'De lá fui pra Equador, Peru, e do Peru peguei cinco barcos lentos pela Amazônia até Belém.', es: 'De ahí fui a Ecuador, Perú, y desde Perú tomé cinco barcos lentos por el Amazonas hasta Belém.', en: 'From there to Ecuador, Peru, and from Peru I took five slow boats through the Amazon to Belém.', note: '🇧🇷 "barco lento" = slow boat (Amazon riverboat)' },
   { line: 13, speaker: 'maria', pt: 'Nossa, você é corajosa! E quanto tempo mais fica?', es: '¡Wow, eres valiente! ¿Y cuánto tiempo más te quedas?', en: "Wow, you're brave! How long are you staying?", note: '🇧🇷 "Nossa!" = main BR exclamation' },
   { line: 14, speaker: 'phoenix', pt: 'Mais dois meses no Brasil. Depois sigo pro sul — Paraguai, Chile e outros países sul-americanos. Este ano todo na América do Sul.', es: 'Dos meses más en Brasil. Después sigo al sur — Paraguay, Chile y otros países sudamericanos. Este año entero en Sudamérica.', en: 'Two more months in Brazil. Then south — Paraguay, Chile and other South American countries. All year in South America.', note: null },
   { line: 15, speaker: 'maria', pt: 'E depois?', es: '¿Y después?', en: 'And after?', note: null },
   { line: 16, speaker: 'phoenix', pt: 'Ano que vem quero atravessar o Atlântico pra Europa e África.', es: 'El año que viene quiero cruzar el Atlántico hacia Europa y África.', en: 'Next year I want to cross the Atlantic to Europe and Africa.', note: null },
   { line: 17, speaker: 'maria', pt: 'Que sonho! Você tá gostando daqui?', es: '¡Qué sueño! ¿Te está gustando aquí?', en: 'What a dream! Are you enjoying it here?', note: '🇧🇷 "tá" = está' },
-  { line: 18, speaker: 'phoenix', pt: 'Tô amando! O Brasil é maravilhoso, a comida é incrível e as pessoas são acolhedoras.', es: '¡Me encanta! Brasil es maravilloso, la comida es increíble y la gente es acogedora.', en: "I'm loving it! Brazil is wonderful, the food is amazing and the people are welcoming.", note: '🇧🇷 "Tô" = Estou (colloquial)' },
+  { line: 18, speaker: 'phoenix', pt: 'Tô amando! O Brasil é maravilhoso, eu amo a música e as pessoas são acolhedoras.', es: '¡Me encanta! Brasil es maravilloso, amo la música y la gente es acogedora.', en: "I'm loving it! Brazil is wonderful, I love the music and the people are welcoming.", note: '🇧🇷 "Tô" = Estou (colloquial)' },
   { line: 19, speaker: 'maria', pt: 'Que bom! E o que você fazia em Taiwan?', es: '¡Qué bueno! ¿Y qué hacías en Taiwán?', en: 'Great! What did you do in Taiwan?', note: null },
   { line: 20, speaker: 'phoenix', pt: 'Sou formada em História. Trabalhei como consultora de sustentabilidade empresarial.', es: 'Soy licenciada en Historia. Trabajaba como consultora de sostenibilidad empresarial.', en: 'I have a degree in History. I worked as a corporate sustainability consultant.', note: '🇧🇷 "Sou formada em" = standard way to say "I have a degree in"' },
   { line: 21, speaker: 'maria', pt: 'Que profissão importante! Posso te perguntar quantos anos você tem?', es: '¡Qué profesión importante! ¿Puedo preguntarte cuántos años tienes?', en: 'What an important profession! Can I ask how old you are?', note: null },
@@ -542,74 +542,84 @@ const INTRO_DIALOG = [
 
 const INTRO_VOCAB = {
   '🔤 Verbs': [
-    { id: 'v01', pt: 'ser', es: 'ser', en: 'to be (permanent)', note: 'identity, origin, profession, characteristics', example: { pt: 'Sou de Taiwan.', es: 'Soy de Taiwán.', en: "I'm from Taiwan." } },
-    { id: 'v02', pt: 'estar', es: 'estar', en: 'to be (temporary)', note: 'location, state, ongoing action', example: { pt: 'Estou no Brasil.', es: 'Estoy en Brasil.', en: "I'm in Brazil." } },
-    { id: 'v03', pt: 'viajar', es: 'viajar', en: 'to travel', note: '✅ identical', example: { pt: 'Estou viajando pelo mundo.', es: 'Estoy viajando por el mundo.', en: "I'm traveling the world." } },
-    { id: 'v04', pt: 'chegar', es: 'llegar', en: 'to arrive', note: '⚠️ different', example: { pt: 'Cheguei há três dias.', es: 'Llegué hace tres días.', en: 'I arrived 3 days ago.' } },
-    { id: 'v05', pt: 'sair', es: 'salir', en: 'to leave', note: 'similar', example: { pt: 'Saí de Taiwan em maio.', es: 'Salí de Taiwán en mayo.', en: 'I left Taiwan in May.' } },
-    { id: 'v06', pt: 'passar', es: 'pasar', en: 'to pass through', note: '✅ similar', example: { pt: 'Passei pela China.', es: 'Pasé por China.', en: 'I went through China.' } },
-    { id: 'v07', pt: 'pegar', es: 'tomar', en: 'to take (transport)', note: '⚠️ different; pt also "tomar" for drinks', example: { pt: 'Peguei um barco.', es: 'Tomé un barco.', en: 'I took a boat.' } },
-    { id: 'v08', pt: 'cruzar', es: 'cruzar', en: 'to cross', note: '✅ identical', example: { pt: 'Cruzei a América Central.', es: 'Crucé Centroamérica.', en: 'I crossed Central America.' } },
-    { id: 'v09', pt: 'atravessar', es: 'atravesar', en: 'to cross (over)', note: 'similar', example: { pt: 'Quero atravessar o Atlântico.', es: 'Quiero atravesar el Atlántico.', en: 'I want to cross the Atlantic.' } },
-    { id: 'v10', pt: 'ficar', es: 'quedarse', en: 'to stay', note: '⚠️ different', example: { pt: 'Vou ficar mais dois meses.', es: 'Voy a quedarme dos meses más.', en: "I'll stay 2 more months." } },
-    { id: 'v11', pt: 'gostar (de)', es: 'gustar', en: 'to like', note: '⚠️ different structure; pt: eu gosto de X, es: me gusta X', example: { pt: 'Estou gostando daqui.', es: 'Me está gustando aquí.', en: "I'm enjoying it here." } },
-    { id: 'v12', pt: 'amar', es: 'amar / encantar', en: 'to love', note: 'pt "tô amando" = "I love it"', example: { pt: 'Tô amando!', es: '¡Me encanta!', en: "I'm loving it!" } },
-    { id: 'v13', pt: 'voar', es: 'volar', en: 'to fly', note: 'similar', example: { pt: 'Eu não voo.', es: 'Yo no vuelo.', en: "I don't fly." } },
-    { id: 'v14', pt: 'seguir', es: 'seguir', en: 'to continue / follow', note: '✅ identical', example: { pt: 'Sigo pro sul.', es: 'Sigo al sur.', en: "I'll continue south." } },
+    { id: 'v01', pt: 'ser', es: 'ser', en: 'to be (permanent)', note: 'identity, origin, profession, characteristics', example: { pt: 'O café aqui é forte.', es: 'El café aquí es fuerte.', en: 'The coffee here is strong.' } },
+    { id: 'v02', pt: 'estar', es: 'estar', en: 'to be (temporary)', note: 'location, state, ongoing action', example: { pt: 'Estou cansada hoje.', es: 'Estoy cansada hoy.', en: "I'm tired today." } },
+    { id: 'v03', pt: 'viajar', es: 'viajar', en: 'to travel', note: '✅ identical', example: { pt: 'Viajo sozinha há quase dois anos.', es: 'Viajo sola desde hace casi dos años.', en: "I've been traveling alone for almost 2 years." } },
+    { id: 'v04', pt: 'chegar', es: 'llegar', en: 'to arrive', note: '⚠️ different', example: { pt: 'A que horas chega o ônibus?', es: '¿A qué hora llega el autobús?', en: 'What time does the bus arrive?' } },
+    { id: 'v05', pt: 'sair', es: 'salir', en: 'to leave', note: 'similar', example: { pt: 'A gente sai amanhã de manhã.', es: 'Salimos mañana por la mañana.', en: 'We leave tomorrow morning.' } },
+    { id: 'v06', pt: 'passar', es: 'pasar', en: 'to pass through', note: '✅ similar', example: { pt: 'Você já passou pelo Rio?', es: '¿Ya pasaste por Río?', en: 'Have you been through Rio?' } },
+    { id: 'v07', pt: 'pegar', es: 'tomar', en: 'to take (transport)', note: '⚠️ different; pt also "tomar" for drinks', example: { pt: 'Vou pegar um Uber.', es: 'Voy a tomar un Uber.', en: "I'll take an Uber." } },
+    { id: 'v08', pt: 'cruzar', es: 'cruzar', en: 'to cross', note: '✅ identical', example: { pt: 'Cruzei a fronteira ontem.', es: 'Crucé la frontera ayer.', en: 'I crossed the border yesterday.' } },
+    { id: 'v09', pt: 'atravessar', es: 'atravesar', en: 'to cross (over)', note: 'similar', example: { pt: 'Vamos atravessar a rua aqui.', es: 'Vamos a atravesar la calle aquí.', en: "Let's cross the street here." } },
+    { id: 'v10', pt: 'ficar', es: 'quedarse', en: 'to stay', note: '⚠️ different', example: { pt: 'Onde você vai ficar?', es: '¿Dónde te vas a quedar?', en: 'Where are you going to stay?' } },
+    { id: 'v11', pt: 'gostar (de)', es: 'gustar', en: 'to like', note: '⚠️ different structure; pt: eu gosto de X, es: me gusta X', example: { pt: 'Eu gosto muito do açaí.', es: 'Me gusta mucho el açaí.', en: 'I really like açaí.' } },
+    { id: 'v12', pt: 'amar', es: 'amar / encantar', en: 'to love', note: 'pt "tô amando" = "I love it"', example: { pt: 'Amo viajar de barco.', es: 'Amo viajar en barco.', en: 'I love traveling by boat.' } },
+    { id: 'v13', pt: 'voar', es: 'volar', en: 'to fly', note: 'similar', example: { pt: 'Nunca mais vou voar.', es: 'Nunca más voy a volar.', en: "I'm never flying again." } },
+    { id: 'v14', pt: 'seguir', es: 'seguir', en: 'to continue / follow', note: '✅ identical', example: { pt: 'Sigo até a próxima cidade amanhã.', es: 'Sigo hasta la próxima ciudad mañana.', en: 'I continue to the next city tomorrow.' } },
   ],
   '❓ Question words & phrases': [
-    { id: 'q01', pt: 'Quanto tempo', es: 'Cuánto tiempo', en: 'How long', note: 'time-duration question', example: { pt: 'Quanto tempo você fica?', es: '¿Cuánto tiempo te quedas?', en: 'How long do you stay?' } },
-    { id: 'q02', pt: 'De onde', es: 'De dónde', en: 'Where from', note: '✅ similar', example: { pt: 'De onde você é?', es: '¿De dónde eres?', en: 'Where are you from?' } },
-    { id: 'q03', pt: 'Quantos anos', es: 'Cuántos años', en: 'How old', note: '✅ identical structure', example: { pt: 'Quantos anos você tem?', es: '¿Cuántos años tienes?', en: 'How old are you?' } },
-    { id: 'q04', pt: 'E depois?', es: '¿Y después?', en: 'And after?', note: '✅ similar', example: { pt: 'E depois?', es: '¿Y después?', en: 'And then?' } },
-    { id: 'q05', pt: 'Sério?', es: '¿En serio?', en: 'Seriously?', note: '✅ similar', example: { pt: 'Sério?!', es: '¿En serio?', en: 'Seriously?!' } },
+    { id: 'q01', pt: 'Quanto tempo', es: 'Cuánto tiempo', en: 'How long', note: 'time-duration question',
+      example: { pt: 'Quanto tempo você fica aqui?', es: '¿Cuánto tiempo te quedas aquí?', en: 'How long are you staying here?' },
+      answer:  { pt: 'Fico mais ou menos uma semana.', es: 'Me quedo más o menos una semana.', en: 'About a week.' } },
+    { id: 'q02', pt: 'De onde', es: 'De dónde', en: 'Where from', note: '✅ similar',
+      example: { pt: 'De onde você é?', es: '¿De dónde eres?', en: 'Where are you from?' },
+      answer:  { pt: 'Sou de Taiwan, mas moro fora há anos.', es: 'Soy de Taiwán, pero vivo fuera desde hace años.', en: "I'm from Taiwan, but I've lived abroad for years." } },
+    { id: 'q03', pt: 'Quantos anos', es: 'Cuántos años', en: 'How old', note: '✅ identical structure',
+      example: { pt: 'Quantos anos você tem?', es: '¿Cuántos años tienes?', en: 'How old are you?' },
+      answer:  { pt: 'Tenho vinte e oito.', es: 'Tengo veintiocho.', en: "I'm 28." } },
+    { id: 'q04', pt: 'E depois?', es: '¿Y después?', en: 'And after?', note: '✅ similar',
+      example: { pt: 'E depois, o que você vai fazer?', es: '¿Y después, qué vas a hacer?', en: 'And after, what will you do?' },
+      answer:  { pt: 'Depois sigo pra Argentina.', es: 'Después sigo a Argentina.', en: 'Then I continue to Argentina.' } },
+    { id: 'q05', pt: 'Sério?', es: '¿En serio?', en: 'Seriously?', note: 'reaction to surprising news',
+      example: { pt: 'Vou cruzar o Atlântico de veleiro.', es: 'Voy a cruzar el Atlántico en velero.', en: "I'm crossing the Atlantic by sailboat." },
+      answer:  { pt: 'Sério?! Que corajosa!', es: '¿En serio? ¡Qué valiente!', en: 'Seriously?! How brave!' } },
   ],
   '🕐 Time expressions': [
-    { id: 't01', pt: 'há um mês', es: 'hace un mes / un mes', en: 'a month ago / for a month', note: 'pt "há" + duration', example: { pt: 'Estou aqui há um mês.', es: 'Llevo un mes aquí.', en: "I've been here for a month." } },
-    { id: 't02', pt: 'há três dias', es: 'hace tres días', en: '3 days ago', note: null, example: { pt: 'Cheguei há três dias.', es: 'Llegué hace tres días.', en: 'I arrived 3 days ago.' } },
-    { id: 't03', pt: 'ano passado', es: 'año pasado', en: 'last year', note: '✅ identical', example: { pt: 'Saí em maio do ano passado.', es: 'Salí en mayo del año pasado.', en: 'I left in May last year.' } },
-    { id: 't04', pt: 'ano que vem', es: 'año que viene', en: 'next year', note: '✅ identical', example: { pt: 'Ano que vem vou pra Europa.', es: 'Año que viene voy a Europa.', en: "Next year I'll go to Europe." } },
-    { id: 't05', pt: 'mais dois meses', es: 'dos meses más', en: '2 more months', note: 'pt: mais X tempo; es: X tempo más', example: { pt: 'Fico mais dois meses.', es: 'Me quedo dos meses más.', en: "I'll stay 2 more months." } },
+    { id: 't01', pt: 'há um mês', es: 'hace un mes / un mes', en: 'a month ago / for a month', note: 'pt "há" + duration', example: { pt: 'Conheci ela há um mês.', es: 'La conocí hace un mes.', en: 'I met her a month ago.' } },
+    { id: 't02', pt: 'há três dias', es: 'hace tres días', en: '3 days ago', note: null, example: { pt: 'Tô sem dormir bem há três dias.', es: 'No estoy durmiendo bien desde hace tres días.', en: "I haven't slept well for 3 days." } },
+    { id: 't03', pt: 'ano passado', es: 'año pasado', en: 'last year', note: '✅ identical', example: { pt: 'No ano passado fui pra Coreia.', es: 'El año pasado fui a Corea.', en: 'Last year I went to Korea.' } },
+    { id: 't04', pt: 'ano que vem', es: 'año que viene', en: 'next year', note: '✅ identical', example: { pt: 'Ano que vem quero aprender alemão.', es: 'El año que viene quiero aprender alemán.', en: 'Next year I want to learn German.' } },
+    { id: 't05', pt: 'mais dois meses', es: 'dos meses más', en: '2 more months', note: 'pt: mais X tempo; es: X tempo más', example: { pt: 'Preciso de mais dois meses pra terminar.', es: 'Necesito dos meses más para terminar.', en: 'I need 2 more months to finish.' } },
   ],
   '🙋 Self description': [
-    { id: 's01', pt: 'Sou de ___', es: 'Soy de ___', en: "I'm from ___", note: '✅ identical structure', example: { pt: 'Sou de Taiwan.', es: 'Soy de Taiwán.', en: "I'm from Taiwan." } },
-    { id: 's02', pt: 'Sou formada em ___', es: 'Soy licenciada en ___', en: 'I have a degree in ___', note: '⚠️ different; pt "formada/formado" agrees with gender', example: { pt: 'Sou formada em História.', es: 'Soy licenciada en Historia.', en: 'I have a degree in History.' } },
-    { id: 's03', pt: 'Sou solteira / casada', es: 'Soy soltera / casada', en: "I'm single / married", note: '✅ identical; feminine agreement for Phoenix', example: { pt: 'Sou solteira.', es: 'Soy soltera.', en: "I'm single." } },
-    { id: 's04', pt: 'Tenho ___ anos', es: 'Tengo ___ años', en: "I'm ___ years old", note: '✅ identical', example: { pt: 'Tenho vinte e oito anos.', es: 'Tengo veintiocho años.', en: "I'm 28." } },
-    { id: 's05', pt: 'irmão mais novo', es: 'hermano menor', en: 'younger brother', note: '⚠️ pt "mais velho/novo"; es "mayor/menor"', example: { pt: 'Tenho um irmão mais novo.', es: 'Tengo un hermano menor.', en: 'I have a younger brother.' } },
+    { id: 's01', pt: 'Sou de ___', es: 'Soy de ___', en: "I'm from ___", note: '✅ identical structure', example: { pt: 'Sou de uma cidade pequena no norte de Taiwan.', es: 'Soy de una ciudad pequeña en el norte de Taiwán.', en: "I'm from a small city in northern Taiwan." } },
+    { id: 's02', pt: 'Sou formada em ___', es: 'Soy licenciada en ___', en: 'I have a degree in ___', note: '⚠️ different; pt "formada/formado" agrees with gender', example: { pt: 'Minha mãe é formada em Direito.', es: 'Mi madre es licenciada en Derecho.', en: 'My mom has a law degree.' } },
+    { id: 's03', pt: 'Sou solteira / casada', es: 'Soy soltera / casada', en: "I'm single / married", note: '✅ identical; feminine agreement for Phoenix', example: { pt: 'Ainda sou solteira e tô feliz assim.', es: 'Aún soy soltera y estoy feliz así.', en: "I'm still single and happy that way." } },
+    { id: 's04', pt: 'Tenho ___ anos', es: 'Tengo ___ años', en: "I'm ___ years old", note: '✅ identical', example: { pt: 'Meu irmão tem só vinte e seis anos.', es: 'Mi hermano tiene solo veintiséis años.', en: 'My brother is only 26.' } },
+    { id: 's05', pt: 'irmão mais novo', es: 'hermano menor', en: 'younger brother', note: '⚠️ pt "mais velho/novo"; es "mayor/menor"', example: { pt: 'Sinto saudade do meu irmão mais novo.', es: 'Extraño a mi hermano menor.', en: 'I miss my younger brother.' } },
   ],
   '🌍 Travel & places': [
-    { id: 'tr01', pt: 'dar a volta ao mundo', es: 'dar la vuelta al mundo', en: 'go around the world', note: '✅ identical idiom' },
-    { id: 'tr02', pt: 'sem pegar avião', es: 'sin tomar avión', en: 'without flying', note: '✅ similar' },
-    { id: 'tr03', pt: 'por terra', es: 'por tierra', en: 'by land', note: '✅ similar' },
-    { id: 'tr04', pt: 'de barco', es: 'de barco / en barco', en: 'by boat', note: '✅ similar' },
-    { id: 'tr05', pt: 'de cruzeiro', es: 'en crucero', en: 'by cruise', note: 'similar' },
-    { id: 'tr06', pt: 'América do Sul', es: 'Sudamérica / América del Sur', en: 'South America', note: 'similar' },
+    { id: 'tr01', pt: 'dar a volta ao mundo', es: 'dar la vuelta al mundo', en: 'go around the world', note: '✅ identical idiom', example: { pt: 'Sempre sonhei em dar a volta ao mundo.', es: 'Siempre soñé con dar la vuelta al mundo.', en: 'I always dreamed of going around the world.' } },
+    { id: 'tr02', pt: 'sem pegar avião', es: 'sin tomar avión', en: 'without flying', note: '✅ similar', example: { pt: 'Tô tentando viajar sem pegar avião.', es: 'Estoy intentando viajar sin tomar avión.', en: "I'm trying to travel without flying." } },
+    { id: 'tr03', pt: 'por terra', es: 'por tierra', en: 'by land', note: '✅ similar', example: { pt: 'É mais barato ir por terra.', es: 'Es más barato ir por tierra.', en: "It's cheaper to go by land." } },
+    { id: 'tr04', pt: 'de barco', es: 'de barco / en barco', en: 'by boat', note: '✅ similar', example: { pt: 'Adoro viajar de barco.', es: 'Adoro viajar en barco.', en: 'I love traveling by boat.' } },
+    { id: 'tr05', pt: 'de cruzeiro', es: 'en crucero', en: 'by cruise', note: 'similar', example: { pt: 'Atravessei o Pacífico de cruzeiro.', es: 'Crucé el Pacífico en crucero.', en: 'I crossed the Pacific by cruise.' } },
+    { id: 'tr06', pt: 'América do Sul', es: 'Sudamérica / América del Sur', en: 'South America', note: 'similar', example: { pt: 'A América do Sul é incrível.', es: 'Sudamérica es increíble.', en: 'South America is incredible.' } },
   ],
   '🌟 Praise expressions': [
-    { id: 'p01', pt: 'Tô amando!', es: '¡Me encanta!', en: "I'm loving it!", note: 'pt: "Tô" = "Estou" colloquial', example: { pt: 'Tô amando o Brasil!', es: '¡Me encanta Brasil!', en: "I'm loving Brazil!" } },
-    { id: 'p02', pt: 'É maravilhoso', es: 'Es maravilloso', en: "It's wonderful", note: '✅ similar', example: { pt: 'O Brasil é maravilhoso.', es: 'Brasil es maravilloso.', en: 'Brazil is wonderful.' } },
-    { id: 'p03', pt: 'É incrível', es: 'Es increíble', en: "It's amazing", note: '✅ similar', example: { pt: 'A comida é incrível.', es: 'La comida es increíble.', en: 'The food is amazing.' } },
-    { id: 'p04', pt: 'são acolhedoras', es: 'son acogedoras', en: 'are welcoming', note: '✅ similar (feminine plural for "as pessoas")', example: { pt: 'As pessoas são acolhedoras.', es: 'Las personas son acogedoras.', en: 'The people are welcoming.' } },
-    { id: 'p05', pt: 'tem uma vibração única', es: 'tiene una vibra única', en: 'has a unique vibe', note: 'pt: "vibração"; es: "vibra"', example: { pt: 'As cidades têm uma vibração única.', es: 'Las ciudades tienen una vibra única.', en: 'The cities have a unique vibe.' } },
-    { id: 'p06', pt: 'é espetacular', es: 'es espectacular', en: 'is spectacular', note: '✅ similar', example: { pt: 'A natureza é espetacular.', es: 'La naturaleza es espectacular.', en: 'Nature is spectacular.' } },
-    { id: 'p07', pt: 'me surpreende', es: 'me sorprende', en: 'surprises me', note: '✅ similar', example: { pt: 'Tudo aqui me surpreende.', es: 'Todo aquí me sorprende.', en: 'Everything here surprises me.' } },
-    { id: 'p08', pt: 'o calor das pessoas', es: 'el calor de la gente', en: 'the warmth of people', note: 'BR cultural value (warmth, hospitality)', example: { pt: 'Adoro o calor das pessoas.', es: 'Adoro el calor de la gente.', en: 'I love the warmth of people.' } },
+    { id: 'p01', pt: 'Tô amando!', es: '¡Me encanta!', en: "I'm loving it!", note: 'pt: "Tô" = "Estou" colloquial', example: { pt: 'Tô amando essa praia!', es: '¡Me encanta esta playa!', en: "I'm loving this beach!" } },
+    { id: 'p02', pt: 'É maravilhoso', es: 'Es maravilloso', en: "It's wonderful", note: '✅ similar', example: { pt: 'O pôr do sol aqui é maravilhoso.', es: 'El atardecer aquí es maravilloso.', en: 'The sunset here is wonderful.' } },
+    { id: 'p03', pt: 'É incrível', es: 'Es increíble', en: "It's amazing", note: '✅ similar', example: { pt: 'A vista é incrível.', es: 'La vista es increíble.', en: 'The view is incredible.' } },
+    { id: 'p04', pt: 'são acolhedoras', es: 'son acogedoras', en: 'are welcoming', note: '✅ similar (feminine plural for "as pessoas")', example: { pt: 'As famílias aqui são acolhedoras.', es: 'Las familias aquí son acogedoras.', en: 'The families here are welcoming.' } },
+    { id: 'p05', pt: 'tem uma vibração única', es: 'tiene una vibra única', en: 'has a unique vibe', note: 'pt: "vibração"; es: "vibra"', example: { pt: 'Salvador tem uma vibração única.', es: 'Salvador tiene una vibra única.', en: 'Salvador has a unique vibe.' } },
+    { id: 'p06', pt: 'é espetacular', es: 'es espectacular', en: 'is spectacular', note: '✅ similar', example: { pt: 'A música ao vivo é espetacular.', es: 'La música en vivo es espectacular.', en: 'The live music is spectacular.' } },
+    { id: 'p07', pt: 'me surpreende', es: 'me sorprende', en: 'surprises me', note: '✅ similar', example: { pt: 'A hospitalidade me surpreende todo dia.', es: 'La hospitalidad me sorprende cada día.', en: 'The hospitality surprises me every day.' } },
+    { id: 'p08', pt: 'o calor das pessoas', es: 'el calor de la gente', en: 'the warmth of people', note: 'BR cultural value (warmth, hospitality)', example: { pt: 'O calor das pessoas é o que mais gosto aqui.', es: 'El calor de la gente es lo que más me gusta aquí.', en: 'The warmth of people is what I like most here.' } },
   ],
   '📱 Social media': [
-    { id: 'sm01', pt: 'Instagram', es: 'Instagram', en: 'Instagram', note: '✅ identical' },
-    { id: 'sm02', pt: 'TikTok', es: 'TikTok', en: 'TikTok', note: '✅ identical' },
-    { id: 'sm03', pt: 'YouTube', es: 'YouTube', en: 'YouTube', note: '✅ identical' },
-    { id: 'sm04', pt: 'te seguir', es: 'seguirte', en: 'follow you', note: 'pt: te + seguir; es: seguir + te', example: { pt: 'Quero te seguir.', es: 'Quiero seguirte.', en: 'I want to follow you.' } },
-    { id: 'sm05', pt: 'te passar', es: 'pasarte', en: 'give it to you', note: 'pt: te passo / te dou; es: te lo paso', example: { pt: 'Posso te passar.', es: 'Te lo paso.', en: 'I can give it to you.' } },
+    { id: 'sm01', pt: 'Instagram', es: 'Instagram', en: 'Instagram', note: '✅ identical', example: { pt: 'Me adiciona no Instagram?', es: '¿Me agregas en Instagram?', en: 'Add me on Instagram?' } },
+    { id: 'sm02', pt: 'TikTok', es: 'TikTok', en: 'TikTok', note: '✅ identical', example: { pt: 'Eu não uso TikTok.', es: 'Yo no uso TikTok.', en: "I don't use TikTok." } },
+    { id: 'sm03', pt: 'YouTube', es: 'YouTube', en: 'YouTube', note: '✅ identical', example: { pt: 'Assisto YouTube todo dia.', es: 'Veo YouTube todos los días.', en: 'I watch YouTube every day.' } },
+    { id: 'sm04', pt: 'te seguir', es: 'seguirte', en: 'follow you', note: 'pt: te + seguir; es: seguir + te', example: { pt: 'Já comecei a te seguir.', es: 'Ya empecé a seguirte.', en: 'I already started following you.' } },
+    { id: 'sm05', pt: 'te passar', es: 'pasarte', en: 'give it to you', note: 'pt: te passo / te dou; es: te lo paso', example: { pt: 'Te passo meu número também.', es: 'Te paso mi número también.', en: "I'll give you my number too." } },
   ],
   '🎉 BR Exclamations': [
-    { id: 'e01', pt: 'Que demais!', es: '¡Qué genial!', en: 'How awesome!', note: 'BR informal enthusiasm' },
-    { id: 'e02', pt: 'Uau!', es: '¡Guau!', en: 'Wow!', note: '✅ similar' },
-    { id: 'e03', pt: 'Nossa!', es: '¡Wow! / ¡Guau!', en: 'Wow!', note: '🇧🇷 main BR exclamation (from "Nossa Senhora")' },
-    { id: 'e04', pt: 'Que sonho!', es: '¡Qué sueño!', en: 'What a dream!', note: '✅ similar' },
-    { id: 'e05', pt: 'Que bom!', es: '¡Qué bueno!', en: 'How nice!', note: '✅ similar' },
-    { id: 'e06', pt: 'Que jornada incrível!', es: '¡Qué viaje increíble!', en: 'What an incredible journey!', note: 'similar' },
+    { id: 'e01', pt: 'Que demais!', es: '¡Qué genial!', en: 'How awesome!', note: 'BR informal enthusiasm', example: { pt: 'Que demais essa festa!', es: '¡Qué genial esta fiesta!', en: 'This party is awesome!' } },
+    { id: 'e02', pt: 'Uau!', es: '¡Guau!', en: 'Wow!', note: '✅ similar', example: { pt: 'Uau, que praia linda!', es: '¡Guau, qué playa linda!', en: 'Wow, what a beautiful beach!' } },
+    { id: 'e03', pt: 'Nossa!', es: '¡Wow! / ¡Guau!', en: 'Wow!', note: '🇧🇷 main BR exclamation (from "Nossa Senhora")', example: { pt: 'Nossa, que calor!', es: '¡Wow, qué calor!', en: "Wow, it's so hot!" } },
+    { id: 'e04', pt: 'Que sonho!', es: '¡Qué sueño!', en: 'What a dream!', note: '✅ similar', example: { pt: 'Que sonho morar aqui!', es: '¡Qué sueño vivir aquí!', en: 'What a dream to live here!' } },
+    { id: 'e05', pt: 'Que bom!', es: '¡Qué bueno!', en: 'How nice!', note: '✅ similar', example: { pt: 'Que bom te conhecer!', es: '¡Qué bueno conocerte!', en: 'So nice to meet you!' } },
+    { id: 'e06', pt: 'Que jornada incrível!', es: '¡Qué viaje increíble!', en: 'What an incredible journey!', note: 'similar', example: { pt: 'Que jornada incrível você teve!', es: '¡Qué viaje increíble tuviste!', en: 'What an incredible journey you had!' } },
   ],
 };
 
@@ -971,7 +981,8 @@ function renderVocabCard(item, lessonId, opts = {}) {
   }
   if (item.example) {
     const exBlock = el('div', { class: 'vocab-example' });
-    exBlock.appendChild(el('div', { class: 'example-label' }, 'Example'));
+    const exLabel = item.answer ? 'Question' : 'Example';
+    exBlock.appendChild(el('div', { class: 'example-label' }, exLabel));
     for (const lang of ['pt', 'es', 'en']) {
       const text = item.example[lang];
       if (!text) continue;
@@ -988,6 +999,26 @@ function renderVocabCard(item, lessonId, opts = {}) {
       exBlock.appendChild(row);
     }
     card.appendChild(exBlock);
+  }
+  if (item.answer) {
+    const ansBlock = el('div', { class: 'vocab-example vocab-answer' });
+    ansBlock.appendChild(el('div', { class: 'example-label' }, 'Reply'));
+    for (const lang of ['pt', 'es', 'en']) {
+      const text = item.answer[lang];
+      if (!text) continue;
+      const row = el('div', { class: `lang-row lang-${lang}` });
+      row.appendChild(el('span', { class: 'lang-label' }, lang));
+      row.appendChild(el('span', { class: 'lang-text' }, text));
+      if (lang !== 'en' && item.id) {
+        const src = `${audioBase}/${item.id}-ans-${lang}.mp3`;
+        row.appendChild(el('button', {
+          class: 'play-btn play-btn-sm',
+          onClick: () => playAudio(src),
+        }, '▶'));
+      }
+      ansBlock.appendChild(row);
+    }
+    card.appendChild(ansBlock);
   }
   if (opts.showFrom && item._lessonId) {
     const lessonTitle = LESSONS.find(l => l.id === item._lessonId)?.title || item._lessonId;
