@@ -328,9 +328,9 @@ a { color: inherit; text-decoration: none; }
 /* Vocab quick-nav chips (sticky below topbar) */
 .vocab-nav {
   position: sticky;
-  top: calc(env(safe-area-inset-top, 0px) + 4.5rem);
+  top: calc(env(safe-area-inset-top, 0px) + 8.2rem);
   background: var(--bg);
-  z-index: 5;
+  z-index: 8;
   display: flex;
   gap: 0.4rem;
   padding: 0.55rem 1rem;

@@ -582,7 +582,7 @@ const INTRO_VOCAB = {
     { id: 't05', pt: 'mais dois meses', es: 'dos meses más', en: '2 more months', note: 'pt: mais X tempo; es: X tempo más', example: { pt: 'Preciso de mais dois meses pra terminar.', es: 'Necesito dos meses más para terminar.', en: 'I need 2 more months to finish.' } },
   ],
   '🙋 Self description': [
-    { id: 's01', pt: 'Sou de ___', es: 'Soy de ___', en: "I'm from ___", note: '✅ identical structure', example: { pt: 'Sou de uma cidade pequena no norte de Taiwan.', es: 'Soy de una ciudad pequeña en el norte de Taiwán.', en: "I'm from a small city in northern Taiwan." } },
+    { id: 's01', pt: 'Sou de ___', es: 'Soy de ___', en: "I'm from ___", note: '✅ identical structure', example: { pt: 'Sou da capital, Taipei.', es: 'Soy de la capital, Taipéi.', en: "I'm from the capital, Taipei." } },
     { id: 's02', pt: 'Sou formada em ___', es: 'Soy licenciada en ___', en: 'I have a degree in ___', note: '⚠️ different; pt "formada/formado" agrees with gender', example: { pt: 'Minha mãe é formada em Direito.', es: 'Mi madre es licenciada en Derecho.', en: 'My mom has a law degree.' } },
     { id: 's03', pt: 'Sou solteira / casada', es: 'Soy soltera / casada', en: "I'm single / married", note: '✅ identical; feminine agreement for Phoenix', example: { pt: 'Ainda sou solteira e tô feliz assim.', es: 'Aún soy soltera y estoy feliz así.', en: "I'm still single and happy that way." } },
     { id: 's04', pt: 'Tenho ___ anos', es: 'Tengo ___ años', en: "I'm ___ years old", note: '✅ identical', example: { pt: 'Meu irmão tem só vinte e seis anos.', es: 'Mi hermano tiene solo veintiséis años.', en: 'My brother is only 26.' } },
