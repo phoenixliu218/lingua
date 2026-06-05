@@ -27,7 +27,7 @@ const LESSONS = [
   { id: 'feira', icon: '🛒', title: 'Feira', desc: 'Open-air market' },
   { id: 'intro', icon: '👋', title: 'Self intro', desc: 'Introducing yourself' },
   { id: 'cafe', icon: '☕', title: 'Café', desc: 'Coffee shop', status: 'Coming soon' },
-  { id: 'carona', icon: '🚗', title: 'Hitchhiking', desc: 'Catching a ride (carona)', status: 'Coming soon' },
+  { id: 'carona', icon: '🚗', title: 'Hitchhiking', desc: 'Catching a ride (carona)' },
   { id: 'friend', icon: '🏡', title: "Friend's home", desc: 'Visiting a local friend', status: 'Coming soon' },
 ];
 
@@ -771,7 +771,273 @@ const INTRO_PRACTICE = [
   },
 ];
 
-const LESSON_VOCAB_DATA = { feira: FEIRA_VOCAB, intro: INTRO_VOCAB };
+const CARONA_DIALOG = [
+  { line: 1, speaker: 'phoenix', pt: 'Oi, com licença. Posso te perguntar uma coisa?', es: 'Hola, con permiso. ¿Puedo preguntarte algo?', en: 'Hi, excuse me. Can I ask you something?', note: '🇧🇷 "com licença" softens approaching a stranger' },
+  { line: 2, speaker: 'driver', pt: 'Claro, pode falar.', es: 'Claro, dime.', en: 'Sure, go ahead.', note: null },
+  { line: 3, speaker: 'phoenix', pt: 'Pra onde você está indo?', es: '¿A dónde vas?', en: 'Where are you headed?', note: '🇧🇷 "pra onde" = direction; casual BR' },
+  { line: 4, speaker: 'driver', pt: 'Tô indo pro sul. Vou parar em Foz amanhã.', es: 'Voy al sur. Paro en Foz mañana.', en: "I'm going south. Stopping in Foz tomorrow.", note: '🇧🇷 "Tô" = Estou' },
+  { line: 5, speaker: 'phoenix', pt: 'Que bom! Tô tentando chegar no sul também. Você daria uma carona pra mim?', es: '¡Qué bien! Estoy intentando llegar al sur también. ¿Me llevarías?', en: "Great! I'm trying to get south too. Would you give me a ride?", note: '"daria" = conditional polite' },
+  { line: 6, speaker: 'driver', pt: 'Sozinha? Você é estrangeira, né?', es: '¿Sola? Eres extranjera, ¿no?', en: 'Alone? You\'re a foreigner, right?', note: '🇧🇷 "né?" = right? (tag question)' },
+  { line: 7, speaker: 'phoenix', pt: 'Sou de Taiwan. Tô viajando o continente sem pegar avião.', es: 'Soy de Taiwán. Estoy viajando el continente sin tomar avión.', en: "I'm from Taiwan. I'm traveling the continent without flying.", note: null },
+  { line: 8, speaker: 'driver', pt: 'Caraca, que doidera! Mas é arriscado pegar carona sozinha, viu.', es: '¡Caramba, qué locura! Pero es arriesgado hacer dedo sola, sabes.', en: "Wow, that's wild! But hitchhiking alone is risky, you know.", note: '🇧🇷 "Caraca!" = wow; "doidera" = craziness (positive); "viu" = you know' },
+  { line: 9, speaker: 'phoenix', pt: 'Eu sei. Por isso prefiro pedir em posto, ver a pessoa antes.', es: 'Lo sé. Por eso prefiero pedir en gasolineras, ver a la persona antes.', en: "I know. That's why I prefer asking at gas stations, seeing the person first.", note: '🇧🇷 "posto" = gas station/rest stop' },
+  { line: 10, speaker: 'driver', pt: 'Boa, esse é o jeito certo. Beleza, te levo.', es: 'Bien, esa es la forma correcta. Listo, te llevo.', en: "Good, that's the right way. Cool, I'll take you.", note: '🇧🇷 "Beleza" = cool/OK' },
+  { line: 11, speaker: 'phoenix', pt: 'Muito obrigada mesmo! Você vai sozinho?', es: '¡Muchísimas gracias! ¿Vas solo?', en: 'Thank you so much! Are you going alone?', note: '"mesmo" intensifies thanks' },
+  { line: 12, speaker: 'driver', pt: 'Sozinho. Trabalho assim há vinte anos.', es: 'Solo. Trabajo así desde hace veinte años.', en: "Alone. I've been working like this for 20 years.", note: '🇧🇷 "há + tempo" = for (duration)' },
+  { line: 13, speaker: 'phoenix', pt: 'Quanto tempo de viagem até Foz?', es: '¿Cuánto tiempo de viaje hasta Foz?', en: 'How long is the trip to Foz?', note: null },
+  { line: 14, speaker: 'driver', pt: 'Umas dez horas. A gente dorme em algum posto no meio do caminho.', es: 'Unas diez horas. Dormimos en alguna gasolinera en el medio del camino.', en: 'About 10 hours. We sleep at some gas station along the way.', note: '🇧🇷 "a gente" = we (informal)' },
+  { line: 15, speaker: 'phoenix', pt: 'Tudo bem. Eu durmo no banco mesmo, sem problema.', es: 'Está bien. Yo duermo en el asiento, sin problema.', en: "OK. I'll sleep in the seat, no problem.", note: null },
+  { line: 16, speaker: 'driver', pt: 'Tranquilo. Vai com cuidado, viu. Pega sua mochila.', es: 'Tranquila. Ten cuidado, sabes. Trae tu mochila.', en: 'Cool. Be careful, you know. Grab your backpack.', note: '🇧🇷 "Tranquilo/a" = chill (gender agrees with addressee)' },
+  { line: 17, speaker: 'phoenix', pt: 'Posso te pagar o jantar? Como forma de agradecer.', es: '¿Puedo invitarte la cena? Como agradecimiento.', en: 'Can I pay for your dinner? As a thank you.', note: null },
+  { line: 18, speaker: 'driver', pt: 'Imagina, não precisa. Mas obrigado pela intenção.', es: 'Tranquila, no hace falta. Pero gracias por la intención.', en: "Don't worry, no need. But thanks for the gesture.", note: '🇧🇷 "Imagina!" = of course not / no need' },
+  { line: 19, speaker: 'phoenix', pt: 'E pra ajudar na gasolina? Eu insisto.', es: '¿Y para ayudar con la gasolina? Insisto.', en: 'And to help with the gas? I insist.', note: null },
+  { line: 20, speaker: 'driver', pt: 'Não, fica tranquila. Só me conta a sua história, isso já é o suficiente.', es: 'No, tranquila. Solo cuéntame tu historia, eso ya es suficiente.', en: "No, relax. Just tell me your story, that's enough.", note: null },
+  { line: 21, speaker: 'phoenix', pt: 'Então tá. Tenho uma rota inteira pra contar.', es: 'Está bien entonces. Tengo toda una ruta para contar.', en: "OK then. I've got a whole route to tell about.", note: null },
+  { line: 22, speaker: 'driver', pt: 'Boa! Bora então. A gente conversa na estrada.', es: '¡Bien! Vamos entonces. Charlamos en el camino.', en: 'Good! Let\'s go then. We\'ll chat on the road.', note: '🇧🇷 "Bora" = vamos embora (let\'s go); contracted' },
+  { line: 23, speaker: 'phoenix', pt: 'Bora!', es: '¡Vamos!', en: "Let's go!", note: null },
+  { line: 24, speaker: 'phoenix', pt: 'Aqui já tá bom, posso descer. Valeu demais mesmo!', es: 'Aquí ya está bien, puedo bajar. ¡Muchísimas gracias!', en: 'Here is fine, I can get off. Thanks so much!', note: '🇧🇷 "Valeu" = thanks (casual)' },
+  { line: 25, speaker: 'driver', pt: 'Por nada. Boa sorte na sua viagem, viu!', es: 'De nada. ¡Buena suerte en tu viaje!', en: 'No problem. Good luck on your trip!', note: null },
+];
+
+const CARONA_VOCAB = {
+  '🚛 Hitchhiking verbs': [
+    { id: 'v01', pt: 'pegar carona', es: 'hacer dedo / pedir aventón', en: 'to hitchhike', note: '⚠️ very different; BR: pegar carona = take a ride', example: { pt: 'Peguei carona até Foz.', es: 'Hice dedo hasta Foz.', en: 'I hitchhiked to Foz.' } },
+    { id: 'v02', pt: 'dar carona', es: 'llevar / dar un aventón', en: 'to give a ride', note: '✅ similar', example: { pt: 'Você dá carona pra mim?', es: '¿Me llevas?', en: 'Will you give me a ride?' } },
+    { id: 'v03', pt: 'parar', es: 'parar', en: 'to stop', note: '✅ identical', example: { pt: 'Vou parar no próximo posto.', es: 'Voy a parar en la próxima gasolinera.', en: "I'll stop at the next gas station." } },
+    { id: 'v04', pt: 'descer', es: 'bajar(se)', en: 'to get off / down', note: '⚠️ different', example: { pt: 'Posso descer aqui.', es: 'Puedo bajarme aquí.', en: 'I can get off here.' } },
+    { id: 'v05', pt: 'subir', es: 'subir(se)', en: 'to get on / up', note: 'similar', example: { pt: 'Sobe aí, vamos!', es: '¡Súbete, vamos!', en: 'Get in, let\'s go!' } },
+    { id: 'v06', pt: 'levar', es: 'llevar', en: 'to take/carry someone', note: '✅ similar', example: { pt: 'Te levo até Foz.', es: 'Te llevo hasta Foz.', en: "I'll take you to Foz." } },
+    { id: 'v07', pt: 'pagar', es: 'pagar / invitar', en: 'to pay (for someone)', note: 'BR: pagar o jantar pra alguém = treat someone', example: { pt: 'Posso te pagar o jantar?', es: '¿Puedo invitarte la cena?', en: 'Can I pay for your dinner?' } },
+    { id: 'v08', pt: 'contar (uma história)', es: 'contar (una historia)', en: 'to tell (a story)', note: '✅ identical', example: { pt: 'Me conta a sua história.', es: 'Cuéntame tu historia.', en: 'Tell me your story.' } },
+  ],
+  '❓ Question words & phrases': [
+    { id: 'q01', pt: 'Pra onde', es: 'A dónde', en: 'Where to', note: '🇧🇷 BR casual; formal = aonde',
+      example: { pt: 'Pra onde você está indo?', es: '¿A dónde vas?', en: 'Where are you headed?' },
+      answer:  { pt: 'Tô indo pro sul, vou parar em Foz.', es: 'Voy al sur, paro en Foz.', en: "I'm going south, stopping in Foz." } },
+    { id: 'q02', pt: 'Posso te perguntar', es: 'Puedo preguntarte', en: 'Can I ask you', note: 'polite opener',
+      example: { pt: 'Posso te perguntar uma coisa?', es: '¿Puedo preguntarte algo?', en: 'Can I ask you something?' },
+      answer:  { pt: 'Claro, pode falar.', es: 'Claro, dime.', en: 'Sure, go ahead.' } },
+    { id: 'q03', pt: 'Quanto tempo de viagem', es: 'Cuánto tiempo de viaje', en: 'How long is the trip', note: '✅ similar',
+      example: { pt: 'Quanto tempo de viagem até Foz?', es: '¿Cuánto tiempo de viaje hasta Foz?', en: 'How long is the trip to Foz?' },
+      answer:  { pt: 'Umas dez horas.', es: 'Unas diez horas.', en: 'About 10 hours.' } },
+    { id: 'q04', pt: 'Você vai sozinho?', es: '¿Vas solo?', en: 'Are you going alone?', note: 'safety-check question',
+      example: { pt: 'Você vai sozinho?', es: '¿Vas solo?', en: 'Are you going alone?' },
+      answer:  { pt: 'Sozinho, sim. Trabalho assim há anos.', es: 'Solo, sí. Trabajo así desde hace años.', en: "Yes, alone. I've worked like this for years." } },
+    { id: 'q05', pt: 'Você daria uma carona?', es: '¿Me llevarías?', en: 'Would you give a ride?', note: 'conditional polite',
+      example: { pt: 'Você daria uma carona pra mim?', es: '¿Me llevarías?', en: 'Would you give me a ride?' },
+      answer:  { pt: 'Beleza, te levo.', es: 'Listo, te llevo.', en: "Cool, I'll take you." } },
+  ],
+  '📍 Places & directions': [
+    { id: 'pl01', pt: 'estrada', es: 'carretera', en: 'road', note: '⚠️ different', example: { pt: 'A gente conversa na estrada.', es: 'Charlamos en la carretera.', en: "We'll chat on the road." } },
+    { id: 'pl02', pt: 'rodovia', es: 'autopista', en: 'highway', note: '⚠️ different', example: { pt: 'A rodovia tá tranquila hoje.', es: 'La autopista está tranquila hoy.', en: 'The highway is quiet today.' } },
+    { id: 'pl03', pt: 'posto', es: 'gasolinera', en: 'gas station / rest stop', note: '⚠️ different; BR posto = 24h social hub', example: { pt: 'Vou parar no próximo posto.', es: 'Voy a parar en la próxima gasolinera.', en: "I'll stop at the next station." } },
+    { id: 'pl04', pt: 'pedágio', es: 'peaje', en: 'toll', note: '⚠️ different', example: { pt: 'O pedágio aqui é caro.', es: 'El peaje aquí es caro.', en: 'The toll here is expensive.' } },
+    { id: 'pl05', pt: 'caminho', es: 'camino', en: 'way / path', note: '✅ similar', example: { pt: 'No meio do caminho a gente dorme.', es: 'En el medio del camino dormimos.', en: 'In the middle of the way we sleep.' } },
+    { id: 'pl06', pt: 'pro sul / pro norte', es: 'al sur / al norte', en: 'south / north (direction)', note: 'pt "pro" = "para o"', example: { pt: 'Tô indo pro sul.', es: 'Voy al sur.', en: "I'm going south." } },
+    { id: 'pl07', pt: 'até ___', es: 'hasta ___', en: 'until / up to ___', note: '✅ similar', example: { pt: 'Te levo até Foz.', es: 'Te llevo hasta Foz.', en: "I'll take you to Foz." } },
+  ],
+  '🛡️ Safety check': [
+    { id: 'sf01', pt: 'Onde você vai parar?', es: '¿Dónde vas a parar?', en: 'Where are you going to stop?', note: null, example: { pt: 'Onde você vai parar pra dormir?', es: '¿Dónde vas a parar para dormir?', en: 'Where will you stop to sleep?' } },
+    { id: 'sf02', pt: 'Tem mais alguém no carro?', es: '¿Hay alguien más en el carro?', en: 'Is there anyone else in the car?', note: 'critical safety check', example: { pt: 'Tem mais alguém no carro?', es: '¿Hay alguien más en el carro?', en: 'Anyone else in the car?' } },
+    { id: 'sf03', pt: 'Me deixa em ___', es: 'Déjame en ___', en: 'Drop me at ___', note: '⚠️ different verb', example: { pt: 'Me deixa no próximo posto.', es: 'Déjame en la próxima gasolinera.', en: 'Drop me at the next station.' } },
+    { id: 'sf04', pt: 'Eu desço em ___', es: 'Yo bajo en ___', en: 'I get off at ___', note: null, example: { pt: 'Eu desço em Foz.', es: 'Yo bajo en Foz.', en: 'I get off in Foz.' } },
+    { id: 'sf05', pt: 'Posso descer aqui?', es: '¿Puedo bajarme aquí?', en: 'Can I get off here?', note: 'asking permission to stop', example: { pt: 'Posso descer aqui, por favor?', es: '¿Puedo bajarme aquí, por favor?', en: 'Can I get off here, please?' } },
+  ],
+  '🙏 Gratitude': [
+    { id: 'g01', pt: 'Muito obrigada mesmo', es: 'Muchísimas gracias', en: 'Thank you so much', note: '"mesmo" intensifies (sincerely)', example: { pt: 'Muito obrigada mesmo pela carona!', es: '¡Muchísimas gracias por el aventón!', en: 'Thanks so much for the ride!' } },
+    { id: 'g02', pt: 'Valeu demais!', es: '¡Muchas gracias!', en: 'Thanks a lot!', note: '🇧🇷 BR casual; very common', example: { pt: 'Valeu demais mesmo!', es: '¡Mil gracias!', en: 'Thanks a million!' } },
+    { id: 'g03', pt: 'Imagina!', es: '¡Tranquila! / ¡Para nada!', en: 'Of course not! / No need!', note: '🇧🇷 deflects thanks/offers', example: { pt: 'Imagina, não precisa pagar.', es: 'Tranquila, no hace falta pagar.', en: "No need, don't pay." } },
+    { id: 'g04', pt: 'Por nada', es: 'De nada', en: "You're welcome", note: '⚠️ different', example: { pt: 'Por nada, boa viagem!', es: '¡De nada, buen viaje!', en: 'No problem, safe travels!' } },
+    { id: 'g05', pt: 'Posso te pagar ___?', es: '¿Puedo invitarte ___?', en: 'Can I pay for your ___?', note: 'reciprocity gesture', example: { pt: 'Posso te pagar o jantar?', es: '¿Puedo invitarte la cena?', en: 'Can I buy your dinner?' } },
+    { id: 'g06', pt: 'ajudar na gasolina', es: 'ayudar con la gasolina', en: 'help with gas', note: 'offering to contribute', example: { pt: 'Posso ajudar na gasolina?', es: '¿Puedo ayudar con la gasolina?', en: 'Can I help with gas?' } },
+  ],
+  '💬 Small talk': [
+    { id: 'st01', pt: 'há quanto tempo', es: 'desde hace cuánto tiempo', en: 'for how long', note: '⚠️ different; BR uses "há" + duration', example: { pt: 'Há quanto tempo você faz isso?', es: '¿Desde hace cuánto haces esto?', en: 'How long have you been doing this?' } },
+    { id: 'st02', pt: 'Trabalho assim há ___ anos', es: 'Trabajo así desde hace ___ años', en: "I've worked like this for ___ years", note: 'ongoing past', example: { pt: 'Trabalho assim há vinte anos.', es: 'Trabajo así desde hace veinte años.', en: "I've been working like this for 20 years." } },
+    { id: 'st03', pt: 'Conta sua história', es: 'Cuéntame tu historia', en: 'Tell me your story', note: 'common BR road conversation prompt', example: { pt: 'Me conta a sua história.', es: 'Cuéntame tu historia.', en: 'Tell me your story.' } },
+    { id: 'st04', pt: 'pegar a estrada', es: 'agarrar el camino', en: 'hit the road', note: 'idiom', example: { pt: 'Bora pegar a estrada!', es: '¡Vamos a agarrar el camino!', en: "Let's hit the road!" } },
+    { id: 'st05', pt: 'A gente conversa', es: 'Charlamos / Conversamos', en: "We'll chat", note: '🇧🇷 "a gente" = nós (informal)', example: { pt: 'A gente conversa na estrada.', es: 'Charlamos en el camino.', en: "We'll chat on the road." } },
+  ],
+  '🇧🇷 BR colloquialisms': [
+    { id: 'br01', pt: 'Caraca!', es: '¡Caramba! / ¡Wow!', en: 'Wow! / Damn!', note: '🇧🇷 reaction; safe in any company', example: { pt: 'Caraca, que doidera!', es: '¡Caramba, qué locura!', en: 'Wow, that\'s wild!' } },
+    { id: 'br02', pt: 'doidera', es: 'locura', en: 'craziness (positive)', note: '🇧🇷 BR slang; admiration', example: { pt: 'Sua viagem é uma doidera!', es: '¡Tu viaje es una locura!', en: 'Your trip is wild!' } },
+    { id: 'br03', pt: 'Tranquilo / Tranquila', es: 'Tranquilo / Tranquila', en: 'Chill / All good', note: '✅ similar; gender agrees with addressee', example: { pt: 'Fica tranquila, eu cuido.', es: 'Tranquila, yo me ocupo.', en: 'Relax, I got it.' } },
+    { id: 'br04', pt: 'Beleza!', es: '¡Listo! / ¡Bien!', en: 'Cool! / OK!', note: '🇧🇷 BR everyday agreement', example: { pt: 'Beleza, te levo.', es: 'Listo, te llevo.', en: "Cool, I'll take you." } },
+    { id: 'br05', pt: 'né?', es: '¿no?', en: 'right? (tag)', note: '🇧🇷 ubiquitous tag question', example: { pt: 'Você é estrangeira, né?', es: 'Eres extranjera, ¿no?', en: 'You\'re a foreigner, right?' } },
+    { id: 'br06', pt: 'viu', es: 'sabes / oíste', en: 'you know / hear me', note: '🇧🇷 sentence-end softener', example: { pt: 'Vai com cuidado, viu.', es: 'Ten cuidado, sabes.', en: 'Be careful, you know.' } },
+    { id: 'br07', pt: 'Bora!', es: '¡Vamos!', en: "Let's go!", note: '🇧🇷 contracted "vamos embora"', example: { pt: 'Bora pegar a estrada!', es: '¡Vamos a agarrar el camino!', en: "Let's hit the road!" } },
+  ],
+  '⚠️ Saying no politely': [
+    { id: 'no01', pt: 'Prefiro não', es: 'Prefiero no', en: "I'd rather not", note: '✅ similar; soft refusal', example: { pt: 'Prefiro não, obrigada.', es: 'Prefiero no, gracias.', en: "I'd rather not, thanks." } },
+    { id: 'no02', pt: 'Acho que vou esperar outro', es: 'Creo que voy a esperar a otro', en: "I think I'll wait for another", note: 'face-saving refusal', example: { pt: 'Acho que vou esperar outro, obrigada.', es: 'Creo que voy a esperar a otro, gracias.', en: "I'll wait for another, thanks." } },
+    { id: 'no03', pt: 'Melhor outra hora', es: 'Mejor en otro momento', en: 'Better some other time', note: '✅ similar', example: { pt: 'Melhor outra hora, valeu.', es: 'Mejor en otro momento, gracias.', en: 'Some other time, thanks.' } },
+    { id: 'no04', pt: 'Brigada, mas não dá', es: 'Gracias, pero no puedo', en: "Thanks, but I can't", note: '🇧🇷 "brigada" = obrigada shortened', example: { pt: 'Brigada, mas não dá hoje.', es: 'Gracias, pero hoy no puedo.', en: "Thanks, but I can't today." } },
+  ],
+};
+
+const CARONA_GRAMMAR = [
+  {
+    title: '1. "Pra onde" vs "Aonde" vs "Onde"',
+    table: {
+      headers: ['Use', 'pt', 'es'],
+      rows: [
+        ['Direction (BR casual)', 'Pra onde você vai?', '¿A dónde vas?'],
+        ['Direction (formal)', 'Aonde você vai?', '¿Adónde vas?'],
+        ['Location (no movement)', 'Onde você mora?', '¿Dónde vives?'],
+      ],
+    },
+    body: '**Pra onde** = where to (BR everyday, with motion)\n**Aonde** = where to (more formal, same meaning)\n**Onde** = where (location, no movement)',
+    callout: '🇧🇷 In BR you\'ll hear "pra onde" 90% of the time. ES distinguishes ¿adónde? (motion) vs ¿dónde? (location) similarly.',
+  },
+  {
+    title: '2. Friendly imperative vs polite ask',
+    table: {
+      headers: ['Form', 'pt', 'es', 'feel'],
+      rows: [
+        ['Direct imperative', 'Me leva até Foz.', 'Llévame hasta Foz.', 'casual/friendly'],
+        ['Polite request', 'Você pode me levar até Foz?', '¿Me puedes llevar hasta Foz?', 'neutral'],
+        ['Conditional (most polite)', 'Você daria uma carona pra mim?', '¿Me llevarías?', 'formal/strangers'],
+        ['Asking permission', 'Posso descer aqui?', '¿Puedo bajarme aquí?', 'inside the car'],
+      ],
+    },
+    body: 'For first contact with a stranger, use **conditional "daria"**. Once accepted and inside, **"Posso descer aqui?"** for asking to stop.',
+    callout: '⚠️ Direct imperative "Me leva" sounds normal to friends but bossy to a stranger you just met.',
+  },
+  {
+    title: '3. "há + duration" for ongoing past',
+    table: {
+      headers: ['Meaning', 'pt', 'es'],
+      rows: [
+        ['Ongoing (still happening)', 'Trabalho assim há vinte anos.', 'Trabajo así desde hace veinte años.'],
+        ['Point in past', 'Comecei há vinte anos.', 'Empecé hace veinte años.'],
+      ],
+    },
+    body: '**há + tempo** in present-tense verb = "for X amount of time, still ongoing"\nSame "há" with past-tense verb = "X time ago"',
+    callout: '⚠️ Same word "há" does double duty. ES uses **desde hace** (ongoing) vs **hace** (ago).',
+  },
+  {
+    title: '4. "Tô + gerundio" — colloquial present continuous',
+    body: 'Standard: **Estou indo / Estou viajando**\nBR colloquial: **Tô indo / Tô viajando**\n\n"Tô" is the spoken contraction of "estou". Heard constantly in BR but never written in formal contexts.\n\nGerundio endings: -ar → -ando, -er → -endo, -ir → -indo',
+    callout: '🇧🇷 In BR conversation, ALWAYS expect "tô" instead of "estou". Use it yourself to sound natural.',
+  },
+  {
+    title: '5. "A gente" = informal "we"',
+    table: {
+      headers: ['Standard', 'BR colloquial'],
+      rows: [
+        ['Nós conversamos', 'A gente conversa'],
+        ['Nós dormimos no posto', 'A gente dorme no posto'],
+        ['Nós vamos', 'A gente vai'],
+      ],
+    },
+    body: '**A gente** literally = "the people" but means "we/us" in BR.\nKey: verb is **3rd person singular** ("a gente vai", NOT "vamos").',
+    callout: '🇧🇷 BR uses "a gente" more than "nós" in speech. Mexican/Argentine Spanish has no equivalent — just "nosotros".',
+  },
+];
+
+const CARONA_CULTURE = [
+  {
+    title: '1. Posto = social hub, not just gas',
+    points: [
+      'BR postos are 24h with restaurants, showers, parking for sleeping',
+      'Truck drivers eat, sleep, talk to each other here',
+      'BEST place to ask for rides — you can see the person, watch them eat, talk before committing',
+      'Better than thumb-out roadside (no vetting, more random)',
+    ],
+  },
+  {
+    title: '2. Caminhoneiro culture',
+    points: [
+      'Long-haul truckers are a respected profession in BR',
+      'Many work alone for weeks, eager to chat and break monotony',
+      'Pride in "estrada é minha casa" (the road is my home)',
+      'Generally trustworthy but selectivity still matters; trust your gut',
+    ],
+  },
+  {
+    title: '3. Single female hitchhiker reality in BR',
+    points: [
+      'More common than people assume but require active vetting',
+      'Daytime postos > nighttime roadsides',
+      'Ask "Tem mais alguém no carro?" before committing',
+      "Refuse politely if anything feels off — Brazilians won't insist",
+      'Hostel/hitchhiker networks (Caroneiros do Brasil on FB) connect rides in advance',
+    ],
+  },
+  {
+    title: '4. Reciprocity: how to thank',
+    points: [
+      'Offer to pay for meal or contribute gas — most refuse but appreciate the offer',
+      '"Conta sua história" — your story IS the payment for many drivers',
+      'IG follow as digital thank-you is common with younger drivers',
+      'Small gift (snack, fruit) if you have something nice',
+    ],
+  },
+  {
+    title: '5. Saying no without offense',
+    points: [
+      '**Prefiro não** > **Não** (softer)',
+      '**Acho que vou esperar outro** = "I think I\'ll wait for another" (deflects to circumstance)',
+      'Smile + walk away = clear signal, no offense taken',
+      'Brazilians read social cues quickly; you won\'t be pressured if you stand firm gently',
+    ],
+  },
+];
+
+const CARONA_PRACTICE = [
+  {
+    num: 1,
+    question: "Approach a driver at a posto politely: 'Hi, excuse me. Can I ask you something? Where are you headed?'",
+    answer: {
+      pt: 'Oi, com licença. Posso te perguntar uma coisa? Pra onde você está indo?',
+      es: 'Hola, con permiso. ¿Puedo preguntarte algo? ¿A dónde vas?',
+      en: 'Hi, excuse me. Can I ask you something? Where are you headed?',
+      note: '🇧🇷 "com licença" + "pra onde" feels native; avoid the more formal "aonde".',
+    },
+  },
+  {
+    num: 2,
+    question: "Safety-check before accepting a ride: 'Are you going alone? Where will you stop to sleep?'",
+    answer: {
+      pt: 'Você vai sozinho? Onde você vai parar pra dormir?',
+      es: '¿Vas solo? ¿Dónde vas a parar para dormir?',
+      en: 'Are you going alone? Where will you stop to sleep?',
+      note: 'These are the two most important pre-commit questions.',
+    },
+  },
+  {
+    num: 3,
+    question: "Express deep gratitude after a long ride: 'Thanks so much for the ride! Can I pay for your dinner?'",
+    answer: {
+      pt: 'Muito obrigada mesmo pela carona! Posso te pagar o jantar?',
+      es: '¡Muchísimas gracias por el aventón! ¿Puedo invitarte la cena?',
+      en: 'Thanks so much for the ride! Can I pay for your dinner?',
+      note: '🇧🇷 Driver will likely say "Imagina!" — but you should always offer.',
+    },
+  },
+  {
+    num: 4,
+    question: "Politely decline a ride that doesn't feel right.",
+    answer: {
+      pt: 'Brigada, mas acho que vou esperar outro. Boa viagem!',
+      es: 'Gracias, pero creo que voy a esperar a otro. ¡Buen viaje!',
+      en: "Thanks, but I think I'll wait for another. Have a good trip!",
+      note: 'Smile + walk away after this. Brazilians won\'t pressure you.',
+    },
+  },
+  {
+    num: 5,
+    question: "Driver asks 'me conta a sua história'. Give a 1-sentence travel summary including where you started, what you're doing, where you're going next.",
+    answer: {
+      pt: 'Saí de Taiwan em maio do ano passado pra dar a volta ao mundo sem pegar avião — já passei pela Ásia, América do Norte e Central, e agora tô indo pro sul da América do Sul.',
+      es: 'Salí de Taiwán en mayo del año pasado para dar la vuelta al mundo sin tomar avión — ya pasé por Asia, América del Norte y Central, y ahora voy al sur de Sudamérica.',
+      en: 'I left Taiwan in May last year to go around the world without flying — already through Asia, North and Central America, now heading south in South America.',
+      note: 'Pretérito perfeito for the journey (Saí, passei) + tô + gerundio for current.',
+    },
+  },
+];
+
+const LESSON_VOCAB_DATA = { feira: FEIRA_VOCAB, intro: INTRO_VOCAB, carona: CARONA_VOCAB };
 function getAllSavedItems() {
   const saved = getSavedVocab();
   const out = [];
@@ -879,6 +1145,7 @@ const SPEAKER_MAP = {
   phoenix: { icon: '🧍', name: 'You' },
   feirante: { icon: '👨', name: 'Vendor' },
   maria: { icon: '👩', name: 'Maria' },
+  driver: { icon: '🚛', name: 'Driver' },
 };
 
 function renderDialogLine(line, lessonId, total) {
@@ -1190,6 +1457,15 @@ function renderLesson(lessonId) {
     else if (activeTab === 'grammar') tabContent = renderLessonGrammar(INTRO_GRAMMAR);
     else if (activeTab === 'culture') tabContent = renderLessonCulture(INTRO_CULTURE);
     else if (activeTab === 'practice') tabContent = renderLessonPractice(INTRO_PRACTICE);
+  } else if (lessonId === 'carona') {
+    if (activeTab === 'dialog') tabContent = renderLessonDialog('carona', CARONA_DIALOG);
+    else if (activeTab === 'vocab') {
+      const r = renderLessonVocab(CARONA_VOCAB, 'carona');
+      tabContent = r.container; chipNav = r.nav;
+    }
+    else if (activeTab === 'grammar') tabContent = renderLessonGrammar(CARONA_GRAMMAR);
+    else if (activeTab === 'culture') tabContent = renderLessonCulture(CARONA_CULTURE);
+    else if (activeTab === 'practice') tabContent = renderLessonPractice(CARONA_PRACTICE);
   }
   if (!tabContent) {
     tabContent = el('div', { class: 'tab-content' }, [
