@@ -1051,6 +1051,23 @@ function renderLessonVocab(vocab, lessonId) {
     container.appendChild(section);
   });
 
+  const applyStickyOffsets = () => {
+    const topbar = document.querySelector('.topbar');
+    const tabs = document.querySelector('.tabs');
+    if (!topbar || !tabs) return;
+    const stackTop = topbar.offsetHeight + tabs.offsetHeight;
+    nav.style.top = `${stackTop}px`;
+    const sectionsOffset = stackTop + nav.offsetHeight;
+    container.querySelectorAll('.vocab-section').forEach(s => {
+      s.style.scrollMarginTop = `${sectionsOffset}px`;
+    });
+  };
+  requestAnimationFrame(() => {
+    applyStickyOffsets();
+    // re-measure on resize (e.g. orientation change)
+    window.addEventListener('resize', applyStickyOffsets, { passive: true });
+  });
+
   requestAnimationFrame(() => {
     const sections = container.querySelectorAll('.vocab-section');
     const chips = container.querySelectorAll('.vocab-nav-chip');
