@@ -1042,7 +1042,7 @@ function renderLessonVocab(vocab, lessonId) {
       },
     }, title));
   });
-  container.appendChild(nav);
+  // nav is returned to caller for placement inside sticky-stack (not appended here)
 
   sectionEntries.forEach(([sectionTitle, items], idx) => {
     const section = el('div', { class: 'vocab-section', 'data-idx': String(idx) });
@@ -1051,26 +1051,22 @@ function renderLessonVocab(vocab, lessonId) {
     container.appendChild(section);
   });
 
-  const applyStickyOffsets = () => {
-    const topbar = document.querySelector('.topbar');
-    const tabs = document.querySelector('.tabs');
-    if (!topbar || !tabs) return;
-    const stackTop = topbar.offsetHeight + tabs.offsetHeight;
-    nav.style.top = `${stackTop}px`;
-    const sectionsOffset = stackTop + nav.offsetHeight;
+  const applyScrollMargin = () => {
+    const stack = document.querySelector('.sticky-stack');
+    if (!stack) return;
+    const offset = stack.offsetHeight;
     container.querySelectorAll('.vocab-section').forEach(s => {
-      s.style.scrollMarginTop = `${sectionsOffset}px`;
+      s.style.scrollMarginTop = `${offset}px`;
     });
   };
   requestAnimationFrame(() => {
-    applyStickyOffsets();
-    // re-measure on resize (e.g. orientation change)
-    window.addEventListener('resize', applyStickyOffsets, { passive: true });
+    applyScrollMargin();
+    window.addEventListener('resize', applyScrollMargin, { passive: true });
   });
 
   requestAnimationFrame(() => {
     const sections = container.querySelectorAll('.vocab-section');
-    const chips = container.querySelectorAll('.vocab-nav-chip');
+    const chips = nav.querySelectorAll('.vocab-nav-chip');
     if (!sections.length || !chips.length) return;
     const obs = new IntersectionObserver((entries) => {
       for (const e of entries) {
@@ -1083,7 +1079,7 @@ function renderLessonVocab(vocab, lessonId) {
     sections.forEach(s => obs.observe(s));
   });
 
-  return container;
+  return { container, nav };
 }
 
 function renderLessonGrammar(grammar) {
@@ -1174,15 +1170,23 @@ function renderLesson(lessonId) {
     }, `${t.icon} ${t.label}`));
   }
   let tabContent = null;
+  let chipNav = null;
+  const vocabData = lessonId === 'feira' ? FEIRA_VOCAB : (lessonId === 'intro' ? INTRO_VOCAB : null);
   if (lessonId === 'feira') {
     if (activeTab === 'dialog') tabContent = renderLessonDialog('feira', FEIRA_DIALOG);
-    else if (activeTab === 'vocab') tabContent = renderLessonVocab(FEIRA_VOCAB, 'feira');
+    else if (activeTab === 'vocab') {
+      const r = renderLessonVocab(FEIRA_VOCAB, 'feira');
+      tabContent = r.container; chipNav = r.nav;
+    }
     else if (activeTab === 'grammar') tabContent = renderLessonGrammar(FEIRA_GRAMMAR);
     else if (activeTab === 'culture') tabContent = renderLessonCulture(FEIRA_CULTURE);
     else if (activeTab === 'practice') tabContent = renderLessonPractice(FEIRA_PRACTICE);
   } else if (lessonId === 'intro') {
     if (activeTab === 'dialog') tabContent = renderLessonDialog('intro', INTRO_DIALOG);
-    else if (activeTab === 'vocab') tabContent = renderLessonVocab(INTRO_VOCAB, 'intro');
+    else if (activeTab === 'vocab') {
+      const r = renderLessonVocab(INTRO_VOCAB, 'intro');
+      tabContent = r.container; chipNav = r.nav;
+    }
     else if (activeTab === 'grammar') tabContent = renderLessonGrammar(INTRO_GRAMMAR);
     else if (activeTab === 'culture') tabContent = renderLessonCulture(INTRO_CULTURE);
     else if (activeTab === 'practice') tabContent = renderLessonPractice(INTRO_PRACTICE);
@@ -1195,7 +1199,12 @@ function renderLesson(lessonId) {
       ]),
     ]);
   }
-  return [topbar({ title: `${lesson.icon} ${lesson.title}`, back: true }), tabsRow, tabContent, footer()];
+  const stickyStack = el('div', { class: 'sticky-stack' }, [
+    topbar({ title: `${lesson.icon} ${lesson.title}`, back: true }),
+    tabsRow,
+  ]);
+  if (chipNav) stickyStack.appendChild(chipNav);
+  return [stickyStack, tabContent, footer()];
 }
 
 function renderPictureWords() {

@@ -151,6 +151,16 @@ a { color: inherit; text-decoration: none; }
   top: calc(env(safe-area-inset-top) + 4.5rem);
   z-index: 9;
 }
+/* When tabs are inside the unified sticky stack, neutralize own sticky */
+.sticky-stack {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+}
+.sticky-stack > .topbar { position: static; padding-top: calc(env(safe-area-inset-top) + 1rem); }
+.sticky-stack > .tabs { position: static; }
+.sticky-stack > .vocab-nav { position: static; margin: 0; }
 .tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
   background: none;
