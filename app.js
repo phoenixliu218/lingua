@@ -1683,7 +1683,7 @@ function renderFoundations() {
     ['Months', MONTHS_DATA],
   ];
 
-  // Quick-jump chip nav (sticky)
+  // Quick-jump chip nav (placed in sticky-stack below)
   const nav = el('nav', { class: 'vocab-nav' });
   allSections.forEach(([title], idx) => {
     nav.appendChild(el('button', {
@@ -1695,7 +1695,6 @@ function renderFoundations() {
       },
     }, title));
   });
-  container.appendChild(nav);
 
   allSections.forEach(([sectionTitle, items], idx) => {
     const section = el('div', { class: 'numbers-section', 'data-idx': String(idx) });
@@ -1722,9 +1721,22 @@ function renderFoundations() {
     container.appendChild(section);
   });
 
+  const applyScrollMargin = () => {
+    const stack = document.querySelector('.sticky-stack');
+    if (!stack) return;
+    const offset = stack.offsetHeight;
+    container.querySelectorAll('.numbers-section').forEach(s => {
+      s.style.scrollMarginTop = `${offset}px`;
+    });
+  };
+  requestAnimationFrame(() => {
+    applyScrollMargin();
+    window.addEventListener('resize', applyScrollMargin, { passive: true });
+  });
+
   requestAnimationFrame(() => {
     const sections = container.querySelectorAll('.numbers-section');
-    const chips = container.querySelectorAll('.vocab-nav-chip');
+    const chips = nav.querySelectorAll('.vocab-nav-chip');
     if (!sections.length || !chips.length) return;
     const obs = new IntersectionObserver((entries) => {
       for (const e of entries) {
@@ -1737,7 +1749,11 @@ function renderFoundations() {
     sections.forEach(s => obs.observe(s));
   });
 
-  return [topbar({ title: '📚 Foundations', back: true }), container, footer()];
+  const stickyStack = el('div', { class: 'sticky-stack' }, [
+    topbar({ title: '📚 Foundations', back: true }),
+    nav,
+  ]);
+  return [stickyStack, container, footer()];
 }
 
 function renderVocabulary() {
