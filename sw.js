@@ -1,4 +1,4 @@
-const CACHE = 'lingua-v35';
+const CACHE = 'lingua-v36';
 const CORE = [
   './',
   './index.html',

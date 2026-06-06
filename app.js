@@ -26,9 +26,9 @@ const SECTIONS = [
 const LESSONS = [
   { id: 'feira', icon: '🛒', title: 'Feira', desc: 'Open-air market' },
   { id: 'intro', icon: '👋', title: 'Self intro', desc: 'Introducing yourself' },
-  { id: 'cafe', icon: '☕', title: 'Café', desc: 'Coffee shop', status: 'Coming soon' },
   { id: 'carona', icon: '🚗', title: 'Hitchhiking', desc: 'Catching a ride (carona)' },
   { id: 'friend', icon: '🏡', title: "Friend's home", desc: 'Visiting a local friend', status: 'Coming soon' },
+  { id: 'cafe', icon: '☕', title: 'Café', desc: 'Coffee shop', status: 'Coming soon' },
 ];
 
 const TABS = [
