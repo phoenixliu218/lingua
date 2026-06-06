@@ -335,17 +335,14 @@ a { color: inherit; text-decoration: none; }
   color: var(--accent);
 }
 
-/* Vocab quick-nav chips (sticky below topbar) */
+/* Vocab quick-nav chips (always inside .sticky-stack now) */
 .vocab-nav {
-  position: sticky;
-  top: calc(env(safe-area-inset-top, 0px) + 8.2rem);
   background: var(--bg);
-  z-index: 8;
   display: flex;
   gap: 0.4rem;
   padding: 0.55rem 1rem;
   overflow-x: auto;
-  margin: -1rem -1rem 0.85rem;
+  margin: 0;
   border-bottom: 1px solid var(--border);
   scrollbar-width: none;
 }
