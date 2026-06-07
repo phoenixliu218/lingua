@@ -1,4 +1,4 @@
-const CACHE = 'lingua-v39';
+const CACHE = 'lingua-v40';
 const CORE = [
   './',
   './index.html',
@@ -7,8 +7,34 @@ const CORE = [
   './manifest.json'
 ];
 
+async function precacheAssets(cache) {
+  try {
+    const resp = await fetch('./assets-manifest.json', { cache: 'no-store' });
+    if (!resp.ok) return;
+    const paths = await resp.json();
+    // chunk 20 parallel at a time; tolerate individual failures (flaky network)
+    const chunkSize = 20;
+    for (let i = 0; i < paths.length; i += chunkSize) {
+      const chunk = paths.slice(i, i + chunkSize);
+      await Promise.allSettled(chunk.map(async (path) => {
+        try {
+          const r = await fetch(path);
+          if (r.ok) await cache.put(path, r.clone());
+        } catch {}
+      }));
+    }
+  } catch (err) {
+    // install must not fail on asset precache errors
+    console.warn('SW precache assets:', err);
+  }
+}
+
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)));
+  e.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await cache.addAll(CORE);
+    await precacheAssets(cache);  // ~12 MB; runs in background after CORE
+  })());
   self.skipWaiting();
 });
 
