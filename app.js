@@ -1145,10 +1145,20 @@ function getTabFromHash() {
 }
 
 let _currentAudio = null;
-function playAudio(src) {
+let _currentBtn = null;
+function playAudio(src, btn) {
   if (_currentAudio && !_currentAudio.paused) _currentAudio.pause();
+  if (_currentBtn) _currentBtn.classList.remove('playing');
   _currentAudio = new Audio(src);
-  _currentAudio.play().catch(e => console.warn('audio', e));
+  _currentBtn = btn || null;
+  if (btn) btn.classList.add('playing');
+  const clear = () => {
+    if (btn) btn.classList.remove('playing');
+    if (_currentBtn === btn) _currentBtn = null;
+  };
+  _currentAudio.addEventListener('ended', clear);
+  _currentAudio.addEventListener('error', clear);
+  _currentAudio.play().catch(e => { console.warn('audio', e); clear(); });
 }
 
 const SPEAKER_MAP = {
@@ -1177,8 +1187,8 @@ function renderDialogLine(line, lessonId, total) {
       row.appendChild(el('button', {
         class: 'play-btn',
         'aria-label': `play ${lang} audio`,
-        onClick: () => playAudio(src),
-      }, '▶'));
+        onClick: (e) => playAudio(src, e.currentTarget),
+      }, '🔊'));
     }
     card.appendChild(row);
   }
@@ -1244,8 +1254,8 @@ function renderVocabCard(item, lessonId, opts = {}) {
       const src = `${audioBase}/${item.id}-${lang}.mp3`;
       row.appendChild(el('button', {
         class: 'play-btn play-btn-sm',
-        onClick: () => playAudio(src),
-      }, '▶'));
+        onClick: (e) => playAudio(src, e.currentTarget),
+      }, '🔊'));
     }
     card.appendChild(row);
   }
@@ -1270,8 +1280,8 @@ function renderVocabCard(item, lessonId, opts = {}) {
         const src = `${audioBase}/${item.id}-ex-${lang}.mp3`;
         row.appendChild(el('button', {
           class: 'play-btn play-btn-sm',
-          onClick: () => playAudio(src),
-        }, '▶'));
+          onClick: (e) => playAudio(src, e.currentTarget),
+        }, '🔊'));
       }
       exBlock.appendChild(row);
     }
@@ -1290,8 +1300,8 @@ function renderVocabCard(item, lessonId, opts = {}) {
         const src = `${audioBase}/${item.id}-ans-${lang}.mp3`;
         row.appendChild(el('button', {
           class: 'play-btn play-btn-sm',
-          onClick: () => playAudio(src),
-        }, '▶'));
+          onClick: (e) => playAudio(src, e.currentTarget),
+        }, '🔊'));
       }
       ansBlock.appendChild(row);
     }
@@ -1531,7 +1541,7 @@ function showImageItemModal(item, dir) {
     row.appendChild(el('span', { class: 'lang-text' }, item[lang]));
     if (lang !== 'en') {
       const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
     }
     langBlock.appendChild(row);
   }
@@ -1594,7 +1604,7 @@ function showEmojiItemModal(it, dir) {
     row.appendChild(el('span', { class: 'lang-text' }, it[lang]));
     if (lang !== 'en') {
       const src = `./audio/${dir}/${it.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
     }
     langBlock.appendChild(row);
   }
@@ -1642,7 +1652,7 @@ function showZodiacModal(z) {
     row.appendChild(el('span', { class: 'lang-text' }, z[lang]));
     if (lang !== 'en') {
       const src = `./audio/zodiac/${z.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
     }
     langBlock.appendChild(row);
   }
@@ -1720,7 +1730,7 @@ function renderFoundations() {
         if (lang !== 'en') {
           const dir = audioDir[item.id[0]] || 'numbers';
           const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
-          row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: () => playAudio(src) }, '▶'));
+          row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
         }
         langs.appendChild(row);
       }
