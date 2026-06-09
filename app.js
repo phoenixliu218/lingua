@@ -1148,15 +1148,29 @@ const SPEAKER_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="t
 
 let _currentAudio = null;
 let _currentBtn = null;
+function stopAudio() {
+  if (_currentAudio) {
+    try { _currentAudio.pause(); } catch {}
+    _currentAudio = null;
+  }
+  if (_currentBtn) {
+    _currentBtn.classList.remove('playing');
+    _currentBtn = null;
+  }
+}
 function playAudio(src, btn) {
-  if (_currentAudio && !_currentAudio.paused) _currentAudio.pause();
-  if (_currentBtn) _currentBtn.classList.remove('playing');
+  // Toggle: tapping the same button while it's playing → stop
+  if (btn && btn === _currentBtn && _currentAudio && !_currentAudio.paused) {
+    stopAudio();
+    return;
+  }
+  stopAudio();
   _currentAudio = new Audio(src);
   _currentBtn = btn || null;
   if (btn) btn.classList.add('playing');
   const clear = () => {
     if (btn) btn.classList.remove('playing');
-    if (_currentBtn === btn) _currentBtn = null;
+    if (_currentBtn === btn) { _currentBtn = null; _currentAudio = null; }
   };
   _currentAudio.addEventListener('ended', clear);
   _currentAudio.addEventListener('error', clear);
@@ -1822,6 +1836,7 @@ function renderVocabulary() {
 }
 
 function route() {
+  stopAudio();
   const hash = location.hash.slice(1) || '/';
   const pathOnly = hash.split('?')[0];
   app.innerHTML = '';
