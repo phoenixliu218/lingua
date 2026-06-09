@@ -1144,6 +1144,8 @@ function getTabFromHash() {
   return m ? m[1] : 'dialog';
 }
 
+const SPEAKER_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+
 let _currentAudio = null;
 let _currentBtn = null;
 function playAudio(src, btn) {
@@ -1188,7 +1190,7 @@ function renderDialogLine(line, lessonId, total) {
         class: 'play-btn',
         'aria-label': `play ${lang} audio`,
         onClick: (e) => playAudio(src, e.currentTarget),
-      }, '🔊'));
+      html: SPEAKER_SVG }));
     }
     card.appendChild(row);
   }
@@ -1255,7 +1257,7 @@ function renderVocabCard(item, lessonId, opts = {}) {
       row.appendChild(el('button', {
         class: 'play-btn play-btn-sm',
         onClick: (e) => playAudio(src, e.currentTarget),
-      }, '🔊'));
+      html: SPEAKER_SVG }));
     }
     card.appendChild(row);
   }
@@ -1281,7 +1283,7 @@ function renderVocabCard(item, lessonId, opts = {}) {
         row.appendChild(el('button', {
           class: 'play-btn play-btn-sm',
           onClick: (e) => playAudio(src, e.currentTarget),
-        }, '🔊'));
+        html: SPEAKER_SVG }));
       }
       exBlock.appendChild(row);
     }
@@ -1301,7 +1303,7 @@ function renderVocabCard(item, lessonId, opts = {}) {
         row.appendChild(el('button', {
           class: 'play-btn play-btn-sm',
           onClick: (e) => playAudio(src, e.currentTarget),
-        }, '🔊'));
+        html: SPEAKER_SVG }));
       }
       ansBlock.appendChild(row);
     }
@@ -1541,7 +1543,7 @@ function showImageItemModal(item, dir) {
     row.appendChild(el('span', { class: 'lang-text' }, item[lang]));
     if (lang !== 'en') {
       const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
     }
     langBlock.appendChild(row);
   }
@@ -1604,7 +1606,7 @@ function showEmojiItemModal(it, dir) {
     row.appendChild(el('span', { class: 'lang-text' }, it[lang]));
     if (lang !== 'en') {
       const src = `./audio/${dir}/${it.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
     }
     langBlock.appendChild(row);
   }
@@ -1652,7 +1654,7 @@ function showZodiacModal(z) {
     row.appendChild(el('span', { class: 'lang-text' }, z[lang]));
     if (lang !== 'en') {
       const src = `./audio/zodiac/${z.id}-${lang}.mp3`;
-      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
+      row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
     }
     langBlock.appendChild(row);
   }
@@ -1730,7 +1732,7 @@ function renderFoundations() {
         if (lang !== 'en') {
           const dir = audioDir[item.id[0]] || 'numbers';
           const src = `./audio/${dir}/${item.id}-${lang}.mp3`;
-          row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget) }, '🔊'));
+          row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
         }
         langs.appendChild(row);
       }
