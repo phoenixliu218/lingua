@@ -18,6 +18,7 @@ if ('serviceWorker' in navigator) {
 
 const SECTIONS = [
   { icon: '🧑‍🏫', title: 'Lessons', desc: 'Themed scenarios · 3 ready', route: '#/lessons' },
+  { icon: '📖', title: 'Reading', desc: 'Letters, lyrics & longer texts', route: '#/reading' },
   { icon: '🖼️', title: 'Picture Words', desc: 'Visual vocabulary by category', route: '#/picture-words' },
   { icon: '📚', title: 'Foundations', desc: 'Numbers, days, months', route: '#/foundations' },
   { icon: '📕', title: 'Vocabulary', desc: 'Your saved words & phrases', route: '#/vocabulary' },
@@ -499,6 +500,76 @@ const NUMBERS_DATA = {
     { id: 'o10', display: '10º', pt: 'décimo / décima', es: 'décimo / décima', en: 'tenth', note: '✅ identical' },
   ],
 };
+
+// === Reading: long texts (PT original + 中文) ===
+// paragraphs → sentences (zh 整句翻譯) → segments (以標點切分的播放段)
+// audio: ./audio/reading/{id}/{sentenceId}{segmentId}-pt.mp3
+// vocab audio: ./audio/reading/{id}/vocab/{vocabId}-ex-pt.mp3
+const READINGS = [
+  {
+    id: 'linha-do-equador',
+    icon: '🎵',
+    title: 'Linha do Equador',
+    type: 'Song',
+    byline: 'Djavan · Caetano Veloso · 1992',
+    note: '歌曲中副歌與第二段會重複；這裡每段只列一次。',
+    paragraphs: [
+      [
+        { id: 's01', zh: '星辰之光，無限之結', segments: [{ id: 'a', pt: 'Luz das estrelas, laço do infinito' }] },
+        { id: 's02', zh: '我是如此地喜歡她', segments: [{ id: 'a', pt: 'Gosto tanto dela assim' }] },
+        { id: 's03', zh: '黃玫瑰，一切吶喊的聲音', segments: [{ id: 'a', pt: 'Rosa amarela, voz de todo grito' }] },
+        { id: 's04', zh: '我是如此地喜歡她', segments: [{ id: 'a', pt: 'Gosto tanto dela assim' }] },
+      ],
+      [
+        { id: 's05', zh: '這巨大而無盡的愛', segments: [{ id: 'a', pt: 'Esse imenso, desmedido amor' }] },
+        { id: 's06', zh: '超越了一切，無論那是什麼', segments: [{ id: 'a', pt: 'Vai além de seja o que for' }] },
+        { id: 's07', zh: '超越了我所去的地方', segments: [{ id: 'a', pt: 'Vai além de onde eu vou' }] },
+        { id: 's08', zh: '超越了我自己、我的痛', segments: [{ id: 'a', pt: 'Do que sou, minha dor' }] },
+        { id: 's09', zh: '我的赤道線', segments: [{ id: 'a', pt: 'Minha Linha do Equador' }] },
+      ],
+      [
+        { id: 's10', zh: '巴西利亞的天空，建築師的線條', segments: [{ id: 'a', pt: 'Céu de Brasília, traço do arquiteto' }] },
+        { id: 's11', zh: '我是如此地喜歡她', segments: [{ id: 'a', pt: 'Gosto tanto dela assim' }] },
+        { id: 's12', zh: '像女兒的味道，像黑人的音樂', segments: [{ id: 'a', pt: 'Gosto de filha, música de preto' }] },
+        { id: 's13', zh: '我是如此地喜歡她', segments: [{ id: 'a', pt: 'Gosto tanto dela assim' }] },
+      ],
+      [
+        { id: 's14', zh: '這過度的激情', segments: [{ id: 'a', pt: 'Essa desmesura de paixão' }] },
+        { id: 's15', zh: '是心的瘋狂', segments: [{ id: 'a', pt: 'É loucura do coração' }] },
+        { id: 's16', zh: '我的伊瓜蘇河口、南極、我的藍', segments: [{ id: 'a', pt: 'Minha Foz do Iguaçu, Polo Sul, meu azul' }] },
+        { id: 's17', zh: '赤裸情感的光', segments: [{ id: 'a', pt: 'Luz do sentimento nu' }] },
+      ],
+      [
+        { id: 's18', zh: '但死在這片海裡是甜的', segments: [{ id: 'a', pt: 'Mas é doce morrer nesse mar' }] },
+        { id: 's19', zh: '記得，而且永不忘記', segments: [{ id: 'a', pt: 'De lembrar, e nunca esquecer' }] },
+        { id: 's20', zh: '如果我有更多靈魂可以給，我會給', segments: [{ id: 'a', pt: 'Se eu tivesse mais alma pra dar, eu daria' }] },
+        { id: 's21', zh: '這對我來說就是活著', segments: [{ id: 'a', pt: 'Isso pra mim é viver' }] },
+      ],
+    ],
+    vocab: [
+      { id: 'v01', pt: 'gostar de', zh: '喜歡', note: 'gosto + de + ela = gosto dela（縮寫）', patterns: ['Gosto tanto dela'],
+        example: { pt: 'Gosto tanto dessa cidade que quero ficar mais.', zh: '我好喜歡這座城市，想多待一點。' } },
+      { id: 'v02', pt: 'tanto', zh: '如此地、那麼多', note: 'tanto … que = 如此…以至於', patterns: ['tanto'],
+        example: { pt: 'Comi tanto que não consigo levantar.', zh: '我吃太多了，站不起來。' } },
+      { id: 'v03', pt: 'imenso', zh: '巨大的、廣闊的', note: '陰性 imensa', patterns: ['imenso'],
+        example: { pt: 'O rio Amazonas é imenso.', zh: '亞馬遜河非常廣闊。' } },
+      { id: 'v04', pt: 'ir além de', zh: '超越、比…更遠', note: 'vai além = 它超越了', patterns: ['Vai além de'],
+        example: { pt: 'Essa viagem vai além de turismo pra mim.', zh: '這趟旅行對我來說不只是觀光。' } },
+      { id: 'v05', pt: 'seja o que for', zh: '無論是什麼', note: '虛擬式固定說法', patterns: ['seja o que for'],
+        example: { pt: 'Seja o que for, a gente resolve junto.', zh: '不管是什麼，我們一起解決。' } },
+      { id: 'v06', pt: 'loucura', zh: '瘋狂', note: 'Que loucura! = 太瘋了！', patterns: ['loucura'],
+        example: { pt: 'Atravessar o oceano de veleiro é uma loucura linda.', zh: '搭帆船橫越大洋是一種美麗的瘋狂。' } },
+      { id: 'v07', pt: 'doce', zh: '甜的；溫柔的', note: '形容人：ela é doce = 她很溫柔', patterns: ['doce'],
+        example: { pt: 'Ela tem um jeito doce de falar.', zh: '她說話的方式很溫柔。' } },
+      { id: 'v08', pt: 'lembrar', zh: '記得、想起', note: 'lembrar de algo = 記得某事', patterns: ['lembrar'],
+        example: { pt: 'Você lembra do nome daquele restaurante?', zh: '妳記得那家餐廳的名字嗎？' } },
+      { id: 'v09', pt: 'se eu tivesse…, eu daria', zh: '如果我有…，我會給', note: '假設語氣：tivesse（虛擬過去）+ daria（條件式）', patterns: ['Se eu tivesse'],
+        example: { pt: 'Se eu tivesse mais tempo, eu ficaria no Brasil.', zh: '如果我有更多時間，我會留在巴西。' } },
+      { id: 'v10', pt: 'viver', zh: '活著、生活', note: 'Isso é viver! = 這才叫生活！', patterns: ['viver'],
+        example: { pt: 'Viver viajando ensina muita coisa.', zh: '在旅途中生活教會我很多事。' } },
+    ],
+  },
+];
 
 const app = document.getElementById('app');
 
@@ -1148,6 +1219,7 @@ const SPEAKER_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="t
 
 let _currentAudio = null;
 let _currentBtn = null;
+let _audioQueue = [];
 function stopAudio() {
   if (_currentAudio) {
     try { _currentAudio.pause(); } catch {}
@@ -1157,24 +1229,36 @@ function stopAudio() {
     _currentBtn.classList.remove('playing');
     _currentBtn = null;
   }
+  _audioQueue = [];
 }
-function playAudio(src, btn) {
-  // Toggle: tapping the same button while it's playing → stop
+// queue: [{src, btn}, ...] 播完自動接下一段
+function playAudio(src, btn, queue) {
+  // Toggle: tapping the same element while it's playing → stop
   if (btn && btn === _currentBtn && _currentAudio && !_currentAudio.paused) {
     stopAudio();
     return;
   }
   stopAudio();
-  _currentAudio = new Audio(src);
+  const audio = new Audio(src);
+  _currentAudio = audio;
   _currentBtn = btn || null;
+  _audioQueue = Array.isArray(queue) ? queue.slice() : [];
   if (btn) btn.classList.add('playing');
-  const clear = () => {
+  const next = () => {
+    if (_currentAudio !== audio) return;  // 已被別的播放取代
     if (btn) btn.classList.remove('playing');
-    if (_currentBtn === btn) { _currentBtn = null; _currentAudio = null; }
+    const nxt = _audioQueue.shift();
+    if (nxt) {
+      if (nxt.btn) nxt.btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      playAudio(nxt.src, nxt.btn, _audioQueue);
+    } else {
+      _currentAudio = null;
+      _currentBtn = null;
+    }
   };
-  _currentAudio.addEventListener('ended', clear);
-  _currentAudio.addEventListener('error', clear);
-  _currentAudio.play().catch(e => { console.warn('audio', e); clear(); });
+  audio.addEventListener('ended', next);
+  audio.addEventListener('error', next);
+  audio.play().catch(e => { console.warn('audio', e); next(); });
 }
 
 const SPEAKER_MAP = {
@@ -1792,6 +1876,170 @@ function renderFoundations() {
   return [stickyStack, container, footer()];
 }
 
+// === Reading ===
+function renderReadingList() {
+  const list = el('div', { class: 'section-list' });
+  for (const r of READINGS) {
+    list.appendChild(sectionCard({
+      icon: r.icon,
+      title: r.title,
+      desc: `${r.type} · ${r.byline}`,
+      route: `#/reading/${r.id}`,
+    }));
+  }
+  return [topbar({ title: '📖 Reading', back: true }), list, footer()];
+}
+
+// 把句段文字中的重點詞包成可點的 span
+function markVocab(text, vocab, onOpen) {
+  const lower = text.toLowerCase();
+  const hits = [];
+  for (const v of vocab) {
+    for (const p of (v.patterns || [v.pt])) {
+      const i = lower.indexOf(p.toLowerCase());
+      if (i >= 0 && !hits.some(h => i < h.end && i + p.length > h.start)) {
+        hits.push({ start: i, end: i + p.length, v });
+      }
+    }
+  }
+  hits.sort((a, b) => a.start - b.start);
+  const nodes = [];
+  let pos = 0;
+  for (const h of hits) {
+    if (h.start > pos) nodes.push(text.slice(pos, h.start));
+    nodes.push(el('span', {
+      class: 'rd-mark',
+      onClick: (e) => { e.stopPropagation(); onOpen(h.v); },
+    }, text.slice(h.start, h.end)));
+    pos = h.end;
+  }
+  if (pos < text.length) nodes.push(text.slice(pos));
+  return nodes;
+}
+
+function showReadingVocabModal(reading, v) {
+  stopAudio();
+  const overlay = el('div', {
+    class: 'modal-overlay',
+    onClick: (e) => { if (e.target.classList.contains('modal-overlay')) closeModal(); },
+  });
+  const modal = el('div', { class: 'modal-content rd-modal' });
+  modal.appendChild(el('button', { class: 'modal-close', onClick: closeModal }, '✕'));
+  modal.appendChild(renderReadingVocabCard(reading, v));
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+}
+
+function renderReadingVocabCard(reading, v) {
+  const card = el('div', { class: 'rd-vocab-card' });
+  card.appendChild(el('div', { class: 'rd-vocab-head' }, [
+    el('span', { class: 'rd-vocab-pt' }, v.pt),
+    el('span', { class: 'rd-vocab-zh' }, v.zh),
+  ]));
+  if (v.note) card.appendChild(el('div', { class: 'rd-vocab-note' }, v.note));
+  const ex = el('div', { class: 'rd-vocab-ex' });
+  ex.appendChild(el('div', { class: 'example-label' }, '延伸造句'));
+  const row = el('div', { class: 'rd-ex-row' });
+  row.appendChild(el('span', { class: 'rd-ex-pt' }, v.example.pt));
+  const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex-pt.mp3`;
+  row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
+  ex.appendChild(row);
+  ex.appendChild(el('div', { class: 'rd-ex-zh' }, v.example.zh));
+  card.appendChild(ex);
+  return card;
+}
+
+function renderReadingDetail(id) {
+  const reading = READINGS.find(r => r.id === id);
+  if (!reading) {
+    return [
+      topbar({ title: 'Not found', back: true }),
+      el('div', { class: 'empty' }, [el('div', { class: 'icon' }, '🤔'), el('strong', {}, 'Text not found')]),
+      footer(),
+    ];
+  }
+  const openVocab = (v) => showReadingVocabModal(reading, v);
+  const segEls = [];  // 依閱讀順序的所有句段 {src, btn}
+
+  const body = el('div', { class: 'tab-content rd-body' });
+  body.appendChild(el('div', { class: 'rd-byline' }, `${reading.type} · ${reading.byline}`));
+  if (reading.note) body.appendChild(el('div', { class: 'rd-note' }, reading.note));
+
+  for (const para of reading.paragraphs) {
+    const p = el('div', { class: 'rd-para' });
+    for (const s of para) {
+      const sent = el('div', { class: 'rd-sentence' });
+      const line = el('div', { class: 'rd-line' });
+      for (const seg of s.segments) {
+        const src = `./audio/reading/${reading.id}/${s.id}${seg.id}-pt.mp3`;
+        const span = el('span', { class: 'rd-seg' }, markVocab(seg.pt, reading.vocab, openVocab));
+        const idx = segEls.length;
+        segEls.push({ src, btn: span });
+        span.addEventListener('click', () => playAudio(src, span, segEls.slice(idx + 1)));
+        line.appendChild(span);
+        line.appendChild(document.createTextNode(' '));
+      }
+      const zh = el('div', { class: 'rd-zh hidden' }, s.zh);
+      const zhBtn = el('button', {
+        class: 'rd-zh-btn',
+        'aria-label': '顯示中文',
+        onClick: (e) => {
+          e.stopPropagation();
+          const hidden = zh.classList.toggle('hidden');
+          zhBtn.classList.toggle('active', !hidden);
+        },
+      }, '中');
+      line.appendChild(zhBtn);
+      sent.appendChild(line);
+      sent.appendChild(zh);
+      p.appendChild(sent);
+    }
+    body.appendChild(p);
+  }
+
+  // 重點單字
+  const vocabSec = el('div', { class: 'rd-vocab-section', id: 'rd-vocab' });
+  vocabSec.appendChild(el('h3', { class: 'vocab-section-title' }, `📚 重點單字（${reading.vocab.length}）`));
+  for (const v of reading.vocab) vocabSec.appendChild(renderReadingVocabCard(reading, v));
+  body.appendChild(vocabSec);
+
+  // 控制列：從頭連播 / 中文全開 / 跳到單字
+  const playAllBtn = el('button', {
+    class: 'rd-ctrl',
+    onClick: () => {
+      if (_currentAudio && segEls.some(s => s.btn === _currentBtn)) { stopAudio(); return; }
+      const first = segEls[0];
+      playAudio(first.src, first.btn, segEls.slice(1));
+    },
+  }, '▶ 從頭朗讀');
+  let allZhOpen = false;
+  const zhAllBtn = el('button', {
+    class: 'rd-ctrl',
+    onClick: () => {
+      allZhOpen = !allZhOpen;
+      body.querySelectorAll('.rd-zh').forEach(z => z.classList.toggle('hidden', !allZhOpen));
+      body.querySelectorAll('.rd-zh-btn').forEach(b => b.classList.toggle('active', allZhOpen));
+      zhAllBtn.classList.toggle('active', allZhOpen);
+    },
+  }, '中文全開');
+  const vocabJumpBtn = el('button', {
+    class: 'rd-ctrl',
+    onClick: () => vocabSec.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+  }, `📚 單字`);
+  const controls = el('div', { class: 'rd-controls' }, [playAllBtn, zhAllBtn, vocabJumpBtn]);
+
+  requestAnimationFrame(() => {
+    const stack = document.querySelector('.sticky-stack');
+    if (stack) vocabSec.style.scrollMarginTop = `${stack.offsetHeight + 8}px`;
+  });
+
+  const stickyStack = el('div', { class: 'sticky-stack' }, [
+    topbar({ title: `${reading.icon} ${reading.title}`, back: true }),
+    controls,
+  ]);
+  return [stickyStack, body, footer()];
+}
+
 function renderVocabulary() {
   const items = getAllSavedItems();
 
@@ -1848,6 +2096,8 @@ function route() {
   else if (pathOnly.startsWith('/picture-words/')) views = renderPictureCategory(pathOnly.slice('/picture-words/'.length));
   else if (pathOnly === '/foundations' || pathOnly === '/numbers') views = renderFoundations();
   else if (pathOnly === '/vocabulary') views = renderVocabulary();
+  else if (pathOnly === '/reading') views = renderReadingList();
+  else if (pathOnly.startsWith('/reading/')) views = renderReadingDetail(pathOnly.slice('/reading/'.length));
   else views = renderHome();
   for (const v of [].concat(views)) if (v) app.appendChild(v);
   window.scrollTo(0, 0);
