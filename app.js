@@ -1250,9 +1250,10 @@ function stopAudio() {
   _audioQueue = [];
 }
 // queue: [{src, btn}, ...] 播完自動接下一段
-function playAudio(src, btn, queue) {
+// opts.restart: 點正在播的同一段 → 從頭重播（Reading 用）；預設是停止
+function playAudio(src, btn, queue, opts = {}) {
   // Toggle: tapping the same element while it's playing → stop
-  if (btn && btn === _currentBtn && _currentAudio && !_currentAudio.paused) {
+  if (!opts.restart && btn && btn === _currentBtn && _currentAudio && !_currentAudio.paused) {
     stopAudio();
     return;
   }
@@ -1268,7 +1269,7 @@ function playAudio(src, btn, queue) {
     const nxt = _audioQueue.shift();
     if (nxt) {
       if (nxt.btn) nxt.btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      playAudio(nxt.src, nxt.btn, _audioQueue);
+      playAudio(nxt.src, nxt.btn, _audioQueue, opts);
     } else {
       _currentAudio = null;
       _currentBtn = null;
@@ -2007,7 +2008,7 @@ function renderReadingDetail(id) {
         const span = el('span', { class: 'rd-seg' }, nodes);
         const idx = segEls.length;
         segEls.push({ src, btn: span });
-        span.addEventListener('click', (e) => { e.stopPropagation(); playAudio(src, span, segEls.slice(idx + 1)); });
+        span.addEventListener('click', (e) => { e.stopPropagation(); playAudio(src, span, segEls.slice(idx + 1), { restart: true }); });
         line.appendChild(span);
         line.appendChild(document.createTextNode(' '));
       }
@@ -2049,7 +2050,7 @@ function renderReadingDetail(id) {
     onClick: () => {
       if (_currentAudio && segEls.some(s => s.btn === _currentBtn)) { stopAudio(); return; }
       const first = segEls[0];
-      playAudio(first.src, first.btn, segEls.slice(1));
+      playAudio(first.src, first.btn, segEls.slice(1), { restart: true });
     },
   }, '▶ 從頭朗讀');
   let allZhOpen = false;
