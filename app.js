@@ -1961,12 +1961,15 @@ function renderReadingVocabCard(reading, v) {
   if (v.note) card.appendChild(el('div', { class: 'rd-vocab-note' }, v.note));
   const ex = el('div', { class: 'rd-vocab-ex' });
   ex.appendChild(el('div', { class: 'example-label' }, '延伸造句'));
-  const row = el('div', { class: 'rd-ex-row' });
-  row.appendChild(el('span', { class: 'rd-ex-pt' }, v.example.pt));
-  const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex-pt.mp3`;
-  row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
-  ex.appendChild(row);
-  ex.appendChild(el('div', { class: 'rd-ex-zh' }, v.example.zh));
+  const exs = v.examples || [v.example];
+  exs.forEach((e, i) => {
+    const row = el('div', { class: 'rd-ex-row' });
+    row.appendChild(el('span', { class: 'rd-ex-pt' }, e.pt));
+    const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex${i ? i + 1 : ''}-pt.mp3`;
+    row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (ev) => playAudio(src, ev.currentTarget), html: SPEAKER_SVG }));
+    const item = el('div', { class: 'rd-ex-item' }, [row, el('div', { class: 'rd-ex-zh' }, e.zh)]);
+    ex.appendChild(item);
+  });
   card.appendChild(ex);
   return card;
 }
@@ -2035,7 +2038,9 @@ function renderReadingDetail(id) {
   // 重點單字
   const vocabSec = el('div', { class: 'rd-vocab-section', id: 'rd-vocab' });
   vocabSec.appendChild(el('h3', { class: 'vocab-section-title' }, `📚 重點單字（${reading.vocab.length}）`));
-  for (const v of reading.vocab) vocabSec.appendChild(renderReadingVocabCard(reading, v));
+  const ordered = [...usedVocab].map(id => reading.vocab.find(v => v.id === id))
+    .concat(reading.vocab.filter(v => !usedVocab.has(v.id)));
+  for (const v of ordered) vocabSec.appendChild(renderReadingVocabCard(reading, v));
   body.appendChild(vocabSec);
 
   // 控制列：從頭連播 / 中文全開 / 跳到單字
