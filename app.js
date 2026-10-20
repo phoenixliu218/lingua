@@ -547,7 +547,7 @@ const READINGS = [
       ],
     ],
     vocab: [
-      { id: 'v01', pt: 'gostar de', zh: '喜歡', note: 'gosto + de + ela = gosto dela（縮寫）', patterns: ['Gosto tanto dela'],
+      { id: 'v01', pt: 'gostar de', zh: '喜歡', note: 'gosto + de + ela = gosto dela（縮寫）', patterns: ['Gosto'],
         example: { pt: 'Gosto tanto dessa cidade que quero ficar mais.', zh: '我好喜歡這座城市，想多待一點。' } },
       { id: 'v02', pt: 'tanto', zh: '如此地、那麼多', note: 'tanto … que = 如此…以至於', patterns: ['tanto'],
         example: { pt: 'Comi tanto que não consigo levantar.', zh: '我吃太多了，站不起來。' } },
@@ -567,6 +567,24 @@ const READINGS = [
         example: { pt: 'Se eu tivesse mais tempo, eu ficaria no Brasil.', zh: '如果我有更多時間，我會留在巴西。' } },
       { id: 'v10', pt: 'viver', zh: '活著、生活', note: 'Isso é viver! = 這才叫生活！', patterns: ['viver'],
         example: { pt: 'Viver viajando ensina muita coisa.', zh: '在旅途中生活教會我很多事。' } },
+      { id: 'v11', pt: 'estrela', zh: '星星', note: '複數 estrelas', patterns: ['estrelas'],
+        example: { pt: 'No deserto dá pra ver muitas estrelas.', zh: '在沙漠裡可以看到很多星星。' } },
+      { id: 'v12', pt: 'laço', zh: '結、蝴蝶結；羈絆', note: 'laços de amizade = 友情的羈絆', patterns: ['laço'],
+        example: { pt: 'Ela amarrou o presente com um laço vermelho.', zh: '她用紅色蝴蝶結綁好禮物。' } },
+      { id: 'v13', pt: 'grito', zh: '吶喊、大叫', note: '動詞 gritar = 大叫', patterns: ['grito'],
+        example: { pt: 'Ouvi um grito vindo da rua.', zh: '我聽到街上傳來一聲大叫。' } },
+      { id: 'v14', pt: 'desmedido', zh: '無法衡量的、無盡的', note: 'des-（否定）+ medir（測量）；陰性 desmedida', patterns: ['desmedido'],
+        example: { pt: 'Ele tem uma ambição desmedida.', zh: '他有無止盡的野心。' } },
+      { id: 'v15', pt: 'dor', zh: '痛、痛苦', note: 'estar com dor de ___ = ___痛', patterns: ['dor'],
+        example: { pt: 'Estou com dor de cabeça hoje.', zh: '我今天頭痛。' } },
+      { id: 'v16', pt: 'traço', zh: '線條、筆畫；特徵', note: 'traços do rosto = 五官輪廓', patterns: ['traço'],
+        example: { pt: 'Gosto dos traços desse desenho.', zh: '我喜歡這幅畫的線條。' } },
+      { id: 'v17', pt: 'paixão', zh: '熱情、激情', note: 'ter paixão por = 熱愛…', patterns: ['paixão'],
+        example: { pt: 'Viajar é a minha grande paixão.', zh: '旅行是我最大的熱情。' } },
+      { id: 'v18', pt: 'sentimento', zh: '感覺、情感', note: 'sentir = 感覺（動詞）', patterns: ['sentimento'],
+        example: { pt: 'É difícil explicar esse sentimento em português.', zh: '很難用葡文解釋這種感覺。' } },
+      { id: 'v19', pt: 'alma', zh: '靈魂', note: 'alma gêmea = 靈魂伴侶', patterns: ['alma'],
+        example: { pt: 'Essa música toca a minha alma.', zh: '這首歌觸動我的靈魂。' } },
     ],
   },
 ];
@@ -1890,16 +1908,20 @@ function renderReadingList() {
   return [topbar({ title: '📖 Reading', back: true }), list, footer()];
 }
 
-// 把句段文字中的重點詞包成可點的 span
-function markVocab(text, vocab, onOpen) {
-  const lower = text.toLowerCase();
+// 把句段文字中的重點詞包成可點的 span；每個詞整篇只標第一次出現（used 共用）
+function markVocab(text, vocab, onOpen, used) {
   const hits = [];
   for (const v of vocab) {
+    if (used.has(v.id)) continue;
     for (const p of (v.patterns || [v.pt])) {
-      const i = lower.indexOf(p.toLowerCase());
-      if (i >= 0 && !hits.some(h => i < h.end && i + p.length > h.start)) {
-        hits.push({ start: i, end: i + p.length, v });
-      }
+      const esc = p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const m = new RegExp(`(?<!\\p{L})${esc}(?!\\p{L})`, 'iu').exec(text);
+      if (!m) continue;
+      const start = m.index, end = start + m[0].length;
+      if (hits.some(h => start < h.end && end > h.start)) continue;
+      hits.push({ start, end, v });
+      used.add(v.id);
+      break;
     }
   }
   hits.sort((a, b) => a.start - b.start);
@@ -1960,6 +1982,7 @@ function renderReadingDetail(id) {
   }
   const openVocab = (v) => showReadingVocabModal(reading, v);
   const segEls = [];  // 依閱讀順序的所有句段 {src, btn}
+  const usedVocab = new Set();
 
   const body = el('div', { class: 'tab-content rd-body' });
   body.appendChild(el('div', { class: 'rd-byline' }, `${reading.type} · ${reading.byline}`));
@@ -1971,11 +1994,17 @@ function renderReadingDetail(id) {
       const sent = el('div', { class: 'rd-sentence' });
       const line = el('div', { class: 'rd-line' });
       for (const seg of s.segments) {
+        const nodes = markVocab(seg.pt, reading.vocab, openVocab, usedVocab);
+        if (seg.noAudio) {
+          line.appendChild(el('span', { class: 'rd-seg no-audio' }, nodes));
+          line.appendChild(document.createTextNode(' '));
+          continue;
+        }
         const src = `./audio/reading/${reading.id}/${s.id}${seg.id}-pt.mp3`;
-        const span = el('span', { class: 'rd-seg' }, markVocab(seg.pt, reading.vocab, openVocab));
+        const span = el('span', { class: 'rd-seg' }, nodes);
         const idx = segEls.length;
         segEls.push({ src, btn: span });
-        span.addEventListener('click', () => playAudio(src, span, segEls.slice(idx + 1)));
+        span.addEventListener('click', (e) => { e.stopPropagation(); playAudio(src, span, segEls.slice(idx + 1)); });
         line.appendChild(span);
         line.appendChild(document.createTextNode(' '));
       }
@@ -1996,6 +2025,12 @@ function renderReadingDetail(id) {
     }
     body.appendChild(p);
   }
+
+  // 點空白處（非句段、按鈕、重點詞）→ 暫停
+  body.addEventListener('click', (e) => {
+    if (e.target.closest('.rd-seg:not(.no-audio), button, .rd-mark')) return;
+    if (_currentAudio && segEls.some(x => x.btn === _currentBtn)) stopAudio();
+  });
 
   // 重點單字
   const vocabSec = el('div', { class: 'rd-vocab-section', id: 'rd-vocab' });

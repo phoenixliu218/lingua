@@ -913,7 +913,9 @@ code {
   padding: 0.9rem 1rem;
   margin-bottom: 0.7rem;
 }
-.rd-modal .rd-vocab-card { border: none; padding: 0.5rem 0 0; margin: 0; }
+.rd-modal { padding: 1.1rem 1.25rem 1.25rem; }
+.rd-modal .rd-vocab-card { border: none; padding: 0; margin: 0; }
+.rd-modal .rd-vocab-head { padding-right: 2.5rem; }
 .rd-vocab-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
 .rd-vocab-pt { font-size: 1.1rem; font-weight: 600; }
 .rd-vocab-zh { font-size: 0.95rem; color: var(--accent); }
@@ -922,3 +924,6 @@ code {
 .rd-ex-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.6rem; }
 .rd-ex-pt { font-size: 0.98rem; font-weight: 500; line-height: 1.5; }
 .rd-ex-zh { font-size: 0.88rem; color: var(--fg-muted); margin-top: 0.2rem; }
+
+.rd-seg.no-audio { cursor: default; }
+.rd-seg.no-audio:hover { background: none; }
