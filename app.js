@@ -593,12 +593,47 @@ const READINGS = [
         example: { pt: 'O entardecer na praia é a minha hora favorita.', zh: '海邊的黃昏是我最愛的時刻。' } },
       { id: 'v08', pt: 'prender', zh: '夾住、扣住；逮捕', note: 'prender o cabelo = 綁頭髮', patterns: ['prende'],
         example: { pt: 'Ela prende o cabelo antes de cozinhar.', zh: '她做菜前會把頭髮綁起來。' } },
-      { id: 'v09', pt: 'abraço apertado', zh: '緊緊的擁抱', note: '複數 abraços apertados；apertado = 緊的', patterns: ['abraços apertados'],
-        example: { pt: 'Minha mãe sempre me dá um abraço apertado no aeroporto.', zh: '我媽在機場總是給我一個緊緊的擁抱。' } },
+      { id: 'v09', pt: 'apertado', zh: '緊的、擠的；（錢、時間）不寬裕', note: '陰性 apertada；常見搭配 abraço apertado（緊緊的擁抱）；口語 Tô apertada! = 我尿急了', patterns: ['apertados', 'apertado'],
+        examples: [
+          { pt: 'Me dá um abraço bem apertado!', zh: '給我一個緊緊的擁抱！' },
+          { pt: 'Esse sapato tá apertado demais.', zh: '這雙鞋太緊了。' },
+          { pt: 'O ônibus estava tão apertado que eu mal conseguia respirar.', zh: '公車擠到我幾乎不能呼吸。' },
+          { pt: 'Este mês tô apertada de dinheiro.', zh: '這個月我手頭很緊。' },
+        ] },
       { id: 'v10', pt: 'sentir falta de', zh: '想念', note: '中間可插所有格：sentir sua falta = 想念妳', patterns: ['sentir sua falta'],
         example: { pt: 'Sinto falta da comida da minha avó.', zh: '我想念我外婆煮的菜。' } },
       { id: 'v11', pt: 'saudade', zh: '思念、鄉愁', note: '葡文代表詞；Que saudade! = 好想念啊！', patterns: ['saudade'],
         example: { pt: 'Que saudade das noites de mercado em Taiwan!', zh: '好想念台灣的夜市啊！' } },
+      { id: 'v12', pt: 'quando', zh: '當…的時候', note: '也是疑問詞：Quando? = 什麼時候？', patterns: ['quando'],
+        example: { pt: 'Quando chove, eu fico em casa lendo.', zh: '下雨的時候，我待在家看書。' } },
+      { id: 'v13', pt: 'sorrir', zh: '微笑', note: 'sorri = 他／她微笑（現在式）；名詞 sorriso', patterns: ['sorri'],
+        example: { pt: 'Ela sorri quando fica nervosa.', zh: '她緊張的時候會微笑。' } },
+      { id: 'v14', pt: 'assistir', zh: '觀看（電影、節目）', note: '⚠️ 假朋友：不是「協助」，是「看」', patterns: ['assiste'],
+        example: { pt: 'Vamos assistir um filme hoje à noite?', zh: '今晚要不要一起看電影？' } },
+      { id: 'v15', pt: 'parecer', zh: '看起來、好像', note: 'parecer ser = 好像是…', patterns: ['parece'],
+        example: { pt: 'Você parece cansada hoje.', zh: '妳今天看起來很累。' } },
+      { id: 'v16', pt: 'esperar', zh: '等待；期待', note: 'estava esperando = 過去一直在等（過去進行）', patterns: ['esperando'],
+        example: { pt: 'Estou esperando o ônibus há meia hora.', zh: '我已經等公車等了半小時。' } },
+      { id: 'v17', pt: 'cada', zh: '每一個', note: 'cada um / cada uma = 每一個（人／東西）；不隨性別變化', patterns: ['cada'],
+        example: { pt: 'Cada cidade tem o seu jeito.', zh: '每座城市都有自己的樣子。' } },
+      { id: 'v18', pt: 'mudança', zh: '改變；搬家', note: '複數 mudanças；fazer mudança = 搬家', patterns: ['mudanças'],
+        example: { pt: 'A mudança de clima me deixou doente.', zh: '氣候變化讓我生病了。' } },
+      { id: 'v19', pt: 'calor', zh: '溫暖；炎熱', note: 'Estou com calor = 我覺得熱', patterns: ['calor'],
+        example: { pt: 'Que calor hoje! Vamos pra praia?', zh: '今天好熱！要不要去海邊？' } },
+      { id: 'v20', pt: 'até', zh: '直到；甚至', note: 'Até logo! = 待會見；Até amanhã! = 明天見', patterns: ['até'],
+        example: { pt: 'Vou trabalhar até as seis.', zh: '我工作到六點。' } },
+      { id: 'v21', pt: 'novamente', zh: '再次', note: '口語更常說 de novo', patterns: ['novamente'],
+        example: { pt: 'Preciso tentar novamente amanhã.', zh: '我明天得再試一次。' } },
+      { id: 'v22', pt: 'nesse', zh: '在這個（那個）', note: 'em + esse = nesse；陰性 nessa；複數 nesses / nessas', patterns: ['Nesse'],
+        example: { pt: 'Nesse restaurante a comida é ótima.', zh: '這家餐廳的菜很棒。' } },
+      { id: 'v23', pt: 'brilhar', zh: '發光、閃耀', note: 'brilhando = 正在閃耀（現在分詞）', patterns: ['brilhando'],
+        example: { pt: 'As luzes da cidade brilham à noite.', zh: '城市的燈光在夜裡閃耀。' } },
+      { id: 'v24', pt: 'então', zh: '那麼、然後', note: '口語超常用的轉折詞，像中文的「那…」「所以」', patterns: ['então'],
+        example: { pt: 'Então, o que vamos fazer agora?', zh: '那麼，我們現在要做什麼？' } },
+      { id: 'v25', pt: 'segurar', zh: '握著、抓住', note: 'segurar a porta = 幫忙扶門', patterns: ['segurar'],
+        example: { pt: 'Segura a minha mão, a rua tá escura.', zh: '抓著我的手，街上很暗。' } },
+      { id: 'v26', pt: 'rosto', zh: '臉', note: '口語也說 cara（cara 另有「傢伙」的意思）', patterns: ['rosto'],
+        example: { pt: 'Lavo o rosto com água fria de manhã.', zh: '我早上用冷水洗臉。' } },
     ],
   },
   {
@@ -2056,12 +2091,15 @@ function renderReadingVocabCard(reading, v) {
   if (v.note) card.appendChild(el('div', { class: 'rd-vocab-note' }, v.note));
   const ex = el('div', { class: 'rd-vocab-ex' });
   ex.appendChild(el('div', { class: 'example-label' }, '延伸造句'));
-  const row = el('div', { class: 'rd-ex-row' });
-  row.appendChild(el('span', { class: 'rd-ex-pt' }, v.example.pt));
-  const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex-pt.mp3`;
-  row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (e) => playAudio(src, e.currentTarget), html: SPEAKER_SVG }));
-  ex.appendChild(row);
-  ex.appendChild(el('div', { class: 'rd-ex-zh' }, v.example.zh));
+  const exs = v.examples || [v.example];
+  exs.forEach((e, i) => {
+    const row = el('div', { class: 'rd-ex-row' });
+    row.appendChild(el('span', { class: 'rd-ex-pt' }, e.pt));
+    const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex${i ? i + 1 : ''}-pt.mp3`;
+    row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (ev) => playAudio(src, ev.currentTarget), html: SPEAKER_SVG }));
+    const item = el('div', { class: 'rd-ex-item' }, [row, el('div', { class: 'rd-ex-zh' }, e.zh)]);
+    ex.appendChild(item);
+  });
   card.appendChild(ex);
   return card;
 }
@@ -2130,7 +2168,9 @@ function renderReadingDetail(id) {
   // 重點單字
   const vocabSec = el('div', { class: 'rd-vocab-section', id: 'rd-vocab' });
   vocabSec.appendChild(el('h3', { class: 'vocab-section-title' }, `📚 重點單字（${reading.vocab.length}）`));
-  for (const v of reading.vocab) vocabSec.appendChild(renderReadingVocabCard(reading, v));
+  const ordered = [...usedVocab].map(id => reading.vocab.find(v => v.id === id))
+    .concat(reading.vocab.filter(v => !usedVocab.has(v.id)));
+  for (const v of ordered) vocabSec.appendChild(renderReadingVocabCard(reading, v));
   body.appendChild(vocabSec);
 
   // 控制列：從頭連播 / 中文全開 / 跳到單字

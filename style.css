@@ -927,3 +927,4 @@ code {
 
 .rd-seg.no-audio { cursor: default; }
 .rd-seg.no-audio:hover { background: none; }
+.rd-ex-item + .rd-ex-item { margin-top: 0.6rem; }
