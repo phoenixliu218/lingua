@@ -506,6 +506,8 @@ const NUMBERS_DATA = {
 // audio: ./audio/reading/{id}/{sentenceId}{segmentId}-pt.mp3
 // vocab audio: ./audio/reading/{id}/vocab/{vocabId}-ex-pt.mp3
 const READINGS = [
+  // 私人內容：明文不在 repo，只有加密檔（scripts/encrypt_reading.py 產生）
+  { id: 'privado-1', icon: '🔒', title: 'Private letter', type: 'Locked', byline: 'Tap to unlock', locked: true, file: './private/privado-1.bin' },
   {
     id: 'linha-do-equador',
     icon: '🎵',
@@ -1913,10 +1915,94 @@ function renderFoundations() {
   return [stickyStack, container, footer()];
 }
 
+// === Reading: 私人內容解密（PBKDF2-SHA256 600k → AES-256-GCM）===
+const _unlocked = {};  // publicId → 解密後的 reading（含 _audio: 相對路徑 → blob URL）
+const READING_KEY_PREFIX = 'lingua-reading-key-';
+
+function readingAudio(reading, rel) {
+  if (reading._audio) return reading._audio[rel];
+  return `./audio/reading/${reading.id}/${rel}`;
+}
+function getReading(id) {
+  return _unlocked[id] || READINGS.find(r => r.id === id);
+}
+const _b64 = {
+  toBytes: (b64) => Uint8Array.from(atob(b64), c => c.charCodeAt(0)),
+  fromBytes: (bytes) => btoa(String.fromCharCode(...new Uint8Array(bytes))),
+};
+// password 或已存的 rawKey 擇一；成功回傳 true
+async function unlockReading(stub, { password, rawKey }) {
+  const buf = new Uint8Array(await (await fetch(stub.file)).arrayBuffer());
+  if (new TextDecoder().decode(buf.slice(0, 4)) !== 'LGE1') throw new Error('bad file');
+  const salt = buf.slice(4, 20), iv = buf.slice(20, 32), ct = buf.slice(32);
+  let key;
+  if (rawKey) {
+    key = await crypto.subtle.importKey('raw', _b64.toBytes(rawKey), 'AES-GCM', true, ['decrypt']);
+  } else {
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+    key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: 600000, hash: 'SHA-256' },
+      base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+  }
+  let plain;
+  try { plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct); }
+  catch { return false; }  // 密碼錯誤
+  const { reading, audio } = JSON.parse(new TextDecoder().decode(plain));
+  reading.id = stub.id;
+  reading._audio = {};
+  for (const [rel, b64] of Object.entries(audio)) {
+    reading._audio[rel] = URL.createObjectURL(new Blob([_b64.toBytes(b64)], { type: 'audio/mpeg' }));
+  }
+  _unlocked[stub.id] = reading;
+  try { localStorage.setItem(READING_KEY_PREFIX + stub.id, _b64.fromBytes(await crypto.subtle.exportKey('raw', key))); } catch {}
+  return true;
+}
+function lockReading(id) {
+  const r = _unlocked[id];
+  if (r && r._audio) Object.values(r._audio).forEach(u => URL.revokeObjectURL(u));
+  delete _unlocked[id];
+  try { localStorage.removeItem(READING_KEY_PREFIX + id); } catch {}
+}
+
+function renderReadingLock(stub) {
+  const wrap = el('div', { class: 'tab-content rd-lock' });
+  let saved = null;
+  try { saved = localStorage.getItem(READING_KEY_PREFIX + stub.id); } catch {}
+  if (saved) {
+    wrap.appendChild(el('p', { class: 'rd-lock-msg' }, '解鎖中…'));
+    unlockReading(stub, { rawKey: saved })
+      .then(ok => { if (!ok) { try { localStorage.removeItem(READING_KEY_PREFIX + stub.id); } catch {} } route(); })
+      .catch(() => { wrap.querySelector('.rd-lock-msg').textContent = '讀取失敗，請確認網路後重試'; });
+    return [topbar({ title: `${stub.icon} ${stub.title}`, back: true }), wrap, footer()];
+  }
+  const input = el('input', { type: 'password', class: 'rd-lock-input', placeholder: '輸入密碼', autocomplete: 'current-password' });
+  const msg = el('p', { class: 'rd-lock-err' }, '');
+  const btn = el('button', { class: 'rd-ctrl active rd-lock-btn' }, '解鎖');
+  const submit = async () => {
+    if (!input.value) return;
+    btn.disabled = true; msg.textContent = '解鎖中…';
+    try {
+      const ok = await unlockReading(stub, { password: input.value });
+      if (ok) { route(); return; }
+      msg.textContent = '密碼不正確';
+    } catch { msg.textContent = '讀取失敗，請確認網路後重試'; }
+    btn.disabled = false;
+  };
+  btn.addEventListener('click', submit);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit(); });
+  wrap.appendChild(el('div', { class: 'rd-lock-icon' }, '🔒'));
+  wrap.appendChild(el('p', { class: 'rd-lock-msg' }, '私人內容，輸入密碼後這台裝置會記住'));
+  wrap.appendChild(input);
+  wrap.appendChild(btn);
+  wrap.appendChild(msg);
+  return [topbar({ title: `${stub.icon} ${stub.title}`, back: true }), wrap, footer()];
+}
+
 // === Reading ===
 function renderReadingList() {
   const list = el('div', { class: 'section-list' });
-  for (const r of READINGS) {
+  for (const stub of READINGS) {
+    const r = getReading(stub.id);
     list.appendChild(sectionCard({
       icon: r.icon,
       title: r.title,
@@ -1984,7 +2070,7 @@ function renderReadingVocabCard(reading, v) {
   exs.forEach((e, i) => {
     const row = el('div', { class: 'rd-ex-row' });
     row.appendChild(el('span', { class: 'rd-ex-pt' }, e.pt));
-    const src = `./audio/reading/${reading.id}/vocab/${v.id}-ex${i ? i + 1 : ''}-pt.mp3`;
+    const src = readingAudio(reading, `vocab/${v.id}-ex${i ? i + 1 : ''}-pt.mp3`);
     row.appendChild(el('button', { class: 'play-btn play-btn-sm', onClick: (ev) => playAudio(src, ev.currentTarget), html: SPEAKER_SVG }));
     const item = el('div', { class: 'rd-ex-item' }, [row, el('div', { class: 'rd-ex-zh' }, e.zh)]);
     ex.appendChild(item);
@@ -1994,7 +2080,8 @@ function renderReadingVocabCard(reading, v) {
 }
 
 function renderReadingDetail(id) {
-  const reading = READINGS.find(r => r.id === id);
+  const reading = getReading(id);
+  if (reading && reading.locked) return renderReadingLock(reading);
   if (!reading) {
     return [
       topbar({ title: 'Not found', back: true }),
@@ -2022,7 +2109,7 @@ function renderReadingDetail(id) {
           line.appendChild(document.createTextNode(' '));
           continue;
         }
-        const src = `./audio/reading/${reading.id}/${s.id}${seg.id}-pt.mp3`;
+        const src = readingAudio(reading, `${s.id}${seg.id}-pt.mp3`);
         const span = el('span', { class: 'rd-seg' }, nodes);
         const idx = segEls.length;
         segEls.push({ src, btn: span });
@@ -2086,6 +2173,12 @@ function renderReadingDetail(id) {
     onClick: () => vocabSec.scrollIntoView({ behavior: 'smooth', block: 'start' }),
   }, `📚 單字`);
   const controls = el('div', { class: 'rd-controls' }, [playAllBtn, zhAllBtn, vocabJumpBtn]);
+  if (reading._audio) {
+    controls.appendChild(el('button', {
+      class: 'rd-ctrl',
+      onClick: () => { stopAudio(); lockReading(reading.id); location.hash = '#/reading'; },
+    }, '🔒 鎖上'));
+  }
 
   requestAnimationFrame(() => {
     const stack = document.querySelector('.sticky-stack');
