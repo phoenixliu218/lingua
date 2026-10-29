@@ -1957,12 +1957,6 @@ async function unlockReading(stub, { password, rawKey }) {
   try { localStorage.setItem(READING_KEY_PREFIX + stub.id, _b64.fromBytes(await crypto.subtle.exportKey('raw', key))); } catch {}
   return true;
 }
-function lockReading(id) {
-  const r = _unlocked[id];
-  if (r && r._audio) Object.values(r._audio).forEach(u => URL.revokeObjectURL(u));
-  delete _unlocked[id];
-  try { localStorage.removeItem(READING_KEY_PREFIX + id); } catch {}
-}
 
 function renderReadingLock(stub) {
   const wrap = el('div', { class: 'tab-content rd-lock' });
@@ -2173,12 +2167,6 @@ function renderReadingDetail(id) {
     onClick: () => vocabSec.scrollIntoView({ behavior: 'smooth', block: 'start' }),
   }, `📚 單字`);
   const controls = el('div', { class: 'rd-controls' }, [playAllBtn, zhAllBtn, vocabJumpBtn]);
-  if (reading._audio) {
-    controls.appendChild(el('button', {
-      class: 'rd-ctrl',
-      onClick: () => { stopAudio(); lockReading(reading.id); location.hash = '#/reading'; },
-    }, '🔒 鎖上'));
-  }
 
   requestAnimationFrame(() => {
     const stack = document.querySelector('.sticky-stack');
